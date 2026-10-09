@@ -61,7 +61,19 @@ export const TimeMachine: React.FC<TimeMachineProps> = ({
             {useImdWindow ? 'IMD Window (08:30 IST)' : 'Calendar Day (IST)'}
           </button>
 
-          <span className="font-mono" style={{ fontSize: '13px', fontWeight: 700, color: '#38bdf8' }}>
+          <span
+            className="font-mono"
+            style={{
+              fontSize: '12px',
+              fontWeight: 700,
+              color: '#38bdf8',
+              background: 'rgba(56, 189, 248, 0.12)',
+              border: '1px solid rgba(56, 189, 248, 0.3)',
+              borderRadius: '6px',
+              padding: '3px 8px',
+              whiteSpace: 'nowrap'
+            }}
+          >
             {formatDisplayDate(currentDate)}
           </span>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudRain, Activity, Layers, Sliders, Table2 } from 'lucide-react';
+import { CloudRain, Activity, Layers, Sliders, Table2, Compass } from 'lucide-react';
 
 interface HeaderProps {
   backendHealthy: boolean;
@@ -9,6 +9,7 @@ interface HeaderProps {
   onToggleSimulation: () => void;
   showTable: boolean;
   onToggleTable: () => void;
+  onStartTour: () => void;
   currentDate: string;
 }
 
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleSimulation,
   showTable,
   onToggleTable,
+  onStartTour,
   currentDate
 }) => {
   return (
@@ -65,6 +67,22 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Layers size={14} />
           <span>{showHotspots ? 'Hotspots Active' : 'Show Flood Spots'}</span>
+        </button>
+
+        <button
+          className="btn-secondary"
+          onClick={onStartTour}
+          title="Start 4-Step Judge Demonstration Storyboard Walkthrough"
+          style={{
+            background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(2, 132, 199, 0.25) 100%)',
+            borderColor: '#38bdf8',
+            color: '#38bdf8',
+            fontWeight: 600,
+            boxShadow: '0 0 10px rgba(56, 189, 248, 0.2)'
+          }}
+        >
+          <Compass size={14} />
+          <span>Judge Demo Tour</span>
         </button>
 
         <button

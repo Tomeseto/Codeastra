@@ -6,6 +6,7 @@ import { TimeMachine } from './components/TimeMachine';
 import { EvidenceDrawer } from './components/EvidenceDrawer';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
+import { JudgeTourGuide } from './components/JudgeTourGuide';
 import type { DailyExposureSummary, WardExposureScore, ChronicHotspot } from './types';
 
 export const App: React.FC = () => {
@@ -16,6 +17,9 @@ export const App: React.FC = () => {
   const [selectedWardId, setSelectedWardId] = useState<string | null>('L'); // Default to high-risk Ward L (Kurla)
   const [useImdWindow, setUseImdWindow] = useState<boolean>(false);
   
+  // Guided Judge Storyboard Tour
+  const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
+
   // Hotspots layer state
   const [showHotspots, setShowHotspots] = useState<boolean>(false);
   const [allHotspots, setAllHotspots] = useState<ChronicHotspot[]>([]);
@@ -163,6 +167,33 @@ export const App: React.FC = () => {
     return map;
   }, [geojsonData]);
 
+  const handleNavigateTourStep = (stepNumber: number) => {
+    setShowSimulation(false);
+    setShowTable(false);
+
+    if (stepNumber === 1) {
+      // Step 1: Baseline (Dry City Pre-Monsoon - 30 June 2026)
+      const idx = dates.indexOf('2026-06-30');
+      setCurrentDateIndex(idx >= 0 ? idx : 0);
+      setSelectedWardId(null);
+    } else if (stepNumber === 2) {
+      // Step 2: Flood Inundation & Hotspot Saturation (04 July 2026)
+      const idx = dates.indexOf('2026-07-04');
+      setCurrentDateIndex(idx >= 0 ? idx : 4);
+      setSelectedWardId('L');
+    } else if (stepNumber === 3) {
+      // Step 3: Peak Deluge & Advance Emergency Warning (+38.15h) (05 July 2026)
+      const idx = dates.indexOf('2026-07-05');
+      setCurrentDateIndex(idx >= 0 ? idx : 5);
+      setSelectedWardId('L');
+    } else if (stepNumber === 4) {
+      // Step 4: 14-Day Clinical Incubation Window & Vector Directives
+      const idx = dates.indexOf('2026-07-05');
+      setCurrentDateIndex(idx >= 0 ? idx : 5);
+      setSelectedWardId('L');
+    }
+  };
+
   return (
     <div className="app-container">
       {/* Navbar Header */}
@@ -174,6 +205,10 @@ export const App: React.FC = () => {
         onToggleSimulation={() => setShowSimulation(!showSimulation)}
         showTable={showTable}
         onToggleTable={() => setShowTable(!showTable)}
+        onStartTour={() => {
+          setIsTourOpen(true);
+          handleNavigateTourStep(1);
+        }}
         currentDate={currentDate}
       />
 
@@ -291,6 +326,13 @@ export const App: React.FC = () => {
           wardProperties={selectedWardProperties}
           hotspots={selectedWardHotspots}
           onClose={() => setSelectedWardId(null)}
+        />
+
+        {/* 4-Step Judge Demonstration Storyboard Walkthrough Guide */}
+        <JudgeTourGuide
+          isOpen={isTourOpen}
+          onClose={() => setIsTourOpen(false)}
+          onNavigateStep={handleNavigateTourStep}
         />
       </div>
     </div>

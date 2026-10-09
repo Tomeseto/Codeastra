@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Droplets, Users, AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import type { WardExposureScore, ChronicHotspot } from '../types';
+import { IncubationTimelineChart } from './IncubationTimelineChart';
 
 interface EvidenceDrawerProps {
   wardScore: WardExposureScore | null;
@@ -99,26 +100,13 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
           </div>
         )}
 
-        {/* Mathematical Formulation Card */}
-        <div className="math-card">
-          <div className="math-title">Deterministic Exposure Derivation</div>
-          <div className="math-formula">
-            E(w, d) = min(100.0, round(H(R) × M(w), 1))<br/>
-            E = min(100.0, round({H.toFixed(2)} × {M.toFixed(3)}, 1)) = <strong>{wardScore.exposure_score.toFixed(1)}</strong>
-          </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
-            <div>
-              • <strong>Hazard H(R):</strong> {H.toFixed(2)} / 100 ({wardScore.hazard.imd_category})
-            </div>
-            <div>
-              • <strong>Susceptibility M(w):</strong> {M.toFixed(3)} (Range [0.70, 1.30])
-              <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
-                Formula: 0.70 + 0.30·F_norm({F_norm !== null ? F_norm.toFixed(3) : 'None'}) + 0.30·V_norm({V_norm.toFixed(3)})
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* 14-Day Epidemiological Incubation Surge Curve & Mosquito Stagnation Index (Civilian First) */}
+        <IncubationTimelineChart
+          wardId={wardScore.ward_id}
+          wardName={wardProperties.ward_name || wardProperties.locality}
+          exposureScore={wardScore.exposure_score}
+          rainfallMm={wardScore.hazard.rainfall_mm}
+        />
 
         {/* Verified Census 2011 Demographics */}
         <div>
@@ -177,6 +165,32 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
               ))}
             </div>
           )}
+        </div>
+
+        {/* Deterministic Exposure Derivation Card (Auditable Math) */}
+        <div className="math-card">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+            <div className="math-title" style={{ marginBottom: 0 }}>Deterministic Exposure Derivation</div>
+            <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', textTransform: 'uppercase' }}>
+              Formula Audit
+            </span>
+          </div>
+          <div className="math-formula">
+            E(w, d) = min(100.0, round(H(R) × M(w), 1))<br/>
+            E = min(100.0, round({H.toFixed(2)} × {M.toFixed(3)}, 1)) = <strong>{wardScore.exposure_score.toFixed(1)}</strong>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
+            <div>
+              • <strong>Hazard H(R):</strong> {H.toFixed(2)} / 100 ({wardScore.hazard.imd_category})
+            </div>
+            <div>
+              • <strong>Susceptibility M(w):</strong> {M.toFixed(3)} (Range [0.70, 1.30])
+              <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
+                Formula: 0.70 + 0.30·F_norm({F_norm !== null ? F_norm.toFixed(3) : 'None'}) + 0.30·V_norm({V_norm.toFixed(3)})
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Lineage, Resolution & Source Callout */}
