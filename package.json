@@ -1,0 +1,9 @@
+{
+  "name": "varsha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VARSHA — Municipal Health Surveillance & Flood Outbreak Early-Warning for Mumbai",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build"
+  }
+}

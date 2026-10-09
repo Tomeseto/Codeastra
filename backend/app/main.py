@@ -20,12 +20,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include Routers
+# Include Routers (supporting both /api/v1 and /v1 for Vercel serverless proxies)
 app.include_router(wards.router, prefix=settings.API_V1_STR)
+app.include_router(wards.router, prefix="/v1")
 app.include_router(exposure.router, prefix=settings.API_V1_STR)
+app.include_router(exposure.router, prefix="/v1")
 
 @app.get("/health", tags=["System"])
-@app.get(f"{settings.API_V1_STR}/health", tags=["System"])
+@app.get("/api/health", tags=["System"])
+@app.get("/api/v1/health", tags=["System"])
+@app.get("/v1/health", tags=["System"])
 def health_check():
     return {
         "status": "healthy",

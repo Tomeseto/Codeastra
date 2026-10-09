@@ -25,6 +25,15 @@ class DataLoader:
 
     def _load_all(self):
         processed_dir = settings.DATA_PROCESSED_DIR
+        if not processed_dir.exists():
+            for candidate in [
+                Path.cwd() / "data" / "processed",
+                Path(__file__).resolve().parent.parent.parent.parent / "data" / "processed",
+                Path("/var/task") / "data" / "processed"
+            ]:
+                if candidate.exists():
+                    processed_dir = candidate
+                    break
         
         # 1. Load GeoJSON
         geojson_path = processed_dir / "mumbai_wards_24.geojson"
