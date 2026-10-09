@@ -1,5 +1,8 @@
-import React from 'react';
-import { X, AlertTriangle, Info, MapPin, Database, Users, ShieldAlert } from 'lucide-react';
+import React, { useState } from 'react';
+import { 
+  X, AlertTriangle, ChevronDown, ChevronUp, Activity, 
+  MapPin, Droplets, Users, Database 
+} from 'lucide-react';
 import { ExposureGauge } from './ExposureGauge';
 import type { WardExposureScore, ChronicHotspot } from '../types';
 
@@ -16,19 +19,21 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
   hotspots,
   onClose
 }) => {
+  const [showMathDropdown, setShowMathDropdown] = useState<boolean>(false);
+  const [showHotspotsDropdown, setShowHotspotsDropdown] = useState<boolean>(false);
+
   if (!wardScore || !wardProperties) {
     return (
       <aside className="evidence-drawer empty">
         <div className="evidence-header">
-          <h3>Forensic Evidence Dossier</h3>
+          <h3>Ward Dossier</h3>
           <button className="btn-icon" onClick={onClose} aria-label="Close Drawer" title="Close Drawer">
             <X size={16} />
           </button>
         </div>
         <div className="evidence-empty-state">
-          <Info size={32} color="var(--text-dim)" />
-          <p>
-            Select any ward polygon on the tactical map or click an entry in the critical queue to inspect mathematical lineage, census vulnerability, and chronic flood spots.
+          <p style={{ color: 'var(--text-dim)', fontSize: '11px', padding: '14px' }}>
+            Select any ward on the tactical map to inspect exposure, demographics, and chronic flood hotspots.
           </p>
         </div>
       </aside>
@@ -38,8 +43,6 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
   const H = wardScore.hazard.hazard_score_H;
   const M = wardScore.susceptibility.multiplier_M;
   const R = wardScore.hazard.rainfall_mm;
-  const F_norm = wardScore.susceptibility.flood_propensity_F_norm;
-  const V_norm = wardScore.susceptibility.demographic_vulnerability_V_norm;
   const isPartial = wardScore.susceptibility.status === 'PROVISIONAL_PARTIAL';
 
   const totalPop = wardProperties.total_population || 0;
@@ -67,29 +70,34 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         {/* Module 1: Radial Exposure Score Hero */}
         <div className="evidence-hero-card">
           <div className="hero-gauge-wrapper">
-            <ExposureGauge score={wardScore.exposure_score} tier={wardScore.risk_tier} size={100} strokeWidth={9} />
+            <ExposureGauge score={wardScore.exposure_score} tier={wardScore.risk_tier} size={88} strokeWidth={8} />
           </div>
           <div className="hero-metrics">
-            <span className="hero-label">Environmental Exposure Score</span>
+            <span className="hero-label">Environmental Exposure</span>
             <div className="hero-score-row">
               <span className={`badge-tier badge-${wardScore.risk_tier.toLowerCase()}`}>
                 {wardScore.risk_tier}
               </span>
             </div>
-            <div className="hero-rainfall-row font-mono">
-              <span>24h Rainfall:</span>
-              <strong style={{ color: 'var(--text-main)' }}>{R.toFixed(1)} mm</strong>
-            </div>
+            <p className="gauge-narrative">
+              {wardScore.risk_tier === 'EMERGENCY'
+                ? 'Critical deluge over high-density informal settlement. High leptospirosis risk.'
+                : wardScore.risk_tier === 'WARNING'
+                ? 'Severe rainfall accumulation. Early runoff saturation detected.'
+                : wardScore.risk_tier === 'WATCH'
+                ? 'Moderate accumulation. Vulnerable low-lying zones on alert.'
+                : 'Baseline seasonal conditions. Minimal environmental exposure.'}
+            </p>
           </div>
         </div>
 
         {/* Warning if Provisional/Partial Data */}
         {isPartial && (
           <div className="callout-warning">
-            <AlertTriangle size={16} color="var(--threat-watch)" style={{ flexShrink: 0 }} />
+            <AlertTriangle size={14} color="var(--threat-watch)" style={{ flexShrink: 0 }} />
             <div>
               <strong style={{ fontSize: '11px', display: 'block', color: 'var(--text-main)' }}>
-                PROVISIONAL DATA PROTOCOL
+                Provisional Data Protocol
               </strong>
               <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
                 {wardScore.susceptibility.warning_message}
@@ -98,122 +106,115 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
           </div>
         )}
 
-        {/* Module 2: Formula Deconstruction Card */}
-        <div className="drawer-card">
-          <div className="drawer-card-header">
-            <ShieldAlert size={14} color="var(--accent-structural)" />
-            <span>Mathematical Lineage Deconstructor</span>
-          </div>
-          <div className="formula-display font-mono">
-            E(w, d) = min(100.0, round(H(R) × M(w), 1))
-          </div>
-
-          <div className="math-step-list">
-            <div className="math-step-item">
-              <div className="math-step-top">
-                <span className="math-step-name">1. IMD Rainfall Hazard H(R)</span>
-                <span className="math-step-val font-mono">{H.toFixed(2)}</span>
-              </div>
-              <span className="math-step-desc">
-                Derived from {R.toFixed(1)} mm continuous 24h accumulation
-              </span>
+        {/* Module 2: Key 3-Stat Metric Grid */}
+        <div className="inspector-stats-grid">
+          <div className="stat-tile">
+            <div className="stat-tile-label">
+              <Droplets size={12} color="var(--text-muted)" />
+              <span>24h Rainfall</span>
             </div>
-
-            <div className="math-step-item">
-              <div className="math-step-top">
-                <span className="math-step-name">2. Susceptibility Multiplier M(w)</span>
-                <span className="math-step-val font-mono">{M.toFixed(3)}</span>
-              </div>
-              <div className="math-step-subgrid font-mono">
-                <span>Base: 0.70</span>
-                <span>Flood Propensity F: {F_norm != null ? F_norm.toFixed(3) : 'N/A'}</span>
-                <span>Census Vulnerability V: {V_norm.toFixed(3)}</span>
-              </div>
+            <div className="stat-tile-value font-mono">
+              {R.toFixed(1)} <span className="stat-tile-unit">mm</span>
             </div>
+          </div>
 
-            <div className="math-step-item highlight">
-              <div className="math-step-top">
-                <span className="math-step-name">Final Audited Score</span>
-                <span className="math-step-val font-mono" style={{ color: 'var(--text-main)', fontSize: '14px' }}>
-                  {H.toFixed(2)} × {M.toFixed(3)} = {wardScore.exposure_score.toFixed(1)}
-                </span>
-              </div>
+          <div className="stat-tile">
+            <div className="stat-tile-label">
+              <Users size={12} color="var(--text-muted)" />
+              <span>Slum Density</span>
+            </div>
+            <div className="stat-tile-value font-mono">
+              {slumPct.toFixed(0)}<span className="stat-tile-unit">%</span>
+            </div>
+          </div>
+
+          <div className="stat-tile">
+            <div className="stat-tile-label">
+              <Database size={12} color="var(--text-muted)" />
+              <span>Ward Pop.</span>
+            </div>
+            <div className="stat-tile-value font-mono">
+              {(totalPop / 1000).toFixed(0)}<span className="stat-tile-unit">k</span>
             </div>
           </div>
         </div>
 
-        {/* Module 3: Census Demographic Vulnerability Split Bar */}
-        <div className="drawer-card">
-          <div className="drawer-card-header">
-            <Users size={14} color="var(--accent-structural)" />
-            <span>Census 2011 Demographic Exposure</span>
-          </div>
-
-          <div className="demographic-stats-grid">
-            <div>
-              <span className="stat-caption">Total Ward Population</span>
-              <strong className="stat-figure font-mono">{totalPop.toLocaleString()}</strong>
+        {/* Module 3: Mathematical Lineage & Formula Dropdown Accordion */}
+        <div className="accordion-card">
+          <button 
+            className="accordion-header"
+            onClick={() => setShowMathDropdown(!showMathDropdown)}
+            aria-expanded={showMathDropdown}
+          >
+            <div className="accordion-title-group">
+              <Activity size={13} color="var(--accent-structural)" />
+              <span>Mathematical Lineage & Formula</span>
             </div>
-            <div>
-              <span className="stat-caption">Slum Population</span>
-              <strong className="stat-figure font-mono" style={{ color: 'var(--threat-warning)' }}>
-                {slumPop.toLocaleString()} ({slumPct.toFixed(1)}%)
-              </strong>
+            {showMathDropdown ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+
+          {showMathDropdown && (
+            <div className="accordion-body animate-slide-up">
+              <div className="formula-box font-mono">
+                E(w, d) = min(100.0, round(H(R) × M(w), 1))
+              </div>
+              <div className="math-step-row">
+                <div>
+                  <span className="step-title">1. IMD Rainfall Hazard H(R)</span>
+                  <span className="step-desc">Derived from {R.toFixed(1)} mm accumulation</span>
+                </div>
+                <strong className="font-mono">{H.toFixed(2)}</strong>
+              </div>
+              <div className="math-step-row">
+                <div>
+                  <span className="step-title">2. Susceptibility Multiplier M(w)</span>
+                  <span className="step-desc">Flood Propensity + Census Slum Ratio</span>
+                </div>
+                <strong className="font-mono">{M.toFixed(3)}</strong>
+              </div>
+              <div className="math-step-row audited-calc">
+                <span>Audited Exposure Calculation</span>
+                <strong className="font-mono">{H.toFixed(2)} × {M.toFixed(3)} = {wardScore.exposure_score.toFixed(1)}</strong>
+              </div>
             </div>
-          </div>
-
-          <div className="demographic-bar-wrapper">
-            <div
-              className="demographic-bar-slum"
-              style={{ width: `${Math.min(100, slumPct)}%` }}
-              title={`Slum Population: ${slumPct.toFixed(1)}%`}
-            />
-            <div
-              className="demographic-bar-nonslum"
-              style={{ width: `${Math.max(0, 100 - slumPct)}%` }}
-              title={`Non-Slum Population: ${(100 - slumPct).toFixed(1)}%`}
-            />
-          </div>
-          <div className="demographic-bar-legend">
-            <span>● Slum Density ({slumPct.toFixed(1)}%)</span>
-            <span>○ Non-Slum ({(100 - slumPct).toFixed(1)}%)</span>
-          </div>
-        </div>
-
-        {/* Module 4: Verified Chronic Flood Hotspots in Ward */}
-        <div className="drawer-card">
-          <div className="drawer-card-header">
-            <MapPin size={14} color="var(--threat-warning)" />
-            <span>Verified BMC Chronic Flood Spots ({hotspots.length})</span>
-          </div>
-
-          {hotspots.length === 0 ? (
-            <p style={{ fontSize: '11px', color: 'var(--text-dim)', margin: '4px 0' }}>
-              Zero chronic waterlogging spots recorded in municipal database for Ward {wardScore.ward_id}.
-            </p>
-          ) : (
-            <ul className="hotspot-list">
-              {hotspots.map((h, i) => (
-                <li key={h.id || i} className="hotspot-list-item">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div className="hotspot-marker-dot" />
-                    <span className="hotspot-name">{h.name || (h as any).spot_name}</span>
-                  </div>
-                  <span className="hotspot-coords font-mono">
-                    {(h.lat ?? (h as any).latitude ?? 0).toFixed(4)}, {(h.lon ?? (h as any).longitude ?? 0).toFixed(4)}
-                  </span>
-                </li>
-              ))}
-            </ul>
           )}
         </div>
 
-        {/* Module 5: Cryptographic Provenance Ledger */}
-        <div className="lineage-footer">
-          <Database size={12} color="var(--text-dim)" />
-          <span>
-            Data Lineage: {wardScore.data_lineage} · Centroid: {(wardProperties.centroid_lat ?? 19.085).toFixed(3)}°N, {(wardProperties.centroid_lon ?? 72.877).toFixed(3)}°E
-          </span>
+        {/* Module 4: Verified Chronic Flood Spots Dropdown Accordion */}
+        <div className="accordion-card">
+          <button 
+            className="accordion-header"
+            onClick={() => setShowHotspotsDropdown(!showHotspotsDropdown)}
+            aria-expanded={showHotspotsDropdown}
+          >
+            <div className="accordion-title-group">
+              <MapPin size={13} color="var(--accent-structural)" />
+              <span>Verified Chronic Flood Spots ({hotspots.length})</span>
+            </div>
+            {showHotspotsDropdown ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+
+          {showHotspotsDropdown && (
+            <div className="accordion-body animate-slide-up">
+              {hotspots.length === 0 ? (
+                <p className="no-spots-text">No chronic waterlogging hotspots recorded in this ward.</p>
+              ) : (
+                <div className="hotspots-list">
+                  {hotspots.map((spot, i) => (
+                    <div key={i} className="hotspot-item">
+                      <div className="hotspot-item-header">
+                        <strong className="hotspot-name">{spot.name}</strong>
+                        <span className={`spot-severity-badge ${spot.severity.toLowerCase()}`}>
+                          {spot.severity}
+                        </span>
+                      </div>
+                      <span className="hotspot-source font-mono">{spot.source}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </aside>

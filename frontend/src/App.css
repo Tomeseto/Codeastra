@@ -505,9 +505,10 @@ button {
 }
 
 .hero-metrics {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .hero-label {
@@ -518,35 +519,97 @@ button {
   letter-spacing: 0.04em;
 }
 
-.hero-rainfall-row {
+.gauge-narrative {
   font-size: 11px;
   color: var(--text-muted);
+  line-height: 1.35;
   margin-top: 2px;
 }
 
-.drawer-card {
-  background: var(--bg-surface-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
+/* 3-Stat Metric Grid */
+.inspector-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-.drawer-card-header {
+.stat-tile {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.stat-tile-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--text-dim);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.stat-tile-value {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.stat-tile-unit {
+  font-size: 11px;
+  font-weight: 500;
   color: var(--text-dim);
 }
 
-.formula-display {
+/* Dropdown Accordion Cards */
+.accordion-card {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface-2);
+  color: var(--text-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.accordion-header:hover {
+  background: var(--bg-surface-3);
+}
+
+.accordion-title-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.accordion-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--border-subtle);
   background: var(--bg-surface-1);
+}
+
+.formula-box {
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 6px 10px;
@@ -554,113 +617,74 @@ button {
   color: var(--text-main);
 }
 
-.math-step-list {
+.math-step-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.step-title {
+  display: block;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.step-desc {
+  display: block;
+  font-size: 10px;
+  color: var(--text-dim);
+}
+.math-step-row.audited-calc {
+  padding-top: 6px;
+  border-top: 1px solid var(--border-subtle);
+  font-weight: 700;
+}
+
+.no-spots-text {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.hotspots-list {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.math-step-item {
-  padding: 6px 8px;
-  background: var(--bg-surface-1);
+.hotspot-item {
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.math-step-top {
+.hotspot-item-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.math-step-name {
+.hotspot-name {
   font-size: 11px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.math-step-val {
-  font-size: 11.5px;
   font-weight: 700;
   color: var(--text-main);
 }
 
-.math-step-desc {
-  font-size: 10px;
-  color: var(--text-dim);
+.spot-severity-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  background: var(--threat-warning-bg);
+  color: var(--threat-warning);
 }
 
-.math-step-subgrid {
-  display: flex;
-  gap: 8px;
+.hotspot-source {
   font-size: 9.5px;
   color: var(--text-dim);
-  margin-top: 2px;
-}
-
-.math-step-item.highlight {
-  background: var(--bg-surface-3);
-  border-left: 2px solid var(--accent-live);
-}
-
-.demographic-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-
-.stat-caption {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  display: block;
-}
-
-.stat-figure {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--text-main);
-  display: block;
-}
-
-.demographic-bar-wrapper {
-  height: 7px;
-  border-radius: var(--radius-full);
-  display: flex;
-  overflow: hidden;
-  background: var(--bg-surface-3);
-}
-.demographic-bar-slum { background: var(--threat-warning); }
-.demographic-bar-nonslum { background: var(--border-strong); }
-
-.demographic-bar-legend {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: var(--text-dim);
-}
-
-.hotspot-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-}
-
-.hotspot-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 8px;
-  background: var(--bg-surface-1);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  font-size: 11px;
 }
 
 .hotspot-marker-dot {
