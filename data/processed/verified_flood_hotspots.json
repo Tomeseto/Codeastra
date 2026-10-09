@@ -1,0 +1,885 @@
+{
+  "metadata": {
+    "title": "VARSHA Verified Mumbai Chronic Flood Hotspots & Ward Propensity Index",
+    "description": "Geocoded chronic waterlogging hotspots across all 24 administrative wards compiled from BMC Flood Preparedness Guidelines and Mumbai Traffic Police records",
+    "total_hotspots": 70,
+    "total_wards_evaluated": 24,
+    "max_hotspot_density_per_sq_km": 1.0455,
+    "created_at": "2026-10-09",
+    "source": "Brihanmumbai Municipal Corporation (BMC) Disaster Management Guidelines & Mumbai Traffic Police"
+  },
+  "wards": {
+    "G-S": {
+      "ward_id": "G-S",
+      "ward_name": "G-S (Elphinstone / Worli)",
+      "locality": "Elphinstone / Worli",
+      "area_sq_km": 9.7411,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.308,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.2946
+    },
+    "F-N": {
+      "ward_id": "F-N",
+      "ward_name": "F-N (Matunga / Wadala / Sion)",
+      "locality": "Matunga / Wadala / Sion",
+      "area_sq_km": 12.8537,
+      "verified_hotspot_count": 5,
+      "hotspot_density_per_sq_km": 0.389,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.3721
+    },
+    "M-W": {
+      "ward_id": "M-W",
+      "ward_name": "M-W (Chembur)",
+      "locality": "Chembur",
+      "area_sq_km": 17.6202,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.1703,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.1629
+    },
+    "H-W": {
+      "ward_id": "H-W",
+      "ward_name": "H-W (Bandra / Khar West)",
+      "locality": "Bandra / Khar West",
+      "area_sq_km": 8.6504,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.3468,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.3317
+    },
+    "G-N": {
+      "ward_id": "G-N",
+      "ward_name": "G-N (Dharavi / Dadar)",
+      "locality": "Dharavi / Dadar",
+      "area_sq_km": 8.3154,
+      "verified_hotspot_count": 4,
+      "hotspot_density_per_sq_km": 0.481,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.4601
+    },
+    "M-E": {
+      "ward_id": "M-E",
+      "ward_name": "M-E (Govandi / Mankhurd)",
+      "locality": "Govandi / Mankhurd",
+      "area_sq_km": 38.2257,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.0785,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0751
+    },
+    "E": {
+      "ward_id": "E",
+      "ward_name": "E (Byculla)",
+      "locality": "Byculla",
+      "area_sq_km": 7.1725,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.2788,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.2667
+    },
+    "H-E": {
+      "ward_id": "H-E",
+      "ward_name": "H-E (Santacruz East / Khar East)",
+      "locality": "Santacruz East / Khar East",
+      "area_sq_km": 12.8415,
+      "verified_hotspot_count": 4,
+      "hotspot_density_per_sq_km": 0.3115,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.2979
+    },
+    "R-S": {
+      "ward_id": "R-S",
+      "ward_name": "R-S (Kandivali)",
+      "locality": "Kandivali",
+      "area_sq_km": 18.5563,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.1078,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.1031
+    },
+    "T": {
+      "ward_id": "T",
+      "ward_name": "T (Mulund)",
+      "locality": "Mulund",
+      "area_sq_km": 45.1307,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.0443,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0424
+    },
+    "N": {
+      "ward_id": "N",
+      "ward_name": "N (Ghatkopar)",
+      "locality": "Ghatkopar",
+      "area_sq_km": 30.6023,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.098,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0937
+    },
+    "P-S": {
+      "ward_id": "P-S",
+      "ward_name": "P-S (Goregaon)",
+      "locality": "Goregaon",
+      "area_sq_km": 25.3956,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.0788,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0754
+    },
+    "P-N": {
+      "ward_id": "P-N",
+      "ward_name": "P-N (Malad)",
+      "locality": "Malad",
+      "area_sq_km": 46.7005,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.0642,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0614
+    },
+    "B": {
+      "ward_id": "B",
+      "ward_name": "B (Sandhurst Road / Dongri)",
+      "locality": "Sandhurst Road / Dongri",
+      "area_sq_km": 2.6582,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.7524,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.7197
+    },
+    "R-C": {
+      "ward_id": "R-C",
+      "ward_name": "R-C (Borivali)",
+      "locality": "Borivali",
+      "area_sq_km": 47.95,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.0417,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0399
+    },
+    "K-E": {
+      "ward_id": "K-E",
+      "ward_name": "K-E (Andheri East / Jogeshwari East)",
+      "locality": "Andheri East / Jogeshwari East",
+      "area_sq_km": 23.9827,
+      "verified_hotspot_count": 4,
+      "hotspot_density_per_sq_km": 0.1668,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.1595
+    },
+    "L": {
+      "ward_id": "L",
+      "ward_name": "L (Kurla / Sakinaka)",
+      "locality": "Kurla / Sakinaka",
+      "area_sq_km": 15.6254,
+      "verified_hotspot_count": 5,
+      "hotspot_density_per_sq_km": 0.32,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.3061
+    },
+    "S": {
+      "ward_id": "S",
+      "ward_name": "S (Bhandup / Powai)",
+      "locality": "Bhandup / Powai",
+      "area_sq_km": 32.5545,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.0922,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.0882
+    },
+    "R-N": {
+      "ward_id": "R-N",
+      "ward_name": "R-N (Dahisar)",
+      "locality": "Dahisar",
+      "area_sq_km": 14.1767,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.1411,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.135
+    },
+    "K-W": {
+      "ward_id": "K-W",
+      "ward_name": "K-W (Andheri West / Versova)",
+      "locality": "Andheri West / Versova",
+      "area_sq_km": 24.354,
+      "verified_hotspot_count": 3,
+      "hotspot_density_per_sq_km": 0.1232,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.1178
+    },
+    "A": {
+      "ward_id": "A",
+      "ward_name": "A (Colaba / Fort / Marine Drive)",
+      "locality": "Colaba / Fort / Marine Drive",
+      "area_sq_km": 11.2095,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.1784,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.1706
+    },
+    "C": {
+      "ward_id": "C",
+      "ward_name": "C (Marine Lines / Bhuleshwar)",
+      "locality": "Marine Lines / Bhuleshwar",
+      "area_sq_km": 1.913,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 1.0455,
+      "data_lineage": "OBSERVED",
+      "f_norm": 1.0
+    },
+    "D": {
+      "ward_id": "D",
+      "ward_name": "D (Grant Road / Malabar Hill)",
+      "locality": "Grant Road / Malabar Hill",
+      "area_sq_km": 8.302,
+      "verified_hotspot_count": 2,
+      "hotspot_density_per_sq_km": 0.2409,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.2304
+    },
+    "F-S": {
+      "ward_id": "F-S",
+      "ward_name": "F-S (Parel / Sewri)",
+      "locality": "Parel / Sewri",
+      "area_sq_km": 9.8724,
+      "verified_hotspot_count": 4,
+      "hotspot_density_per_sq_km": 0.4052,
+      "data_lineage": "OBSERVED",
+      "f_norm": 0.3876
+    }
+  },
+  "hotspots": [
+    {
+      "id": "FN-01",
+      "name": "Gandhi Market (King's Circle)",
+      "ward_id": "F-N",
+      "lat": 19.0305,
+      "lon": 72.8595,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "FN-02",
+      "name": "Sion Circle",
+      "ward_id": "F-N",
+      "lat": 19.0392,
+      "lon": 72.8622,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "FN-03",
+      "name": "Flank Road (Wadala)",
+      "ward_id": "F-N",
+      "lat": 19.021,
+      "lon": 72.864,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "FN-04",
+      "name": "Sion Station Underpass",
+      "ward_id": "F-N",
+      "lat": 19.038,
+      "lon": 72.861,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "HIGH"
+    },
+    {
+      "id": "FN-05",
+      "name": "Wadala Bridge Low Point",
+      "ward_id": "F-N",
+      "lat": 19.0185,
+      "lon": 72.859,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "FS-01",
+      "name": "Hindmata Cinema Junction",
+      "ward_id": "F-S",
+      "lat": 19.008,
+      "lon": 72.843,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "FS-02",
+      "name": "Parel TT Circle",
+      "ward_id": "F-S",
+      "lat": 19.0035,
+      "lon": 72.8415,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "FS-03",
+      "name": "Dr. B.A. Road (Lalbaug Stretch)",
+      "ward_id": "F-S",
+      "lat": 18.995,
+      "lon": 72.8385,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "FS-04",
+      "name": "Sewri Naka Low Basin",
+      "ward_id": "F-S",
+      "lat": 19.001,
+      "lon": 72.855,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "GN-01",
+      "name": "Dharavi 90 Feet Road",
+      "ward_id": "G-N",
+      "lat": 19.043,
+      "lon": 72.856,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "GN-02",
+      "name": "Dharavi T-Junction",
+      "ward_id": "G-N",
+      "lat": 19.0485,
+      "lon": 72.854,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "GN-03",
+      "name": "Dadar TT Circle",
+      "ward_id": "G-N",
+      "lat": 19.022,
+      "lon": 72.841,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "HIGH"
+    },
+    {
+      "id": "GN-04",
+      "name": "Mahim Causeway Low Point",
+      "ward_id": "G-N",
+      "lat": 19.045,
+      "lon": 72.841,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "GS-01",
+      "name": "Worli Naka",
+      "ward_id": "G-S",
+      "lat": 19.014,
+      "lon": 72.818,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "GS-02",
+      "name": "Dr. E. Moses Road (Lower Parel)",
+      "ward_id": "G-S",
+      "lat": 19.006,
+      "lon": 72.825,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "GS-03",
+      "name": "Senapati Bapat Marg Junction",
+      "ward_id": "G-S",
+      "lat": 19.002,
+      "lon": 72.831,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "L-01",
+      "name": "Kurla West (Kranti Nagar)",
+      "ward_id": "L",
+      "lat": 19.07,
+      "lon": 72.875,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "L-02",
+      "name": "Bail Bazar Kurla",
+      "ward_id": "L",
+      "lat": 19.076,
+      "lon": 72.883,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "L-03",
+      "name": "Sakinaka Junction",
+      "ward_id": "L",
+      "lat": 19.098,
+      "lon": 72.8875,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "L-04",
+      "name": "LBS Marg Kurla Depot Stretch",
+      "ward_id": "L",
+      "lat": 19.068,
+      "lon": 72.879,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "HIGH"
+    },
+    {
+      "id": "L-05",
+      "name": "Asalpha Low Basin",
+      "ward_id": "L",
+      "lat": 19.088,
+      "lon": 72.894,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "HE-01",
+      "name": "Milan Subway (East Side)",
+      "ward_id": "H-E",
+      "lat": 19.088,
+      "lon": 72.844,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "HE-02",
+      "name": "Vakola Bridge Junction",
+      "ward_id": "H-E",
+      "lat": 19.077,
+      "lon": 72.853,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "HE-03",
+      "name": "BKC Kalanagar Junction",
+      "ward_id": "H-E",
+      "lat": 19.061,
+      "lon": 72.851,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "HIGH"
+    },
+    {
+      "id": "HE-04",
+      "name": "WEH Santacruz Junction",
+      "ward_id": "H-E",
+      "lat": 19.082,
+      "lon": 72.852,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "HW-01",
+      "name": "Khar Subway (West Side)",
+      "ward_id": "H-W",
+      "lat": 19.073,
+      "lon": 72.839,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "HW-02",
+      "name": "SV Road (National College Stretch)",
+      "ward_id": "H-W",
+      "lat": 19.064,
+      "lon": 72.835,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "HW-03",
+      "name": "Bandra Gazdarbandh Basin",
+      "ward_id": "H-W",
+      "lat": 19.081,
+      "lon": 72.832,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "KW-01",
+      "name": "Andheri Subway (West Approach)",
+      "ward_id": "K-W",
+      "lat": 19.121,
+      "lon": 72.846,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "KW-02",
+      "name": "SV Road Andheri Market",
+      "ward_id": "K-W",
+      "lat": 19.118,
+      "lon": 72.843,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "KW-03",
+      "name": "Veera Desai Road Low Point",
+      "ward_id": "K-W",
+      "lat": 19.135,
+      "lon": 72.835,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "KE-01",
+      "name": "Andheri Subway (East Approach)",
+      "ward_id": "K-E",
+      "lat": 19.1215,
+      "lon": 72.849,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "KE-02",
+      "name": "Marol Naka Junction",
+      "ward_id": "K-E",
+      "lat": 19.111,
+      "lon": 72.882,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "KE-03",
+      "name": "Jogeshwari JVLR Junction",
+      "ward_id": "K-E",
+      "lat": 19.135,
+      "lon": 72.862,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "KE-04",
+      "name": "Chakala WEH Underpass",
+      "ward_id": "K-E",
+      "lat": 19.114,
+      "lon": 72.86,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "ME-01",
+      "name": "Mankhurd Railway Station Underpass",
+      "ward_id": "M-E",
+      "lat": 19.054,
+      "lon": 72.932,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "ME-02",
+      "name": "Shivaji Nagar Govandi Main Road",
+      "ward_id": "M-E",
+      "lat": 19.062,
+      "lon": 72.925,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "ME-03",
+      "name": "VN Purav Marg Low Point",
+      "ward_id": "M-E",
+      "lat": 19.049,
+      "lon": 72.918,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "MW-01",
+      "name": "Postal Colony Chembur",
+      "ward_id": "M-W",
+      "lat": 19.058,
+      "lon": 72.895,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "MW-02",
+      "name": "Shell Colony Chembur",
+      "ward_id": "M-W",
+      "lat": 19.063,
+      "lon": 72.891,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "MW-03",
+      "name": "Umarshi Bappa Chowk",
+      "ward_id": "M-W",
+      "lat": 19.05,
+      "lon": 72.888,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "N-01",
+      "name": "LBS Marg (Shreyas Cinema Stretch)",
+      "ward_id": "N",
+      "lat": 19.091,
+      "lon": 72.916,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "N-02",
+      "name": "Ghatkopar Station East Road",
+      "ward_id": "N",
+      "lat": 19.086,
+      "lon": 72.911,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "N-03",
+      "name": "Pant Nagar Low Basin",
+      "ward_id": "N",
+      "lat": 19.078,
+      "lon": 72.915,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "S-01",
+      "name": "LBS Marg Bhandup (Sonapur Junction)",
+      "ward_id": "S",
+      "lat": 19.155,
+      "lon": 72.938,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "S-02",
+      "name": "Kanjurmarg Station East Approach",
+      "ward_id": "S",
+      "lat": 19.13,
+      "lon": 72.932,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "S-03",
+      "name": "Gandhinagar Powai JVLR low stretch",
+      "ward_id": "S",
+      "lat": 19.124,
+      "lon": 72.918,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "PN-01",
+      "name": "Malad Subway",
+      "ward_id": "P-N",
+      "lat": 19.186,
+      "lon": 72.849,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "PN-02",
+      "name": "SV Road Malad West",
+      "ward_id": "P-N",
+      "lat": 19.183,
+      "lon": 72.845,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "PN-03",
+      "name": "Marve Road Mithchowki Junction",
+      "ward_id": "P-N",
+      "lat": 19.191,
+      "lon": 72.836,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "PS-01",
+      "name": "Goregaon SV Road Junction",
+      "ward_id": "P-S",
+      "lat": 19.162,
+      "lon": 72.844,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "PS-02",
+      "name": "Motilal Nagar Low Basin",
+      "ward_id": "P-S",
+      "lat": 19.154,
+      "lon": 72.838,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "RS-01",
+      "name": "Kandivali SV Road (Poisar River Bridge)",
+      "ward_id": "R-S",
+      "lat": 19.208,
+      "lon": 72.846,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "RS-02",
+      "name": "Akurli Road Kandivali East",
+      "ward_id": "R-S",
+      "lat": 19.205,
+      "lon": 72.856,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "RC-01",
+      "name": "Dahisar Subway (South Approach)",
+      "ward_id": "R-C",
+      "lat": 19.238,
+      "lon": 72.86,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "RC-02",
+      "name": "Borivali SV Road Station West",
+      "ward_id": "R-C",
+      "lat": 19.229,
+      "lon": 72.855,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "RN-01",
+      "name": "Dahisar Subway (North Approach)",
+      "ward_id": "R-N",
+      "lat": 19.255,
+      "lon": 72.862,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "RN-02",
+      "name": "Anand Nagar Dahisar Checknaka",
+      "ward_id": "R-N",
+      "lat": 19.261,
+      "lon": 72.865,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "T-01",
+      "name": "Mulund Checknaka LBS Marg",
+      "ward_id": "T",
+      "lat": 19.182,
+      "lon": 72.954,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "T-02",
+      "name": "Veena Nagar Low Stretch",
+      "ward_id": "T",
+      "lat": 19.176,
+      "lon": 72.946,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "LOW"
+    },
+    {
+      "id": "E-01",
+      "name": "Nair Hospital Compound Low Point",
+      "ward_id": "E",
+      "lat": 18.972,
+      "lon": 72.822,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "E-02",
+      "name": "Byculla Railway Station Underpass",
+      "ward_id": "E",
+      "lat": 18.978,
+      "lon": 72.833,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "HIGH"
+    },
+    {
+      "id": "D-01",
+      "name": "Nana Chowk Low Point",
+      "ward_id": "D",
+      "lat": 18.961,
+      "lon": 72.814,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "D-02",
+      "name": "Tardeo Circle Stretch",
+      "ward_id": "D",
+      "lat": 18.969,
+      "lon": 72.816,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "C-01",
+      "name": "Metro Cinema Junction",
+      "ward_id": "C",
+      "lat": 18.944,
+      "lon": 72.827,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "HIGH"
+    },
+    {
+      "id": "C-02",
+      "name": "Kalbadevi Road Low Stretch",
+      "ward_id": "C",
+      "lat": 18.948,
+      "lon": 72.831,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "B-01",
+      "name": "Sandhurst Road Station East",
+      "ward_id": "B",
+      "lat": 18.955,
+      "lon": 72.838,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "B-02",
+      "name": "JJ Hospital Junction Low Point",
+      "ward_id": "B",
+      "lat": 18.961,
+      "lon": 72.834,
+      "source": "BMC 2022 Chronic Spots",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "A-01",
+      "name": "Churchgate Station / Oval Maidan",
+      "ward_id": "A",
+      "lat": 18.932,
+      "lon": 72.829,
+      "source": "BMC Flood Guidelines 2022/2026",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "A-02",
+      "name": "Shahid Bhagat Singh Road Low Point",
+      "ward_id": "A",
+      "lat": 18.919,
+      "lon": 72.828,
+      "source": "Mumbai Traffic Police 2022",
+      "severity": "LOW"
+    }
+  ]
+}
