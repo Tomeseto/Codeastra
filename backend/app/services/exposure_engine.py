@@ -37,7 +37,7 @@ JULY_2026_MILESTONES: Dict[str, List[TimelineMilestone]] = {
             event_type="VARSHA_EMERGENCY_TRIGGER",
             timestamp_ist="2026-07-05T08:30:00+05:30",
             title="VARSHA Early-Warning Emergency Trigger",
-            description="VARSHA calculates EMERGENCY exposure (scores > 75.0) across Wards C, G-N, L, and B. Acute 72-hour leptospirosis prophylaxis window opens.",
+            description="Severe flood risk detected across Marine Lines, Dharavi, Kurla, and Sandhurst Road. A 72-hour preventive window is open to distribute medication before cases rise.",
             source_citation="VARSHA Algorithmic Surveillance Engine",
             lead_time_hours_vs_alert=38.15
         )

@@ -343,7 +343,7 @@ export const UnifiedInspector: React.FC<UnifiedInspectorProps> = ({
               <strong>+{leadTimeMilestone.lead_time_hours_vs_alert?.toFixed(1)}h Early Warning Active</strong>
             </div>
             <p className="callout-desc">
-              VARSHA detects acute flood surge across highest risk wards. 72-hour clinical outbreak prophylaxis window open.
+              Severe flood risk detected across high-risk wards. 72-hour preventive window open for clinical alerts and medicine distribution.
             </p>
           </div>
         )}
