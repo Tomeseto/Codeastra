@@ -1,6 +1,7 @@
-import React from 'react';
-import { X, Droplets, Users, AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Droplets, Users, AlertTriangle, CheckCircle, Info, Calculator, ShieldAlert } from 'lucide-react';
 import type { WardExposureScore, ChronicHotspot } from '../types';
+import { ActionDirectivePanel } from './ActionDirectivePanel';
 
 interface EvidenceDrawerProps {
   wardScore: WardExposureScore | null;
@@ -15,6 +16,8 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
   hotspots,
   onClose
 }) => {
+  const [activeTab, setActiveTab] = useState<'evidence' | 'action'>('evidence');
+
   if (!wardScore || !wardProperties) {
     return (
       <aside className="evidence-drawer">
@@ -67,6 +70,55 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         </button>
       </div>
 
+      {/* Top Navigation Tabs */}
+      <div style={{ display: 'flex', borderBottom: '1px solid var(--border-subtle)', background: 'rgba(0, 0, 0, 0.2)' }}>
+        <button
+          onClick={() => setActiveTab('evidence')}
+          style={{
+            flex: 1,
+            padding: '10px 12px',
+            fontSize: '12px',
+            fontWeight: activeTab === 'evidence' ? 700 : 500,
+            background: activeTab === 'evidence' ? 'rgba(56, 189, 248, 0.12)' : 'transparent',
+            border: 'none',
+            borderBottom: activeTab === 'evidence' ? '2px solid #38bdf8' : '2px solid transparent',
+            color: activeTab === 'evidence' ? '#38bdf8' : '#94a3b8',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            transition: 'var(--transition-fast)'
+          }}
+        >
+          <Calculator size={14} />
+          <span>Mathematical Evidence</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('action')}
+          style={{
+            flex: 1,
+            padding: '10px 12px',
+            fontSize: '12px',
+            fontWeight: activeTab === 'action' ? 700 : 500,
+            background: activeTab === 'action' ? 'rgba(239, 68, 68, 0.12)' : 'transparent',
+            border: 'none',
+            borderBottom: activeTab === 'action' ? '2px solid #ef4444' : '2px solid transparent',
+            color: activeTab === 'action' ? '#ef4444' : '#94a3b8',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            transition: 'var(--transition-fast)'
+          }}
+        >
+          <ShieldAlert size={14} />
+          <span>Civic Action Directive</span>
+        </button>
+      </div>
+
       <div className="drawer-content">
         {/* Score & Risk Tier Hero Banner */}
         <div className="glass-card" style={{ padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -99,103 +151,114 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
           </div>
         )}
 
-        {/* Mathematical Formulation Card */}
-        <div className="math-card">
-          <div className="math-title">Deterministic Exposure Derivation</div>
-          <div className="math-formula">
-            E(w, d) = min(100.0, round(H(R) × M(w), 1))<br/>
-            E = min(100.0, round({H.toFixed(2)} × {M.toFixed(3)}, 1)) = <strong>{wardScore.exposure_score.toFixed(1)}</strong>
-          </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
-            <div>
-              • <strong>Hazard H(R):</strong> {H.toFixed(2)} / 100 ({wardScore.hazard.imd_category})
-            </div>
-            <div>
-              • <strong>Susceptibility M(w):</strong> {M.toFixed(3)} (Range [0.70, 1.30])
-              <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
-                Formula: 0.70 + 0.30·F_norm({F_norm !== null ? F_norm.toFixed(3) : 'None'}) + 0.30·V_norm({V_norm.toFixed(3)})
+        {activeTab === 'action' ? (
+          <ActionDirectivePanel
+            wardId={wardScore.ward_id}
+            exposureScore={wardScore.exposure_score}
+            slumPopulation={wardProperties.slum_population || 0}
+            locality={wardProperties.locality || ''}
+          />
+        ) : (
+          <>
+            {/* Mathematical Formulation Card */}
+            <div className="math-card">
+              <div className="math-title">Deterministic Exposure Derivation</div>
+              <div className="math-formula">
+                E(w, d) = min(100.0, round(H(R) × M(w), 1))<br/>
+                E = min(100.0, round({H.toFixed(2)} × {M.toFixed(3)}, 1)) = <strong>{wardScore.exposure_score.toFixed(1)}</strong>
+              </div>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
+                <div>
+                  • <strong>Hazard H(R):</strong> {H.toFixed(2)} / 100 ({wardScore.hazard.imd_category})
+                </div>
+                <div>
+                  • <strong>Susceptibility M(w):</strong> {M.toFixed(3)} (Range [0.70, 1.30])
+                  <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
+                    Formula: 0.70 + 0.30·F_norm({F_norm !== null ? F_norm.toFixed(3) : 'None'}) + 0.30·V_norm({V_norm.toFixed(3)})
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Verified Census 2011 Demographics */}
-        <div>
-          <h4 style={{ fontSize: '12px', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Users size={14} color="#38bdf8" />
-            Verified Census 2011 Demographics
-          </h4>
-          <div className="metrics-2col">
-            <div className="metric-box">
-              <div className="metric-label">Total Population</div>
-              <div className="metric-val">{wardProperties.total_population.toLocaleString()}</div>
+            {/* Verified Census 2011 Demographics */}
+            <div>
+              <h4 style={{ fontSize: '12px', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Users size={14} color="#38bdf8" />
+                Verified Census 2011 Demographics
+              </h4>
+              <div className="metrics-2col">
+                <div className="metric-box">
+                  <div className="metric-label">Total Population</div>
+                  <div className="metric-val">{wardProperties.total_population.toLocaleString()}</div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">Slum Population</div>
+                  <div className="metric-val">
+                    {wardProperties.slum_population.toLocaleString()}
+                    <span style={{ fontSize: '11px', color: '#f97316', marginLeft: '4px' }}>
+                      ({(wardProperties.slum_ratio * 100).toFixed(1)}%)
+                    </span>
+                  </div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">Population Density</div>
+                  <div className="metric-val">
+                    {wardProperties.population_density.toLocaleString(undefined, { maximumFractionDigits: 0 })} /km²
+                  </div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">Vulnerability Index (V_norm)</div>
+                  <div className="metric-val" style={{ color: '#38bdf8' }}>
+                    {(wardProperties.vulnerability_norm * 100).toFixed(1)}%
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="metric-box">
-              <div className="metric-label">Slum Population</div>
-              <div className="metric-val">
-                {wardProperties.slum_population.toLocaleString()}
-                <span style={{ fontSize: '11px', color: '#f97316', marginLeft: '4px' }}>
-                  ({(wardProperties.slum_ratio * 100).toFixed(1)}%)
+
+            {/* Chronic Flood Hotspots */}
+            <div>
+              <h4 style={{ fontSize: '12px', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Droplets size={14} color="#f97316" />
+                Chronic Waterlogging Hotspots ({hotspots.length})
+              </h4>
+              {hotspots.length === 0 ? (
+                <div style={{ fontSize: '12px', color: '#64748b', fontStyle: 'italic', padding: '8px' }}>
+                  No chronic high-risk flood hotspots logged in municipal priority register.
+                </div>
+              ) : (
+                <div className="hotspot-chip-list">
+                  {hotspots.map((spot) => (
+                    <div key={spot.id} className="hotspot-item">
+                      <span style={{ color: '#ffffff', fontWeight: 500 }}>{spot.name}</span>
+                      <span style={{ color: spot.severity === 'HIGH' ? '#ef4444' : '#f59e0b', fontWeight: 700 }}>
+                        {spot.severity}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Lineage, Resolution & Source Callout */}
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '10px', color: '#64748b' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: wardScore.data_lineage === 'ESTIMATED' ? '#f59e0b' : '#10b981' }}>
+                <CheckCircle size={12} />
+                <span>
+                  Lineage: {wardScore.data_lineage === 'ESTIMATED' ? 'SIMULATED SCENARIO (Hypothetical)' : 'DERIVED (Observed Demographics + ERA5 Reanalysis)'}
                 </span>
               </div>
-            </div>
-            <div className="metric-box">
-              <div className="metric-label">Population Density</div>
-              <div className="metric-val">
-                {wardProperties.population_density.toLocaleString(undefined, { maximumFractionDigits: 0 })} /km²
+              <div style={{ color: '#94a3b8' }}>
+                • <strong>Demographics:</strong> Census of India 2011 Primary Abstract (MCGM Table 1)<br/>
+                • <strong>Rainfall Source:</strong> Open-Meteo ERA5 reanalysis (~9 km grid; 6 regional centroids across Mumbai)<br/>
+                • <strong>Flood Hotspots:</strong> BMC Disaster Management & Traffic Police records
+              </div>
+              <div style={{ fontStyle: 'italic', marginTop: '4px' }}>
+                Notice: Environmental exposure score models surface water accumulation and demographic vulnerability; it is not a clinical prediction of pathogen transmission or patient caseloads.
               </div>
             </div>
-            <div className="metric-box">
-              <div className="metric-label">Vulnerability Index (V_norm)</div>
-              <div className="metric-val" style={{ color: '#38bdf8' }}>
-                {(wardProperties.vulnerability_norm * 100).toFixed(1)}%
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Chronic Flood Hotspots */}
-        <div>
-          <h4 style={{ fontSize: '12px', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Droplets size={14} color="#f97316" />
-            Chronic Waterlogging Hotspots ({hotspots.length})
-          </h4>
-          {hotspots.length === 0 ? (
-            <div style={{ fontSize: '12px', color: '#64748b', fontStyle: 'italic', padding: '8px' }}>
-              No chronic high-risk flood hotspots logged in municipal priority register.
-            </div>
-          ) : (
-            <div className="hotspot-chip-list">
-              {hotspots.map((spot) => (
-                <div key={spot.id} className="hotspot-item">
-                  <span style={{ color: '#ffffff', fontWeight: 500 }}>{spot.name}</span>
-                  <span style={{ color: spot.severity === 'HIGH' ? '#ef4444' : '#f59e0b', fontWeight: 700 }}>
-                    {spot.severity}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Lineage, Resolution & Source Callout */}
-        <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '10px', color: '#64748b' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: wardScore.data_lineage === 'ESTIMATED' ? '#f59e0b' : '#10b981' }}>
-            <CheckCircle size={12} />
-            <span>
-              Lineage: {wardScore.data_lineage === 'ESTIMATED' ? 'SIMULATED SCENARIO (Hypothetical)' : 'DERIVED (Observed Demographics + ERA5 Reanalysis)'}
-            </span>
-          </div>
-          <div style={{ color: '#94a3b8' }}>
-            • <strong>Demographics:</strong> Census of India 2011 Primary Abstract (MCGM Table 1)<br/>
-            • <strong>Rainfall Source:</strong> Open-Meteo ERA5 reanalysis (~9 km grid; 6 regional centroids across Mumbai)<br/>
-            • <strong>Flood Hotspots:</strong> BMC Disaster Management & Traffic Police records
-          </div>
-          <div style={{ fontStyle: 'italic', marginTop: '4px' }}>
-            Notice: Environmental exposure score models surface water accumulation and demographic vulnerability; it is not a clinical prediction of pathogen transmission or patient caseloads.
-          </div>
-        </div>
+          </>
+        )}
       </div>
     </aside>
   );

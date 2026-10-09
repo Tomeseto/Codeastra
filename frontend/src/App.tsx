@@ -6,6 +6,7 @@ import { TimeMachine } from './components/TimeMachine';
 import { EvidenceDrawer } from './components/EvidenceDrawer';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
+import { ExecutiveBriefingModal } from './components/ExecutiveBriefingModal';
 import type { DailyExposureSummary, WardExposureScore, ChronicHotspot } from './types';
 
 export const App: React.FC = () => {
@@ -22,6 +23,9 @@ export const App: React.FC = () => {
 
   // Rankings table state
   const [showTable, setShowTable] = useState<boolean>(false);
+
+  // Executive briefing sheet modal state
+  const [showBriefingModal, setShowBriefingModal] = useState<boolean>(false);
   
   // Scenario simulation state
   const [showSimulation, setShowSimulation] = useState<boolean>(false);
@@ -175,6 +179,7 @@ export const App: React.FC = () => {
         showTable={showTable}
         onToggleTable={() => setShowTable(!showTable)}
         currentDate={currentDate}
+        onOpenBriefing={() => setShowBriefingModal(true)}
       />
 
       <div className="main-workspace">
@@ -291,6 +296,15 @@ export const App: React.FC = () => {
           wardProperties={selectedWardProperties}
           hotspots={selectedWardHotspots}
           onClose={() => setSelectedWardId(null)}
+        />
+
+        {/* 1-Click Printable BMC Morning Cabinet Briefing Sheet Modal */}
+        <ExecutiveBriefingModal
+          isOpen={showBriefingModal}
+          onClose={() => setShowBriefingModal(false)}
+          activeSummary={activeSummary}
+          currentDate={currentDate}
+          wardsProperties={wardsPropertiesMap}
         />
       </div>
     </div>

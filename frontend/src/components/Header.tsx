@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudRain, Activity, Layers, Sliders, Table2 } from 'lucide-react';
+import { CloudRain, Activity, Layers, Sliders, Table2, FileText } from 'lucide-react';
 
 interface HeaderProps {
   backendHealthy: boolean;
@@ -10,6 +10,7 @@ interface HeaderProps {
   showTable: boolean;
   onToggleTable: () => void;
   currentDate: string;
+  onOpenBriefing: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,7 +21,8 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleSimulation,
   showTable,
   onToggleTable,
-  currentDate
+  currentDate,
+  onOpenBriefing
 }) => {
   return (
     <header className="app-header">
@@ -46,6 +48,16 @@ export const Header: React.FC<HeaderProps> = ({
           <Activity size={14} />
           <span>Point-in-Time: {currentDate}</span>
         </div>
+
+        <button
+          className="btn-secondary"
+          onClick={onOpenBriefing}
+          title="Export official 1-page BMC Disaster Cabinet Briefing Sheet"
+          style={{ borderColor: 'rgba(56, 189, 248, 0.4)', color: '#38bdf8' }}
+        >
+          <FileText size={14} />
+          <span>Export Briefing</span>
+        </button>
 
         <button
           className={`btn-secondary ${showTable ? 'active-layer' : ''}`}

@@ -83,3 +83,48 @@ export interface ChronicHotspot {
   source: string;
   severity: 'HIGH' | 'MEDIUM' | 'LOW';
 }
+
+export interface ClinicInfo {
+  clinic_id: string;
+  name: string;
+  ward_id: string;
+  locality?: string;
+  address: string;
+  operating_hours: string;
+  contact?: string;
+  services: string;
+  lat?: number;
+  lon?: number;
+  stock_status?: string;
+  prophylaxis_available?: boolean;
+}
+
+export interface ProphylaxisDemand {
+  slum_population: number;
+  exposure_score: number;
+  risk_tier: RiskTier;
+  exposure_factor: number;
+  doxycycline_packs_recommended: number;
+  mobile_fever_vans_required: number;
+  priority_level: string;
+  target_protocol: string;
+}
+
+export interface MultiLingualAdvisory {
+  marathi: string;
+  hindi: string;
+  english: string;
+}
+
+export interface WardMunicipalDirective {
+  ward_id: string;
+  ward_name: string;
+  locality: string;
+  zone: string;
+  exposure_score: number;
+  risk_tier: RiskTier;
+  prophylaxis: ProphylaxisDemand;
+  advisory: MultiLingualAdvisory;
+  clinics: ClinicInfo[];
+  generated_at: string;
+}

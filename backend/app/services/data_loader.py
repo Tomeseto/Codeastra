@@ -15,6 +15,8 @@ class DataLoader:
         self.flood_hotspots: List[Dict[str, Any]] = []
         self.weather_series: Dict[str, Any] = {}
         self.wards_metadata: Dict[str, Dict[str, Any]] = {}
+        self.clinics_data: Dict[str, Any] = {}
+        self.clinics_by_ward: Dict[str, List[Dict[str, Any]]] = {}
         self._load_all()
 
     @classmethod
@@ -85,6 +87,18 @@ class DataLoader:
         with open(weather_path, "r", encoding="utf-8") as f:
             self.weather_series = json.load(f)
 
+        # 5. Load Aapla Dawakhana Clinics Directory
+        clinics_path = processed_dir / "aapla_dawakhana_clinics.json"
+        if clinics_path.exists():
+            with open(clinics_path, "r", encoding="utf-8") as f:
+                self.clinics_data = json.load(f)
+                for clinic in self.clinics_data.get("clinics", []):
+                    wid = clinic.get("ward_id")
+                    if wid:
+                        if wid not in self.clinics_by_ward:
+                            self.clinics_by_ward[wid] = []
+                        self.clinics_by_ward[wid].append(clinic)
+
     def get_ward_list(self) -> List[Dict[str, Any]]:
         wards_list = []
         for wid, meta in sorted(self.wards_metadata.items()):
@@ -109,5 +123,9 @@ class DataLoader:
                 "flood_propensity_F_norm": f_info.get("f_norm", 0.0)
             })
         return wards_list
+
+    def get_clinics_for_ward(self, ward_id: str) -> List[Dict[str, Any]]:
+        normalized = ward_id.upper().replace("/", "-")
+        return self.clinics_by_ward.get(normalized, [])
 
 data_loader = DataLoader.get_instance()
