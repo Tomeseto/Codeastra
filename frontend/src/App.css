@@ -1,6 +1,6 @@
 /* ==========================================================================
    VARSHA Application Layout & Component Stylesheet
-   Theme: Editorial Cartography / Warm Alabaster Parchment & Clean Carbon Ink
+   Theme: Presentable Warm Beige / Natural Sand Linen & Deep Espresso Ink
    ========================================================================== */
 
 /* Universal Button Reset */
@@ -161,7 +161,7 @@ button {
   color: var(--text-main);
 }
 .segmented-option.active {
-  background: #ffffff;
+  background: var(--bg-surface-1);
   color: var(--text-main);
   font-weight: 600;
   box-shadow: var(--elev-1);
@@ -185,14 +185,14 @@ button {
   color: var(--text-main);
 }
 .btn-hotspots-toggle.active {
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border-color: var(--border-medium);
   color: var(--threat-warning);
   box-shadow: var(--elev-1);
 }
 
 /* --------------------------------------------------------------------------
-   3. Main Workspace: Full-Bleed Map Canvas with Floating Surfaces
+   3. Main Workspace: Flex Row Layout
    -------------------------------------------------------------------------- */
 .main-workspace {
   display: flex;
@@ -203,6 +203,25 @@ button {
   position: relative;
 }
 
+/* Left Operations Rail Container */
+.workspace-rail {
+  width: 290px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-surface-1);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  transition: width var(--transition-normal);
+}
+
+.workspace-rail.collapsed {
+  width: 38px;
+}
+
+/* Center Map Viewport */
 .workspace-center {
   flex: 1;
   min-width: 0;
@@ -220,82 +239,12 @@ button {
   justify-content: center;
 }
 
-/* Floating Quick Telemetry Pill over Map */
-.map-floating-quickstat {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 1000;
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--elev-2);
-  border-radius: var(--radius-full);
-  padding: 6px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--text-main);
-  transition: all var(--transition-fast);
-}
-.map-floating-quickstat:hover {
-  box-shadow: var(--elev-3);
-  transform: translateY(-1px);
-}
-
-.quickstat-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--threat-emergency);
-}
-
-.quickstat-sep {
-  color: var(--text-dim);
-}
-
-.quickstat-emergency {
-  color: var(--threat-emergency);
-  font-weight: 700;
-}
-
-/* Map HUD Controls */
-.map-hud-controls {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.btn-hud {
-  padding: 6px 10px;
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-  font-size: 11px;
-  font-weight: 600;
-  box-shadow: var(--elev-1);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.btn-hud:hover {
-  background: var(--bg-surface-2);
-  box-shadow: var(--elev-2);
-}
-
-/* --------------------------------------------------------------------------
-   4. Unified Contextual Intelligence Inspector
-   -------------------------------------------------------------------------- */
-.unified-inspector {
-  width: 360px;
+/* Right Evidence Drawer Container */
+.workspace-drawer {
+  width: 370px;
   flex-shrink: 0;
   height: 100%;
+  overflow: hidden;
   background: var(--bg-surface-1);
   border-left: 1px solid var(--border-subtle);
   box-shadow: var(--elev-1);
@@ -305,29 +254,191 @@ button {
   transition: width var(--transition-normal);
 }
 
-.unified-inspector.collapsed {
-  width: 36px;
-  align-items: center;
-  padding-top: 10px;
+/* --------------------------------------------------------------------------
+   4. Operations Rail Components (City Threat Radar)
+   -------------------------------------------------------------------------- */
+.operations-rail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-.btn-inspector-toggle {
+.operations-rail.collapsed {
+  width: 38px;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.rail-header {
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.rail-title-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.rail-title-group h2 {
+  font-size: 11.5px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+}
+
+.btn-rail-collapse {
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm);
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
 }
-.btn-inspector-toggle:hover {
+.btn-rail-collapse:hover {
   background: var(--bg-surface-3);
   color: var(--text-main);
 }
 
-.inspector-header {
+.rail-content {
+  padding: 12px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Telemetry Metric Cards */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.telemetry-card {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.telemetry-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.telemetry-value {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.telemetry-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+/* Tier Distribution Bar */
+.rail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rail-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+
+.tier-distribution-bar {
+  height: 8px;
+  border-radius: var(--radius-full);
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-surface-3);
+}
+
+/* Critical Ward Queue */
+.top-wards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.top-ward-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  transition: all var(--transition-fast);
+}
+.top-ward-item:hover {
+  background: var(--bg-surface-3);
+  border-color: var(--border-medium);
+}
+.top-ward-item.selected {
+  background: var(--bg-surface-3);
+  border-color: var(--border-active);
+  box-shadow: inset 3px 0 0 var(--accent-live);
+}
+
+.top-ward-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-ward-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* --------------------------------------------------------------------------
+   5. Evidence Drawer Components (Ward Action Dossier)
+   -------------------------------------------------------------------------- */
+.evidence-drawer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.evidence-header {
   height: 44px;
   padding: 0 14px;
   display: flex;
@@ -337,37 +448,40 @@ button {
   flex-shrink: 0;
 }
 
-.inspector-title-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.inspector-title-group h2 {
-  font-size: 12px;
+.ward-zone-tag {
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
+  color: var(--accent-structural);
   letter-spacing: 0.05em;
-  color: var(--text-main);
+  display: block;
 }
 
-.btn-back-overview {
-  display: inline-flex;
+.ward-locality-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text-muted);
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
+  justify-content: center;
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
 }
-.btn-back-overview:hover {
+.btn-icon:hover {
   background: var(--bg-surface-3);
   color: var(--text-main);
 }
 
-.inspector-scrollable {
+.evidence-content {
   flex: 1;
   overflow-y: auto;
   padding: 14px;
@@ -376,47 +490,7 @@ button {
   gap: 12px;
 }
 
-/* Ward Hero Masthead */
-.ward-hero-masthead {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.ward-breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.zone-pill {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--accent-structural);
-  letter-spacing: 0.05em;
-}
-
-.ward-id-pill {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 1px 5px;
-  background: var(--bg-surface-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-}
-
-.ward-title-main {
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  color: var(--text-main);
-  line-height: 1.2;
-}
-
-/* Ward Score Hero Card */
-.ward-score-hero-card {
+.evidence-hero-card {
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -426,106 +500,53 @@ button {
   gap: 12px;
 }
 
-.gauge-details {
-  flex: 1;
+.hero-gauge-wrapper {
+  flex-shrink: 0;
+}
+
+.hero-metrics {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
-.gauge-label {
-  font-size: 10.5px;
+.hero-label {
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-dim);
   font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
 }
 
-.gauge-narrative {
+.hero-rainfall-row {
   font-size: 11px;
   color: var(--text-muted);
-  line-height: 1.35;
   margin-top: 2px;
 }
 
-/* Key Stats Grid */
-.inspector-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.drawer-card {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.stat-tile {
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-tile-label {
+.drawer-card-header {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 10px;
-  color: var(--text-dim);
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.stat-tile-value {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--text-main);
-}
-
-.stat-tile-unit {
+  gap: 6px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--text-dim);
 }
 
-/* Progressive Disclosure Accordions */
-.accordion-card {
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.accordion-header {
-  width: 100%;
-  padding: 9px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--bg-surface-2);
-  color: var(--text-main);
-  font-size: 11.5px;
-  font-weight: 600;
-}
-.accordion-header:hover {
-  background: var(--bg-surface-3);
-}
-
-.accordion-title-group {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.accordion-body {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.formula-box {
-  background: var(--bg-surface-2);
+.formula-display {
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 6px 10px;
@@ -533,242 +554,143 @@ button {
   color: var(--text-main);
 }
 
-.math-step-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-}
-.step-title {
-  display: block;
-  font-weight: 600;
-  color: var(--text-main);
-}
-.step-desc {
-  display: block;
-  font-size: 10px;
-  color: var(--text-dim);
-}
-.math-step-row.audited-calc {
-  padding-top: 6px;
-  border-top: 1px solid var(--border-subtle);
-  font-weight: 700;
-}
-
-.no-spots-text {
-  font-size: 11px;
-  color: var(--text-dim);
-  font-style: italic;
-}
-
-.hotspots-list {
+.math-step-list {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.hotspot-item {
-  background: var(--bg-surface-2);
+.math-step-item {
+  padding: 6px 8px;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 6px 8px;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.hotspot-item-header {
+.math-step-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.hotspot-name {
+.math-step-name {
   font-size: 11px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.math-step-val {
+  font-size: 11.5px;
   font-weight: 700;
   color: var(--text-main);
 }
 
-.spot-severity-badge {
-  font-size: 9px;
-  font-weight: 700;
-  padding: 1px 4px;
-  border-radius: var(--radius-sm);
-  background: var(--threat-warning-bg);
-  color: var(--threat-warning);
+.math-step-desc {
+  font-size: 10px;
+  color: var(--text-dim);
 }
 
-.hotspot-source {
+.math-step-subgrid {
+  display: flex;
+  gap: 8px;
   font-size: 9.5px;
   color: var(--text-dim);
+  margin-top: 2px;
 }
 
-/* Citywide Overview Styles */
-.city-telemetry-hero {
-  background: var(--bg-surface-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px;
+.math-step-item.highlight {
+  background: var(--bg-surface-3);
+  border-left: 2px solid var(--accent-live);
 }
 
-.telemetry-stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.telemetry-headline {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-dim);
-  display: block;
-}
-
-.telemetry-subheadline {
-  font-size: 11px;
-  color: var(--text-muted);
-  display: block;
-  margin-top: 1px;
-}
-
-.city-big-score {
-  font-size: 26px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.score-denom {
-  font-size: 14px;
-  color: var(--text-dim);
-  font-weight: 500;
-}
-
-.tier-breakdown-strip {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.tier-pill-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 2px 7px;
-  border-radius: var(--radius-full);
-  font-size: 10px;
-  font-weight: 700;
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-}
-.tier-pill-count .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-.tier-pill-count.emergency .dot { background: var(--threat-emergency); }
-.tier-pill-count.warning .dot { background: var(--threat-warning); }
-.tier-pill-count.watch .dot { background: var(--threat-watch); }
-.tier-pill-count.normal .dot { background: var(--threat-normal); }
-
-.lead-time-callout-card {
-  background: var(--threat-emergency-bg);
-  border: 1px solid var(--threat-emergency-border);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-}
-
-.callout-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--threat-emergency);
-  font-size: 11.5px;
-}
-
-.callout-desc {
-  font-size: 11px;
-  color: var(--text-main);
-  line-height: 1.4;
-  margin-top: 4px;
-}
-
-/* Critical Queue Section */
-.critical-queue-section {
-  display: flex;
-  flex-direction: column;
+.demographic-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
-.section-header-row {
+.stat-caption {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: block;
+}
+
+.stat-figure {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  display: block;
+}
+
+.demographic-bar-wrapper {
+  height: 7px;
+  border-radius: var(--radius-full);
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-surface-3);
+}
+.demographic-bar-slum { background: var(--threat-warning); }
+.demographic-bar-nonslum { background: var(--border-strong); }
+
+.demographic-bar-legend {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.section-title {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-main);
-}
-
-.section-meta {
   font-size: 10px;
   color: var(--text-dim);
 }
 
-.critical-ward-cards {
+.hotspot-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
 }
 
-.ward-queue-item {
-  width: 100%;
+.hotspot-list-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #ffffff;
+  align-items: center;
+  padding: 5px 8px;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  box-shadow: var(--elev-1);
-}
-.ward-queue-item:hover {
-  background: var(--bg-surface-2);
-  border-color: var(--border-medium);
-}
-.ward-queue-item.selected {
-  background: var(--bg-surface-2);
-  border-color: var(--border-active);
-  box-shadow: inset 3px 0 0 var(--accent-live);
+  font-size: 11px;
 }
 
-.queue-item-left {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+.hotspot-marker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--threat-warning);
 }
 
-.queue-ward-id {
+.hotspot-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.hotspot-coords {
   font-size: 10px;
   color: var(--text-dim);
 }
 
-.queue-locality {
-  font-size: 12px;
-  color: var(--text-main);
-  max-width: 190px;
+.lineage-footer {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 10px;
+  color: var(--text-dim);
+  padding-top: 4px;
 }
 
 /* --------------------------------------------------------------------------
-   5. Compact Deluge Timeline Scrubber (Docked at Bottom)
+   6. Compact Deluge Timeline Scrubber (Docked at Bottom)
    -------------------------------------------------------------------------- */
 .workspace-deck-compact {
   height: 68px;
@@ -965,10 +887,10 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   6. 24-Ward Table View (Light Editorial)
+   7. 24-Ward Table View (Beige Editorial)
    -------------------------------------------------------------------------- */
 .ward-table-view {
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--elev-2);
@@ -1007,7 +929,7 @@ button {
 
 .table-search-input {
   padding: 5px 10px;
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-size: 11px;
@@ -1028,7 +950,7 @@ button {
   border-radius: var(--radius-sm);
   font-size: 10.5px;
   font-weight: 600;
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
 }
@@ -1077,10 +999,10 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   7. Scenario Simulator (Light Editorial Mode)
+   8. Scenario Simulator (Beige Editorial Mode)
    -------------------------------------------------------------------------- */
 .scenario-deck {
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--elev-2);
@@ -1135,7 +1057,7 @@ button {
   color: var(--text-main);
 }
 .btn-preset-chip.active {
-  background: #ffffff;
+  background: var(--bg-surface-1);
   border-color: var(--border-strong);
   color: var(--text-main);
   box-shadow: var(--elev-1);
@@ -1181,4 +1103,32 @@ button {
 .map-container {
   width: 100%;
   height: 100%;
+}
+
+.map-hud-controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-hud {
+  padding: 6px 10px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: var(--elev-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn-hud:hover {
+  background: var(--bg-surface-2);
+  box-shadow: var(--elev-2);
 }

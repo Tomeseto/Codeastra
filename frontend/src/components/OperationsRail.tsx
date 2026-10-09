@@ -200,7 +200,7 @@ export const OperationsRail: React.FC<OperationsRailProps> = ({
           <div className="callout-emergency" style={{ flexDirection: 'column', gap: '6px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <AlertTriangle size={16} color="var(--threat-emergency)" />
-              <strong style={{ fontSize: '12px', color: '#ffffff' }}>
+              <strong style={{ fontSize: '12px', color: 'var(--threat-emergency)' }}>
                 +{leadTimeMilestone.lead_time_hours_vs_alert.toFixed(1)}h Early-Warning Lead Time
               </strong>
             </div>

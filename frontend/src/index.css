@@ -1,52 +1,52 @@
 /* ==========================================================================
    VARSHA Design System — Tokens, Utilities, and Municipal Command Theme
-   Theme: Editorial Cartography / Warm Alabaster Parchment & Rich Carbon Ink
+   Theme: Presentable Warm Beige / Natural Sand Linen & Deep Espresso Ink
    ========================================================================== */
 
 :root {
-  /* Warm Alabaster Surfaces — Fine paper feel, calming, expansive */
-  --bg-app: #fbfaf7;
-  --bg-surface-1: #ffffff;
-  --bg-surface-2: #f5f3ec;
-  --bg-surface-3: #eae7dc;
-  --bg-surface-4: #dfdbcd;
+  /* Warm Beige & Natural Sand Canvas */
+  --bg-app: #f4eee3;            /* natural sand / warm linen paper */
+  --bg-surface-1: #fbf8f2;      /* warm creamy ivory primary surfaces */
+  --bg-surface-2: #ede6d8;      /* soft sand tint for secondary panels */
+  --bg-surface-3: #e2dac9;      /* hover states & track backgrounds */
+  --bg-surface-4: #d6ccba;      /* active selection & pressed states */
 
-  /* Hairline Borders — crisp warm ink dividers */
-  --border-subtle: rgba(26, 24, 20, 0.07);
-  --border-medium: rgba(26, 24, 20, 0.13);
-  --border-strong: rgba(26, 24, 20, 0.24);
-  --border-active: rgba(26, 24, 20, 0.65);
+  /* Hairline Borders — warm sandy taupe */
+  --border-subtle: rgba(120, 100, 75, 0.14);
+  --border-medium: rgba(120, 100, 75, 0.22);
+  --border-strong: rgba(120, 100, 75, 0.35);
+  --border-active: rgba(80, 65, 45, 0.65);
 
-  /* Interactive States: Ink Luminance & Crisp Contrast */
-  --accent-live: #181715;       /* deep carbon ink — selected/active marker */
-  --accent-structural: #7c776b; /* warm stone — inactive frames, secondary icons */
+  /* Interactive States: Deep Espresso Ink */
+  --accent-live: #231e1a;       /* deep espresso ink */
+  --accent-structural: #807364; /* warm stone / taupe */
 
-  /* Calibrated Threat Tiers for Light Paper (The ONLY chroma in the UI) */
-  --threat-normal: #2b7a4b;
-  --threat-normal-bg: #edf7f0;
-  --threat-normal-border: rgba(43, 122, 75, 0.32);
+  /* Calibrated Threat Tiers for Warm Beige (Harmonious, Natural, High Contrast) */
+  --threat-normal: #287342;
+  --threat-normal-bg: #e6f2e9;
+  --threat-normal-border: rgba(40, 115, 66, 0.35);
 
-  --threat-watch: #b47818;
-  --threat-watch-bg: #fdf8ea;
-  --threat-watch-border: rgba(180, 120, 24, 0.35);
+  --threat-watch: #b07412;
+  --threat-watch-bg: #faf1db;
+  --threat-watch-border: rgba(176, 116, 18, 0.38);
 
-  --threat-warning: #c05621;
-  --threat-warning-bg: #fef3ec;
-  --threat-warning-border: rgba(192, 86, 33, 0.38);
+  --threat-warning: #bd501a;
+  --threat-warning-bg: #faebd7;
+  --threat-warning-border: rgba(189, 80, 26, 0.40);
 
-  --threat-emergency: #b91c1c;
-  --threat-emergency-bg: #fef2f2;
-  --threat-emergency-border: rgba(185, 28, 28, 0.42);
+  --threat-emergency: #b51818;
+  --threat-emergency-bg: #fae6e6;
+  --threat-emergency-border: rgba(181, 24, 24, 0.42);
 
-  /* Typography: Rich Carbon Inks */
-  --text-main: #181715;
-  --text-muted: #5e594f;
-  --text-dim: #8e887a; /* High contrast WCAG AAA */
+  /* Typography: Rich Warm Charcoal Espresso Inks */
+  --text-main: #231e1a;         /* dark warm espresso */
+  --text-muted: #665b50;        /* warm taupe-gray */
+  --text-dim: #948777;          /* muted sand stone */
 
   /* Soft Natural Ambient Depth */
-  --elev-1: 0 1px 3px rgba(24, 23, 21, 0.04), 0 1px 2px rgba(24, 23, 21, 0.03);
-  --elev-2: 0 4px 12px rgba(24, 23, 21, 0.05), 0 2px 4px rgba(24, 23, 21, 0.03);
-  --elev-3: 0 12px 32px rgba(24, 23, 21, 0.08), 0 4px 8px rgba(24, 23, 21, 0.04);
+  --elev-1: 0 1px 3px rgba(60, 50, 40, 0.05), 0 1px 2px rgba(60, 50, 40, 0.03);
+  --elev-2: 0 4px 12px rgba(60, 50, 40, 0.06), 0 2px 4px rgba(60, 50, 40, 0.04);
+  --elev-3: 0 12px 28px rgba(60, 50, 40, 0.09), 0 4px 8px rgba(60, 50, 40, 0.05);
 
   /* Font Families */
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -308,11 +308,11 @@ button {
 
 .light-basemap-tiles,
 .neutral-basemap-tiles {
-  filter: saturate(0.6) contrast(1.04) brightness(1.02) !important;
+  filter: sepia(0.22) saturate(0.85) contrast(1.02) brightness(0.97) !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background: #ffffff !important;
+  background: var(--bg-surface-1) !important;
   color: var(--text-main) !important;
   border: 1px solid var(--border-medium) !important;
   border-radius: var(--radius-md) !important;
@@ -321,7 +321,7 @@ button {
 }
 
 .leaflet-popup-tip {
-  background: #ffffff !important;
+  background: var(--bg-surface-1) !important;
 }
 
 .leaflet-popup-content {

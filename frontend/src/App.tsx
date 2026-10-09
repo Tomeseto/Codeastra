@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import { Header } from './components/Header';
-import { UnifiedInspector } from './components/UnifiedInspector';
+import { OperationsRail } from './components/OperationsRail';
+import { EvidenceDrawer } from './components/EvidenceDrawer';
 import { WardMap } from './components/WardMap';
 import { TimeMachine } from './components/TimeMachine';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
@@ -13,7 +14,7 @@ export const App: React.FC = () => {
   const [geojsonData, setGeojsonData] = useState<any>(null);
   const [timelineDays, setTimelineDays] = useState<DailyExposureSummary[]>([]);
   const [currentDateIndex, setCurrentDateIndex] = useState<number>(5); // Default to July 5 early-warning trigger
-  const [selectedWardId, setSelectedWardId] = useState<string | null>(null); // Default to City Overview
+  const [selectedWardId, setSelectedWardId] = useState<string | null>('L'); // Default to Kurla (Ward L)
   const [useImdWindow, setUseImdWindow] = useState<boolean>(false);
   
   // Unified 3-View Mode: 'map' | 'table' | 'simulator'
@@ -23,8 +24,9 @@ export const App: React.FC = () => {
   const [showHotspots, setShowHotspots] = useState<boolean>(true);
   const [allHotspots, setAllHotspots] = useState<ChronicHotspot[]>([]);
 
-  // Collapsible Single Inspector State
-  const [isInspectorCollapsed, setIsInspectorCollapsed] = useState<boolean>(false);
+  // Collapsible Left Rail & Right Drawer States
+  const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
+  const [isDrawerCollapsed, setIsDrawerCollapsed] = useState<boolean>(false);
 
   // Scenario Simulator State
   const [simulationRainfall, setSimulationRainfall] = useState<number>(85.0);
@@ -160,11 +162,9 @@ export const App: React.FC = () => {
     return map;
   }, [geojsonData]);
 
-  const handleSelectWard = (wid: string | null) => {
+  const handleSelectWard = (wid: string) => {
     setSelectedWardId(wid);
-    if (wid) {
-      setIsInspectorCollapsed(false);
-    }
+    setIsDrawerCollapsed(false);
   };
 
   return (
@@ -180,7 +180,7 @@ export const App: React.FC = () => {
         hotspotsCount={allHotspots.length || 70}
       />
 
-      {/* 2. Main Workspace: Full-Bleed Map Canvas with Unified Contextual Inspector */}
+      {/* 2. Main Middle Workspace: Structured Flex Row */}
       <div className="main-workspace">
         {activeView === 'table' ? (
           <main className="workspace-center full-width">
@@ -212,7 +212,19 @@ export const App: React.FC = () => {
           </main>
         ) : (
           <>
-            {/* Center Slot: Full-Bleed Cartographic Map */}
+            {/* Left Slot: Operations Rail (City Threat Radar) */}
+            <aside className={`workspace-rail ${isRailCollapsed ? 'collapsed' : ''}`}>
+              <OperationsRail
+                activeSummary={activeSummary}
+                exposureScores={exposureScores}
+                selectedWardId={selectedWardId}
+                onSelectWard={handleSelectWard}
+                isCollapsed={isRailCollapsed}
+                onToggleCollapse={() => setIsRailCollapsed(!isRailCollapsed)}
+              />
+            </aside>
+
+            {/* Center Slot: Tactical Map */}
             <main className="workspace-center">
               <WardMap
                 geojsonData={geojsonData}
@@ -222,38 +234,19 @@ export const App: React.FC = () => {
                 showHotspots={showHotspots}
                 hotspotsList={allHotspots}
               />
-
-              {/* Floating Quick Telemetry Pill on Map */}
-              {activeSummary && (
-                <button
-                  className="map-floating-quickstat"
-                  onClick={() => setSelectedWardId(null)}
-                  title="Click to view Citywide Threat Radar"
-                >
-                  <span className="quickstat-dot" />
-                  <span className="font-mono">
-                    City Avg: <strong>{activeSummary.city_average_exposure.toFixed(1)}</strong>
-                  </span>
-                  <span className="quickstat-sep">·</span>
-                  <span className="quickstat-emergency">
-                    {activeSummary.emergency_ward_count || 4} Emergency Wards
-                  </span>
-                </button>
-              )}
             </main>
 
-            {/* Right Slot: Unified Contextual Intelligence Inspector */}
-            <UnifiedInspector
-              activeSummary={activeSummary}
-              exposureScores={exposureScores}
-              selectedWardId={selectedWardId}
-              onSelectWard={handleSelectWard}
-              wardScore={selectedWardScore}
-              wardProperties={selectedWardProperties}
-              hotspots={selectedWardHotspots}
-              isCollapsed={isInspectorCollapsed}
-              onToggleCollapse={() => setIsInspectorCollapsed(!isInspectorCollapsed)}
-            />
+            {/* Right Slot: Evidence Drawer (Ward Action Dossier) */}
+            {selectedWardId && !isDrawerCollapsed && (
+              <aside className="workspace-drawer">
+                <EvidenceDrawer
+                  wardScore={selectedWardScore}
+                  wardProperties={selectedWardProperties}
+                  hotspots={selectedWardHotspots}
+                  onClose={() => setIsDrawerCollapsed(true)}
+                />
+              </aside>
+            )}
           </>
         )}
       </div>
