@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sliders, RefreshCw } from 'lucide-react';
+import { BenchmarkSelector } from './BenchmarkSelector';
 
 interface ScenarioSimulatorProps {
   simulationRainfall: number;
@@ -28,12 +29,14 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
   return (
     <div
-      className="glass-panel"
+      className="glass-panel custom-scrollbar"
       style={{
         position: 'absolute',
         top: '80px',
         left: '20px',
-        width: '380px',
+        width: '400px',
+        maxHeight: 'calc(100vh - 100px)',
+        overflowY: 'auto',
         zIndex: 550,
         padding: '16px',
         boxShadow: 'var(--shadow-xl)'
@@ -49,6 +52,12 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
           <span>Reset</span>
         </button>
       </div>
+
+      {/* Historical Stress-Test Crisis Benchmarks */}
+      <BenchmarkSelector
+        activeRainfall={simulationRainfall}
+        onSelectRainfall={onSimulationRainfallChange}
+      />
 
       <div style={{ marginBottom: '14px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '6px' }}>
