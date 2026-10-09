@@ -1,52 +1,52 @@
 /* ==========================================================================
    VARSHA Design System — Tokens, Utilities, and Municipal Command Theme
-   Theme: Warm Graphite, Zero-Chroma Chrome / Precision Risk Instrumentation
+   Theme: Editorial Cartography / Warm Alabaster Parchment & Rich Carbon Ink
    ========================================================================== */
 
 :root {
-  /* Warm graphite surfaces — neutral-to-warm, NOT blue-black. R>=G>=B bias kills synthetic cast. */
-  --bg-app: #0d0d0c;
-  --bg-surface-1: #141412;
-  --bg-surface-2: #1c1b19;
-  --bg-surface-3: #262522;
-  --bg-surface-4: #32302c; /* for hover/raised states, replaces glow */
+  /* Warm Alabaster Surfaces — Fine paper feel, calming, expansive */
+  --bg-app: #fbfaf7;
+  --bg-surface-1: #ffffff;
+  --bg-surface-2: #f5f3ec;
+  --bg-surface-3: #eae7dc;
+  --bg-surface-4: #dfdbcd;
 
-  /* Hairline borders — warm white, lower opacity (crisper, less milky) */
-  --border-subtle: rgba(255, 252, 245, 0.07);
-  --border-medium: rgba(255, 252, 245, 0.14);
-  --border-strong: rgba(255, 252, 245, 0.28);
-  --border-active: rgba(255, 252, 245, 0.55);
+  /* Hairline Borders — crisp warm ink dividers */
+  --border-subtle: rgba(26, 24, 20, 0.07);
+  --border-medium: rgba(26, 24, 20, 0.13);
+  --border-strong: rgba(26, 24, 20, 0.24);
+  --border-active: rgba(26, 24, 20, 0.65);
 
-  /* Interactive state: luminance, not hue. NO accent color. */
-  --accent-live: #f5f2ea; /* bone white — selected/active/live */
-  --accent-structural: #6b665e; /* warm slate — chrome, inactive frames, icons */
+  /* Interactive States: Ink Luminance & Crisp Contrast */
+  --accent-live: #181715;       /* deep carbon ink — selected/active marker */
+  --accent-structural: #7c776b; /* warm stone — inactive frames, secondary icons */
 
-  /* Risk tiers — the ONLY chroma in the product. Slightly desaturated + warmed vs. raw Tailwind so they sit on warm graphite. */
-  --threat-normal: #4f9d69;
-  --threat-normal-bg: rgba(79, 157, 105, 0.13);
-  --threat-normal-border: rgba(79, 157, 105, 0.38);
+  /* Calibrated Threat Tiers for Light Paper (The ONLY chroma in the UI) */
+  --threat-normal: #2b7a4b;
+  --threat-normal-bg: #edf7f0;
+  --threat-normal-border: rgba(43, 122, 75, 0.32);
 
-  --threat-watch: #d9a13b;
-  --threat-watch-bg: rgba(217, 161, 59, 0.13);
-  --threat-watch-border: rgba(217, 161, 59, 0.38);
+  --threat-watch: #b47818;
+  --threat-watch-bg: #fdf8ea;
+  --threat-watch-border: rgba(180, 120, 24, 0.35);
 
-  --threat-warning: #d9752f;
-  --threat-warning-bg: rgba(217, 117, 47, 0.15);
-  --threat-warning-border: rgba(217, 117, 47, 0.42);
+  --threat-warning: #c05621;
+  --threat-warning-bg: #fef3ec;
+  --threat-warning-border: rgba(192, 86, 33, 0.38);
 
-  --threat-emergency: #cf3f36;
-  --threat-emergency-bg: rgba(207, 63, 54, 0.16);
-  --threat-emergency-border: rgba(207, 63, 54, 0.48);
+  --threat-emergency: #b91c1c;
+  --threat-emergency-bg: #fef2f2;
+  --threat-emergency-border: rgba(185, 28, 28, 0.42);
 
-  /* Text — warm off-whites, not blue-grays */
-  --text-main: #ece8e0;
-  --text-muted: #a39d93;
-  --text-dim: #807a70; /* WCAG AA contrast >=4.5:1 on --bg-app */
+  /* Typography: Rich Carbon Inks */
+  --text-main: #181715;
+  --text-muted: #5e594f;
+  --text-dim: #8e887a; /* High contrast WCAG AAA */
 
-  /* Depth: real shadows (downward, soft, black) — never colored glow */
-  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --elev-2: 0 2px 8px rgba(0, 0, 0, 0.55);
-  --elev-3: 0 8px 28px rgba(0, 0, 0, 0.6);
+  /* Soft Natural Ambient Depth */
+  --elev-1: 0 1px 3px rgba(24, 23, 21, 0.04), 0 1px 2px rgba(24, 23, 21, 0.03);
+  --elev-2: 0 4px 12px rgba(24, 23, 21, 0.05), 0 2px 4px rgba(24, 23, 21, 0.03);
+  --elev-3: 0 12px 32px rgba(24, 23, 21, 0.08), 0 4px 8px rgba(24, 23, 21, 0.04);
 
   /* Font Families */
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -54,9 +54,9 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Grid Layout Dimensioning Tokens */
-  --rail-w: clamp(260px, 22vw, 320px);
-  --drawer-w: clamp(360px, 28vw, 440px);
-  --deck-h: clamp(140px, 18vh, 190px);
+  --rail-w: clamp(280px, 24vw, 340px);
+  --drawer-w: clamp(360px, 28vw, 420px);
+  --deck-h: clamp(72px, 9vh, 88px);
 
   /* Spacing Scale */
   --space-1: 4px;
@@ -66,10 +66,10 @@
   --space-5: 24px;
   --space-6: 32px;
 
-  /* Radii: tighten. Tight radii read as precision instrumentation */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
+  /* Refined Modern Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -306,21 +306,22 @@ button {
   transition: fill 250ms ease, fill-opacity 250ms ease, stroke-width 200ms ease;
 }
 
+.light-basemap-tiles,
 .neutral-basemap-tiles {
-  filter: grayscale(100%) brightness(0.65) contrast(1.15) !important;
+  filter: saturate(0.6) contrast(1.04) brightness(1.02) !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background: var(--bg-surface-2) !important;
+  background: #ffffff !important;
   color: var(--text-main) !important;
   border: 1px solid var(--border-medium) !important;
   border-radius: var(--radius-md) !important;
-  box-shadow: var(--elev-3) !important;
-  padding: 2px !important;
+  box-shadow: var(--elev-2) !important;
+  padding: 4px !important;
 }
 
 .leaflet-popup-tip {
-  background: var(--bg-surface-2) !important;
+  background: #ffffff !important;
 }
 
 .leaflet-popup-content {
@@ -329,7 +330,7 @@ button {
 }
 
 .leaflet-control-attribution {
-  background: var(--bg-surface-2) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   color: var(--text-dim) !important;
   font-size: 9px !important;
   padding: 2px 8px !important;

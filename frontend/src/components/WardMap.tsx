@@ -49,10 +49,10 @@ export const WardMap: React.FC<WardMapProps> = ({
     // Custom Zoom Control top-left
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Keyless, Zero-Watermark Neutral Basemap (De-blued via grayscale filter to warm graphite)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    // Keyless, Zero-Watermark Light Cartographic Basemap (Esri World Light Gray Base)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-      className: 'neutral-basemap-tiles',
+      className: 'light-basemap-tiles',
       maxZoom: 16
     }).addTo(map);
 
@@ -84,8 +84,8 @@ export const WardMap: React.FC<WardMapProps> = ({
 
         return {
           fillColor: getExposureColor(score),
-          fillOpacity: isSelected ? 0.88 : 0.62,
-          color: isSelected ? 'var(--accent-live)' : isEmergency ? '#ffffff' : 'rgba(255, 255, 255, 0.4)',
+          fillOpacity: isSelected ? 0.92 : 0.72,
+          color: isSelected ? 'var(--text-main)' : isEmergency ? 'var(--threat-emergency)' : 'rgba(26, 24, 20, 0.24)',
           weight: isSelected ? 3.0 : isEmergency ? 2.0 : 1.0,
           dashArray: isSelected ? '' : isEmergency ? '4, 4' : ''
         };
@@ -102,9 +102,9 @@ export const WardMap: React.FC<WardMapProps> = ({
             const l = e.target;
             if (selectedWardId !== wid) {
               l.setStyle({
-                weight: 2.2,
-                color: 'var(--accent-live)',
-                fillOpacity: 0.78
+                weight: 2.4,
+                color: 'var(--text-main)',
+                fillOpacity: 0.84
               });
             }
           },

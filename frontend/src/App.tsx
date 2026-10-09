@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import { Header } from './components/Header';
-import { OperationsRail } from './components/OperationsRail';
+import { UnifiedInspector } from './components/UnifiedInspector';
 import { WardMap } from './components/WardMap';
-import { EvidenceDrawer } from './components/EvidenceDrawer';
 import { TimeMachine } from './components/TimeMachine';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
@@ -14,20 +13,18 @@ export const App: React.FC = () => {
   const [geojsonData, setGeojsonData] = useState<any>(null);
   const [timelineDays, setTimelineDays] = useState<DailyExposureSummary[]>([]);
   const [currentDateIndex, setCurrentDateIndex] = useState<number>(5); // Default to July 5 early-warning trigger
-  const [selectedWardId, setSelectedWardId] = useState<string | null>('L'); // Default to Kurla (Ward L)
+  const [selectedWardId, setSelectedWardId] = useState<string | null>(null); // Default to City Overview
   const [useImdWindow, setUseImdWindow] = useState<boolean>(false);
   
-  // Navigation & View Mode
-  const [activeView, setActiveView] = useState<'map' | 'table'>('map');
-  const [activeDeckTab, setActiveDeckTab] = useState<'timemachine' | 'simulator'>('timemachine');
+  // Unified 3-View Mode: 'map' | 'table' | 'simulator'
+  const [activeView, setActiveView] = useState<'map' | 'table' | 'simulator'>('map');
 
   // Hotspots Layer
   const [showHotspots, setShowHotspots] = useState<boolean>(true);
   const [allHotspots, setAllHotspots] = useState<ChronicHotspot[]>([]);
 
-  // Collapsible Panel States
-  const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
-  const [isDrawerCollapsed, setIsDrawerCollapsed] = useState<boolean>(false);
+  // Collapsible Single Inspector State
+  const [isInspectorCollapsed, setIsInspectorCollapsed] = useState<boolean>(false);
 
   // Scenario Simulator State
   const [simulationRainfall, setSimulationRainfall] = useState<number>(85.0);
@@ -91,9 +88,9 @@ export const App: React.FC = () => {
     loadTimeline(nextVal);
   };
 
-  // 2. Dynamic Simulation Calculation when Sandbox tab is active
+  // 2. Dynamic Simulation Calculation when Simulator view is active
   useEffect(() => {
-    if (activeDeckTab !== 'simulator') {
+    if (activeView !== 'simulator') {
       setSimulatedSummary(null);
       return;
     }
@@ -119,15 +116,15 @@ export const App: React.FC = () => {
       .then((res) => res.json())
       .then((data) => setSimulatedSummary(data))
       .catch((err) => console.error('Simulation calculation error:', err));
-  }, [activeDeckTab, simulationRainfall, applyUniformly, selectedWardId, currentDateIndex, useImdWindow, timelineDays]);
+  }, [activeView, simulationRainfall, applyUniformly, selectedWardId, currentDateIndex, useImdWindow, timelineDays]);
 
   // Determine Active Summary (either Simulator or Timeline Day)
   const activeSummary: DailyExposureSummary | null = useMemo(() => {
-    if (activeDeckTab === 'simulator' && simulatedSummary) {
+    if (activeView === 'simulator' && simulatedSummary) {
       return simulatedSummary;
     }
     return timelineDays[currentDateIndex] || null;
-  }, [activeDeckTab, simulatedSummary, timelineDays, currentDateIndex]);
+  }, [activeView, simulatedSummary, timelineDays, currentDateIndex]);
 
   const dates = useMemo(() => timelineDays.map((d) => d.date), [timelineDays]);
   const currentDate = dates[currentDateIndex] || '2026-07-05';
@@ -163,78 +160,107 @@ export const App: React.FC = () => {
     return map;
   }, [geojsonData]);
 
-  const handleSelectWard = (wid: string) => {
+  const handleSelectWard = (wid: string | null) => {
     setSelectedWardId(wid);
-    setIsDrawerCollapsed(false);
+    if (wid) {
+      setIsInspectorCollapsed(false);
+    }
   };
 
   return (
     <div className="app-container">
-      {/* 1. Unified Command Header */}
+      {/* 1. Calm Editorial Header */}
       <Header
         backendHealthy={backendHealthy}
         activeView={activeView}
         onSelectView={setActiveView}
         showHotspots={showHotspots}
         onToggleHotspots={() => setShowHotspots(!showHotspots)}
-        activeDeckTab={activeDeckTab}
-        onSelectDeckTab={setActiveDeckTab}
         currentDate={currentDate}
         hotspotsCount={allHotspots.length || 70}
       />
 
-      {/* 2. Main Middle Workspace: Structured Flex Row (Rail + Center Canvas + Drawer) */}
+      {/* 2. Main Workspace: Full-Bleed Map Canvas with Unified Contextual Inspector */}
       <div className="main-workspace">
-        {/* Left Slot: Operations Rail */}
-        <div className={`workspace-rail ${isRailCollapsed ? 'collapsed' : ''}`}>
-          <OperationsRail
-            activeSummary={activeSummary}
-            exposureScores={exposureScores}
-            selectedWardId={selectedWardId}
-            onSelectWard={handleSelectWard}
-            isCollapsed={isRailCollapsed}
-            onToggleCollapse={() => setIsRailCollapsed(!isRailCollapsed)}
-          />
-        </div>
-
-        {/* Center Slot: Tactical Map OR 24-Ward Table Matrix */}
-        <main className="workspace-center">
-          {activeView === 'map' ? (
-            <WardMap
-              geojsonData={geojsonData}
-              exposureScores={exposureScores}
-              selectedWardId={selectedWardId}
-              onSelectWard={handleSelectWard}
-              showHotspots={showHotspots}
-              hotspotsList={allHotspots}
-            />
-          ) : (
+        {activeView === 'table' ? (
+          <main className="workspace-center full-width">
             <WardListTable
               exposureScores={exposureScores}
               wardsProperties={wardsPropertiesMap}
               selectedWardId={selectedWardId}
-              onSelectWard={handleSelectWard}
+              onSelectWard={(wid) => {
+                handleSelectWard(wid);
+                setActiveView('map');
+              }}
               onClose={() => setActiveView('map')}
             />
-          )}
-        </main>
+          </main>
+        ) : activeView === 'simulator' ? (
+          <main className="workspace-center full-width">
+            <ScenarioSimulator
+              simulationRainfall={simulationRainfall}
+              onSimulationRainfallChange={setSimulationRainfall}
+              selectedWardId={selectedWardId}
+              applyUniformly={applyUniformly}
+              onToggleApplyUniformly={() => setApplyUniformly(!applyUniformly)}
+              onReset={() => {
+                setSimulationRainfall(85.0);
+                setActiveView('map');
+              }}
+              simulatedSummary={simulatedSummary}
+            />
+          </main>
+        ) : (
+          <>
+            {/* Center Slot: Full-Bleed Cartographic Map */}
+            <main className="workspace-center">
+              <WardMap
+                geojsonData={geojsonData}
+                exposureScores={exposureScores}
+                selectedWardId={selectedWardId}
+                onSelectWard={handleSelectWard}
+                showHotspots={showHotspots}
+                hotspotsList={allHotspots}
+              />
 
-        {/* Right Slot: Forensic Evidence Drawer */}
-        {selectedWardId && !isDrawerCollapsed && (
-          <aside className="workspace-drawer">
-            <EvidenceDrawer
+              {/* Floating Quick Telemetry Pill on Map */}
+              {activeSummary && (
+                <button
+                  className="map-floating-quickstat"
+                  onClick={() => setSelectedWardId(null)}
+                  title="Click to view Citywide Threat Radar"
+                >
+                  <span className="quickstat-dot" />
+                  <span className="font-mono">
+                    City Avg: <strong>{activeSummary.city_average_exposure.toFixed(1)}</strong>
+                  </span>
+                  <span className="quickstat-sep">·</span>
+                  <span className="quickstat-emergency">
+                    {activeSummary.emergency_ward_count || 4} Emergency Wards
+                  </span>
+                </button>
+              )}
+            </main>
+
+            {/* Right Slot: Unified Contextual Intelligence Inspector */}
+            <UnifiedInspector
+              activeSummary={activeSummary}
+              exposureScores={exposureScores}
+              selectedWardId={selectedWardId}
+              onSelectWard={handleSelectWard}
               wardScore={selectedWardScore}
               wardProperties={selectedWardProperties}
               hotspots={selectedWardHotspots}
-              onClose={() => setIsDrawerCollapsed(true)}
+              isCollapsed={isInspectorCollapsed}
+              onToggleCollapse={() => setIsInspectorCollapsed(!isInspectorCollapsed)}
             />
-          </aside>
+          </>
         )}
       </div>
 
-      {/* 3. Bottom Slot: Mission Control Deck */}
-      <footer className="workspace-deck">
-        {activeDeckTab === 'timemachine' ? (
+      {/* 3. Bottom Slot: Sleek Minimalist Timeline Scrubber (Docked in Map Mode) */}
+      {activeView === 'map' && (
+        <footer className="workspace-deck-compact">
           <TimeMachine
             dates={dates}
             currentDateIndex={currentDateIndex}
@@ -244,21 +270,8 @@ export const App: React.FC = () => {
             milestones={activeSummary?.milestones || []}
             timelineDays={timelineDays}
           />
-        ) : (
-          <ScenarioSimulator
-            simulationRainfall={simulationRainfall}
-            onSimulationRainfallChange={setSimulationRainfall}
-            selectedWardId={selectedWardId}
-            applyUniformly={applyUniformly}
-            onToggleApplyUniformly={() => setApplyUniformly(!applyUniformly)}
-            onReset={() => {
-              setSimulationRainfall(85.0);
-              setActiveDeckTab('timemachine');
-            }}
-            simulatedSummary={simulatedSummary}
-          />
-        )}
-      </footer>
+        </footer>
+      )}
     </div>
   );
 };
