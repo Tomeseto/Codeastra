@@ -1,0 +1,2485 @@
+{
+  "metadata": {
+    "title": "VARSHA July 2026 Historical Meteorological Series (Mumbai 24 Wards)",
+    "source": "Open-Meteo Historical Weather API (ERA5 reanalysis blend)",
+    "timezone": "Asia/Kolkata (IST)",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-10",
+    "ward_count": 24,
+    "created_at": "2026-10-09"
+  },
+  "wards": {
+    "G-S": {
+      "ward_id": "G-S",
+      "ward_name": "G-S (Elphinstone / Worli)",
+      "locality": "Elphinstone / Worli",
+      "zone": "Island City",
+      "centroid_lat": 18.99903,
+      "centroid_lon": 72.822218,
+      "elevation_m": 18.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.3,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "F-N": {
+      "ward_id": "F-N",
+      "ward_name": "F-N (Matunga / Wadala / Sion)",
+      "locality": "Matunga / Wadala / Sion",
+      "zone": "Island City",
+      "centroid_lat": 19.026825,
+      "centroid_lon": 72.866656,
+      "elevation_m": 10.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "M-W": {
+      "ward_id": "M-W",
+      "ward_name": "M-W (Chembur)",
+      "locality": "Chembur",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.035018,
+      "centroid_lon": 72.893495,
+      "elevation_m": 10.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "H-W": {
+      "ward_id": "H-W",
+      "ward_name": "H-W (Bandra / Khar West)",
+      "locality": "Bandra / Khar West",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.065185,
+      "centroid_lon": 72.831038,
+      "elevation_m": 19.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.85291
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 57.5,
+          "rainfall_imd_0830_window_mm": 57.5,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.6,
+          "rainfall_imd_0830_window_mm": 70.3,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 55.7,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.8,
+          "rainfall_imd_0830_window_mm": 60.7,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 78.1,
+          "rainfall_imd_0830_window_mm": 68.1,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 136.9,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 131.8,
+          "rainfall_imd_0830_window_mm": 124.1,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 55.4,
+          "rainfall_imd_0830_window_mm": 121.2,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 52.1,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 4.0,
+          "rainfall_imd_0830_window_mm": 9.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.2,
+          "rainfall_imd_0830_window_mm": 4.3,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "G-N": {
+      "ward_id": "G-N",
+      "ward_name": "G-N (Dharavi / Dadar)",
+      "locality": "Dharavi / Dadar",
+      "zone": "Island City",
+      "centroid_lat": 19.035087,
+      "centroid_lon": 72.845889,
+      "elevation_m": 13.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "M-E": {
+      "ward_id": "M-E",
+      "ward_name": "M-E (Govandi / Mankhurd)",
+      "locality": "Govandi / Mankhurd",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.036608,
+      "centroid_lon": 72.926974,
+      "elevation_m": 15.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.94176
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 44.5,
+          "rainfall_imd_0830_window_mm": 44.5,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 75.5,
+          "rainfall_imd_0830_window_mm": 54.0,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 48.6,
+          "rainfall_imd_0830_window_mm": 58.5,
+          "temp_mean_c": 25.9,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 47.3,
+          "rainfall_imd_0830_window_mm": 56.2,
+          "temp_mean_c": 25.9,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 63.2,
+          "rainfall_imd_0830_window_mm": 53.3,
+          "temp_mean_c": 25.9,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 111.7,
+          "rainfall_imd_0830_window_mm": 65.7,
+          "temp_mean_c": 26.1,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 123.7,
+          "rainfall_imd_0830_window_mm": 110.8,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 56.1,
+          "rainfall_imd_0830_window_mm": 117.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 24.0,
+          "rainfall_imd_0830_window_mm": 50.4,
+          "temp_mean_c": 27.5,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 7.2,
+          "rainfall_imd_0830_window_mm": 12.4,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 6.1,
+          "rainfall_imd_0830_window_mm": 7.3,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "E": {
+      "ward_id": "E",
+      "ward_name": "E (Byculla)",
+      "locality": "Byculla",
+      "zone": "Island City",
+      "centroid_lat": 18.973984,
+      "centroid_lon": 72.836506,
+      "elevation_m": 13.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "H-E": {
+      "ward_id": "H-E",
+      "ward_name": "H-E (Santacruz East / Khar East)",
+      "locality": "Santacruz East / Khar East",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.070143,
+      "centroid_lon": 72.855338,
+      "elevation_m": 3.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.85291
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 57.5,
+          "rainfall_imd_0830_window_mm": 57.5,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.6,
+          "rainfall_imd_0830_window_mm": 70.3,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 55.7,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.8,
+          "rainfall_imd_0830_window_mm": 60.7,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 78.1,
+          "rainfall_imd_0830_window_mm": 68.1,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 136.9,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 131.8,
+          "rainfall_imd_0830_window_mm": 124.1,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 55.4,
+          "rainfall_imd_0830_window_mm": 121.2,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 52.1,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 4.0,
+          "rainfall_imd_0830_window_mm": 9.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.2,
+          "rainfall_imd_0830_window_mm": 4.3,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "R-S": {
+      "ward_id": "R-S",
+      "ward_name": "R-S (Kandivali)",
+      "locality": "Kandivali",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.204572,
+      "centroid_lon": 72.860431,
+      "elevation_m": 21.0,
+      "grid_point": {
+        "latitude": 19.226713,
+        "longitude": 72.81899
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 64.4,
+          "rainfall_imd_0830_window_mm": 64.4,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 88.7,
+          "rainfall_imd_0830_window_mm": 89.7,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 54.0,
+          "rainfall_imd_0830_window_mm": 51.2,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 49.6,
+          "rainfall_imd_0830_window_mm": 59.2,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 81.2,
+          "rainfall_imd_0830_window_mm": 70.0,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 130.5,
+          "rainfall_imd_0830_window_mm": 84.0,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 144.1,
+          "rainfall_imd_0830_window_mm": 120.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.4,
+          "rainfall_imd_0830_window_mm": 130.4,
+          "temp_mean_c": 26.9,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 57.4,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.9,
+          "rainfall_imd_0830_window_mm": 10.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 85,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.8,
+          "rainfall_imd_0830_window_mm": 4.9,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "T": {
+      "ward_id": "T",
+      "ward_name": "T (Mulund)",
+      "locality": "Mulund",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.170809,
+      "centroid_lon": 72.932345,
+      "elevation_m": 52.0,
+      "grid_point": {
+        "latitude": 19.156414,
+        "longitude": 72.9249
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 45.8,
+          "rainfall_imd_0830_window_mm": 45.8,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 76.2,
+          "rainfall_imd_0830_window_mm": 57.8,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 45.7,
+          "rainfall_imd_0830_window_mm": 54.5,
+          "temp_mean_c": 25.6,
+          "rh_mean_pct": 96,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 52.0,
+          "rainfall_imd_0830_window_mm": 55.2,
+          "temp_mean_c": 25.5,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 63.1,
+          "rainfall_imd_0830_window_mm": 55.9,
+          "temp_mean_c": 25.6,
+          "rh_mean_pct": 96,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 108.3,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 25.8,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 138.9,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 26.1,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 125.3,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.8,
+          "rainfall_imd_0830_window_mm": 49.6,
+          "temp_mean_c": 27.1,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.9,
+          "rainfall_imd_0830_window_mm": 10.6,
+          "temp_mean_c": 27.8,
+          "rh_mean_pct": 86,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.2,
+          "rainfall_imd_0830_window_mm": 6.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "N": {
+      "ward_id": "N",
+      "ward_name": "N (Ghatkopar)",
+      "locality": "Ghatkopar",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.088156,
+      "centroid_lon": 72.929885,
+      "elevation_m": 6.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.94176
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 44.5,
+          "rainfall_imd_0830_window_mm": 44.5,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 75.5,
+          "rainfall_imd_0830_window_mm": 54.0,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 48.6,
+          "rainfall_imd_0830_window_mm": 58.5,
+          "temp_mean_c": 25.9,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 47.3,
+          "rainfall_imd_0830_window_mm": 56.2,
+          "temp_mean_c": 25.9,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 63.2,
+          "rainfall_imd_0830_window_mm": 53.3,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 111.7,
+          "rainfall_imd_0830_window_mm": 65.7,
+          "temp_mean_c": 26.1,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 123.7,
+          "rainfall_imd_0830_window_mm": 110.8,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 56.1,
+          "rainfall_imd_0830_window_mm": 117.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 24.0,
+          "rainfall_imd_0830_window_mm": 50.4,
+          "temp_mean_c": 27.5,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 7.2,
+          "rainfall_imd_0830_window_mm": 12.4,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 6.1,
+          "rainfall_imd_0830_window_mm": 7.3,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "P-S": {
+      "ward_id": "P-S",
+      "ward_name": "P-S (Goregaon)",
+      "locality": "Goregaon",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.158354,
+      "centroid_lon": 72.857057,
+      "elevation_m": 14.0,
+      "grid_point": {
+        "latitude": 19.156414,
+        "longitude": 72.83597
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 61.0,
+          "rainfall_imd_0830_window_mm": 61.0,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.1,
+          "rainfall_imd_0830_window_mm": 75.3,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 53.9,
+          "rainfall_imd_0830_window_mm": 59.3,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 56.7,
+          "rainfall_imd_0830_window_mm": 64.2,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 79.9,
+          "rainfall_imd_0830_window_mm": 70.6,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 131.0,
+          "rainfall_imd_0830_window_mm": 80.0,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 145.9,
+          "rainfall_imd_0830_window_mm": 126.8,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.8,
+          "rainfall_imd_0830_window_mm": 131.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.4,
+          "rainfall_imd_0830_window_mm": 56.0,
+          "temp_mean_c": 27.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.3,
+          "rainfall_imd_0830_window_mm": 8.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 5.0,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "P-N": {
+      "ward_id": "P-N",
+      "ward_name": "P-N (Malad)",
+      "locality": "Malad",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.184381,
+      "centroid_lon": 72.826784,
+      "elevation_m": 8.0,
+      "grid_point": {
+        "latitude": 19.156414,
+        "longitude": 72.83597
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 61.0,
+          "rainfall_imd_0830_window_mm": 61.0,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.1,
+          "rainfall_imd_0830_window_mm": 75.3,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 53.9,
+          "rainfall_imd_0830_window_mm": 59.3,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 56.7,
+          "rainfall_imd_0830_window_mm": 64.2,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 79.9,
+          "rainfall_imd_0830_window_mm": 70.6,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 131.0,
+          "rainfall_imd_0830_window_mm": 80.0,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 145.9,
+          "rainfall_imd_0830_window_mm": 126.8,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.8,
+          "rainfall_imd_0830_window_mm": 131.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.4,
+          "rainfall_imd_0830_window_mm": 56.0,
+          "temp_mean_c": 27.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.3,
+          "rainfall_imd_0830_window_mm": 8.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 5.0,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "B": {
+      "ward_id": "B",
+      "ward_name": "B (Sandhurst Road / Dongri)",
+      "locality": "Sandhurst Road / Dongri",
+      "zone": "Island City",
+      "centroid_lat": 18.956362,
+      "centroid_lon": 72.840141,
+      "elevation_m": 9.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.1,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.3,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 28.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.6,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "R-C": {
+      "ward_id": "R-C",
+      "ward_name": "R-C (Borivali)",
+      "locality": "Borivali",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.231242,
+      "centroid_lon": 72.842959,
+      "elevation_m": 15.0,
+      "grid_point": {
+        "latitude": 19.226713,
+        "longitude": 72.81899
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 64.4,
+          "rainfall_imd_0830_window_mm": 64.4,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 88.7,
+          "rainfall_imd_0830_window_mm": 89.7,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 54.0,
+          "rainfall_imd_0830_window_mm": 51.2,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 49.6,
+          "rainfall_imd_0830_window_mm": 59.2,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 81.2,
+          "rainfall_imd_0830_window_mm": 70.0,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 130.5,
+          "rainfall_imd_0830_window_mm": 84.0,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 144.1,
+          "rainfall_imd_0830_window_mm": 120.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.4,
+          "rainfall_imd_0830_window_mm": 130.4,
+          "temp_mean_c": 26.9,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 57.4,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.9,
+          "rainfall_imd_0830_window_mm": 10.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 85,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.8,
+          "rainfall_imd_0830_window_mm": 4.9,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "K-E": {
+      "ward_id": "K-E",
+      "ward_name": "K-E (Andheri East / Jogeshwari East)",
+      "locality": "Andheri East / Jogeshwari East",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.113807,
+      "centroid_lon": 72.865452,
+      "elevation_m": 25.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.85291
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 57.5,
+          "rainfall_imd_0830_window_mm": 57.5,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.6,
+          "rainfall_imd_0830_window_mm": 70.3,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 55.7,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.8,
+          "rainfall_imd_0830_window_mm": 60.7,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 78.1,
+          "rainfall_imd_0830_window_mm": 68.1,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 136.9,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 131.8,
+          "rainfall_imd_0830_window_mm": 124.1,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 55.4,
+          "rainfall_imd_0830_window_mm": 121.2,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 52.1,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 4.0,
+          "rainfall_imd_0830_window_mm": 9.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.2,
+          "rainfall_imd_0830_window_mm": 4.3,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "L": {
+      "ward_id": "L",
+      "ward_name": "L (Kurla / Sakinaka)",
+      "locality": "Kurla / Sakinaka",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.087638,
+      "centroid_lon": 72.886727,
+      "elevation_m": 12.0,
+      "grid_point": {
+        "latitude": 19.086115,
+        "longitude": 72.85291
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 57.5,
+          "rainfall_imd_0830_window_mm": 57.5,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.6,
+          "rainfall_imd_0830_window_mm": 70.3,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 55.7,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.8,
+          "rainfall_imd_0830_window_mm": 60.7,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 78.1,
+          "rainfall_imd_0830_window_mm": 68.1,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 136.9,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 131.8,
+          "rainfall_imd_0830_window_mm": 124.1,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 55.4,
+          "rainfall_imd_0830_window_mm": 121.2,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 52.1,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 4.0,
+          "rainfall_imd_0830_window_mm": 9.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.2,
+          "rainfall_imd_0830_window_mm": 4.3,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "S": {
+      "ward_id": "S",
+      "ward_name": "S (Bhandup / Powai)",
+      "locality": "Bhandup / Powai",
+      "zone": "Eastern Suburbs",
+      "centroid_lat": 19.131779,
+      "centroid_lon": 72.932308,
+      "elevation_m": 10.0,
+      "grid_point": {
+        "latitude": 19.156414,
+        "longitude": 72.9249
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 45.8,
+          "rainfall_imd_0830_window_mm": 45.8,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 76.2,
+          "rainfall_imd_0830_window_mm": 57.8,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 45.7,
+          "rainfall_imd_0830_window_mm": 54.5,
+          "temp_mean_c": 25.6,
+          "rh_mean_pct": 96,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 52.0,
+          "rainfall_imd_0830_window_mm": 55.2,
+          "temp_mean_c": 25.5,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 63.1,
+          "rainfall_imd_0830_window_mm": 55.9,
+          "temp_mean_c": 25.6,
+          "rh_mean_pct": 96,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 108.3,
+          "rainfall_imd_0830_window_mm": 64.7,
+          "temp_mean_c": 25.8,
+          "rh_mean_pct": 95,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 138.9,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 26.1,
+          "rh_mean_pct": 94,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 125.3,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.8,
+          "rainfall_imd_0830_window_mm": 49.6,
+          "temp_mean_c": 27.1,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.9,
+          "rainfall_imd_0830_window_mm": 10.6,
+          "temp_mean_c": 27.8,
+          "rh_mean_pct": 86,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.2,
+          "rainfall_imd_0830_window_mm": 6.7,
+          "temp_mean_c": 28.2,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "R-N": {
+      "ward_id": "R-N",
+      "ward_name": "R-N (Dahisar)",
+      "locality": "Dahisar",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.252336,
+      "centroid_lon": 72.859812,
+      "elevation_m": 10.0,
+      "grid_point": {
+        "latitude": 19.226713,
+        "longitude": 72.81899
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 64.4,
+          "rainfall_imd_0830_window_mm": 64.4,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 88.7,
+          "rainfall_imd_0830_window_mm": 89.7,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 54.0,
+          "rainfall_imd_0830_window_mm": 51.2,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 93,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 49.6,
+          "rainfall_imd_0830_window_mm": 59.2,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 81.2,
+          "rainfall_imd_0830_window_mm": 70.0,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 130.5,
+          "rainfall_imd_0830_window_mm": 84.0,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 144.1,
+          "rainfall_imd_0830_window_mm": 120.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.4,
+          "rainfall_imd_0830_window_mm": 130.4,
+          "temp_mean_c": 26.9,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.9,
+          "rainfall_imd_0830_window_mm": 57.4,
+          "temp_mean_c": 27.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.9,
+          "rainfall_imd_0830_window_mm": 10.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 85,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.8,
+          "rainfall_imd_0830_window_mm": 4.9,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "K-W": {
+      "ward_id": "K-W",
+      "ward_name": "K-W (Andheri West / Versova)",
+      "locality": "Andheri West / Versova",
+      "zone": "Western Suburbs",
+      "centroid_lat": 19.126143,
+      "centroid_lon": 72.827568,
+      "elevation_m": 12.0,
+      "grid_point": {
+        "latitude": 19.156414,
+        "longitude": 72.83597
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 61.0,
+          "rainfall_imd_0830_window_mm": 61.0,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 86.1,
+          "rainfall_imd_0830_window_mm": 75.3,
+          "temp_mean_c": 26.5,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 53.9,
+          "rainfall_imd_0830_window_mm": 59.3,
+          "temp_mean_c": 26.3,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 56.7,
+          "rainfall_imd_0830_window_mm": 64.2,
+          "temp_mean_c": 26.0,
+          "rh_mean_pct": 92,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 79.9,
+          "rainfall_imd_0830_window_mm": 70.6,
+          "temp_mean_c": 26.2,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 131.0,
+          "rainfall_imd_0830_window_mm": 80.0,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 91,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 145.9,
+          "rainfall_imd_0830_window_mm": 126.8,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 57.8,
+          "rainfall_imd_0830_window_mm": 131.1,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 25.4,
+          "rainfall_imd_0830_window_mm": 56.0,
+          "temp_mean_c": 27.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 5.3,
+          "rainfall_imd_0830_window_mm": 8.5,
+          "temp_mean_c": 28.1,
+          "rh_mean_pct": 84,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 5.0,
+          "temp_mean_c": 28.3,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "A": {
+      "ward_id": "A",
+      "ward_name": "A (Colaba / Fort / Marine Drive)",
+      "locality": "Colaba / Fort / Marine Drive",
+      "zone": "Island City",
+      "centroid_lat": 18.923144,
+      "centroid_lon": 72.825,
+      "elevation_m": 8.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.1,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.1,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.8,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.3,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 28.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.6,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "C": {
+      "ward_id": "C",
+      "ward_name": "C (Marine Lines / Bhuleshwar)",
+      "locality": "Marine Lines / Bhuleshwar",
+      "zone": "Island City",
+      "centroid_lat": 18.951108,
+      "centroid_lon": 72.827369,
+      "elevation_m": 15.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "D": {
+      "ward_id": "D",
+      "ward_name": "D (Grant Road / Malabar Hill)",
+      "locality": "Grant Road / Malabar Hill",
+      "zone": "Island City",
+      "centroid_lat": 18.962387,
+      "centroid_lon": 72.810118,
+      "elevation_m": 15.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    },
+    "F-S": {
+      "ward_id": "F-S",
+      "ward_name": "F-S (Parel / Sewri)",
+      "locality": "Parel / Sewri",
+      "zone": "Island City",
+      "centroid_lat": 18.99858,
+      "centroid_lon": 72.849566,
+      "elevation_m": 16.0,
+      "grid_point": {
+        "latitude": 19.015816,
+        "longitude": 72.86982
+      },
+      "daily_series": [
+        {
+          "date": "2026-06-30",
+          "rainfall_daily_mm": 62.8,
+          "rainfall_imd_0830_window_mm": 62.8,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 88,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-01",
+          "rainfall_daily_mm": 105.1,
+          "rainfall_imd_0830_window_mm": 75.9,
+          "temp_mean_c": 27.0,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-02",
+          "rainfall_daily_mm": 52.8,
+          "rainfall_imd_0830_window_mm": 84.5,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 89,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-03",
+          "rainfall_daily_mm": 51.0,
+          "rainfall_imd_0830_window_mm": 59.4,
+          "temp_mean_c": 26.4,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-04",
+          "rainfall_daily_mm": 89.7,
+          "rainfall_imd_0830_window_mm": 73.2,
+          "temp_mean_c": 26.6,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-05",
+          "rainfall_daily_mm": 146.1,
+          "rainfall_imd_0830_window_mm": 102.8,
+          "temp_mean_c": 26.7,
+          "rh_mean_pct": 90,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-06",
+          "rainfall_daily_mm": 111.3,
+          "rainfall_imd_0830_window_mm": 114.5,
+          "temp_mean_c": 27.2,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-07",
+          "rainfall_daily_mm": 49.9,
+          "rainfall_imd_0830_window_mm": 102.0,
+          "temp_mean_c": 27.4,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-08",
+          "rainfall_daily_mm": 27.5,
+          "rainfall_imd_0830_window_mm": 50.1,
+          "temp_mean_c": 27.9,
+          "rh_mean_pct": 87,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-09",
+          "rainfall_daily_mm": 3.9,
+          "rainfall_imd_0830_window_mm": 13.1,
+          "temp_mean_c": 28.4,
+          "rh_mean_pct": 83,
+          "data_lineage": "OBSERVED"
+        },
+        {
+          "date": "2026-07-10",
+          "rainfall_daily_mm": 5.5,
+          "rainfall_imd_0830_window_mm": 5.1,
+          "temp_mean_c": 28.5,
+          "rh_mean_pct": 82,
+          "data_lineage": "OBSERVED"
+        }
+      ]
+    }
+  }
+}
