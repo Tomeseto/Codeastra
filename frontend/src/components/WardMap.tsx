@@ -49,9 +49,10 @@ export const WardMap: React.FC<WardMapProps> = ({
     // Custom Zoom Control top-left
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Sleek Dark Basemap (Esri World Dark Gray Base — 100% Free, Keyless, Watermark-Free)
+    // Keyless, Zero-Watermark Neutral Basemap (De-blued via grayscale filter to warm graphite)
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      className: 'neutral-basemap-tiles',
       maxZoom: 16
     }).addTo(map);
 
@@ -132,7 +133,7 @@ export const WardMap: React.FC<WardMapProps> = ({
               <span class="badge-tier ${tierClass}" style="font-size: 9px; padding: 1px 4px;">${tier}</span>
             </div>
             <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
-              24h Rain: <strong style="color: var(--accent-live);">${rain} mm</strong> · Slum Ratio: <strong>${(props.slum_ratio * 100).toFixed(0)}%</strong>
+              24h Rain: <strong style="color: var(--text-main);">${rain} mm</strong> · Slum Ratio: <strong>${(props.slum_ratio * 100).toFixed(0)}%</strong>
             </div>
           </div>
           `,

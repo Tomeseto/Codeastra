@@ -1,54 +1,55 @@
 /* ==========================================================================
    VARSHA Design System — Tokens, Utilities, and Municipal Command Theme
-   Theme: Obsidian Command Center / Tactical Spatial Visualization
+   Theme: Warm Graphite, Zero-Chroma Chrome / Precision Risk Instrumentation
    ========================================================================== */
 
 :root {
-  /* Obsidian Surface Scale (replaces legacy bg-deep/bg-surface) */
-  --bg-app: #06090f;
-  --bg-surface-1: #0b101b;
-  --bg-surface-2: #121927;
-  --bg-surface-3: #1a2336;
-  --bg-glass: rgba(11, 16, 27, 0.85);
-  --bg-glass-elevated: rgba(18, 25, 39, 0.94);
-  
-  /* Tactical Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-medium: rgba(255, 255, 255, 0.12);
-  --border-active: rgba(56, 189, 248, 0.4);
-  
-  /* Accent Discipline Rule: Cyan is strictly for Selected / Live indicators */
-  --accent-live: #38bdf8;
-  --accent-structural: #475569; /* Used for chrome, inactive frames, neutral badges */
+  /* Warm graphite surfaces — neutral-to-warm, NOT blue-black. R>=G>=B bias kills synthetic cast. */
+  --bg-app: #0d0d0c;
+  --bg-surface-1: #141412;
+  --bg-surface-2: #1c1b19;
+  --bg-surface-3: #262522;
+  --bg-surface-4: #32302c; /* for hover/raised states, replaces glow */
 
-  /* Threat Risk Tiers — Semantic Color System */
-  --threat-normal: #10b981;
-  --threat-normal-bg: rgba(16, 185, 129, 0.12);
-  --threat-normal-border: rgba(16, 185, 129, 0.35);
-  --threat-normal-glow: rgba(16, 185, 129, 0.25);
-  
-  --threat-watch: #f59e0b;
-  --threat-watch-bg: rgba(245, 158, 11, 0.12);
-  --threat-watch-border: rgba(245, 158, 11, 0.35);
-  --threat-watch-glow: rgba(245, 158, 11, 0.25);
-  
-  --threat-warning: #f97316;
-  --threat-warning-bg: rgba(249, 115, 22, 0.14);
-  --threat-warning-border: rgba(249, 115, 22, 0.4);
-  --threat-warning-glow: rgba(249, 115, 22, 0.3);
-  
-  --threat-emergency: #ef4444;
-  --threat-emergency-bg: rgba(239, 68, 68, 0.16);
-  --threat-emergency-border: rgba(239, 68, 68, 0.45);
-  --threat-emergency-glow: rgba(239, 68, 68, 0.4);
+  /* Hairline borders — warm white, lower opacity (crisper, less milky) */
+  --border-subtle: rgba(255, 252, 245, 0.07);
+  --border-medium: rgba(255, 252, 245, 0.14);
+  --border-strong: rgba(255, 252, 245, 0.28);
+  --border-active: rgba(255, 252, 245, 0.55);
 
-  /* Consolidated Typography Scale (Eliminates ad-hoc hex mixing) */
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #7c8aa0; /* Lightened from #64748b to meet WCAG AA contrast (>4.6:1) */
+  /* Interactive state: luminance, not hue. NO accent color. */
+  --accent-live: #f5f2ea; /* bone white — selected/active/live */
+  --accent-structural: #6b665e; /* warm slate — chrome, inactive frames, icons */
+
+  /* Risk tiers — the ONLY chroma in the product. Slightly desaturated + warmed vs. raw Tailwind so they sit on warm graphite. */
+  --threat-normal: #4f9d69;
+  --threat-normal-bg: rgba(79, 157, 105, 0.13);
+  --threat-normal-border: rgba(79, 157, 105, 0.38);
+
+  --threat-watch: #d9a13b;
+  --threat-watch-bg: rgba(217, 161, 59, 0.13);
+  --threat-watch-border: rgba(217, 161, 59, 0.38);
+
+  --threat-warning: #d9752f;
+  --threat-warning-bg: rgba(217, 117, 47, 0.15);
+  --threat-warning-border: rgba(217, 117, 47, 0.42);
+
+  --threat-emergency: #cf3f36;
+  --threat-emergency-bg: rgba(207, 63, 54, 0.16);
+  --threat-emergency-border: rgba(207, 63, 54, 0.48);
+
+  /* Text — warm off-whites, not blue-grays */
+  --text-main: #ece8e0;
+  --text-muted: #a39d93;
+  --text-dim: #807a70; /* WCAG AA contrast >=4.5:1 on --bg-app */
+
+  /* Depth: real shadows (downward, soft, black) — never colored glow */
+  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --elev-2: 0 2px 8px rgba(0, 0, 0, 0.55);
+  --elev-3: 0 8px 28px rgba(0, 0, 0, 0.6);
 
   /* Font Families */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
@@ -65,10 +66,10 @@
   --space-5: 24px;
   --space-6: 32px;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Radii: tighten. Tight radii read as precision instrumentation */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -99,24 +100,39 @@ html, body {
 
 /* Custom Tactical Scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-app);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-surface-3);
+  background: var(--border-strong);
   border-radius: var(--radius-sm);
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-structural);
+  background: var(--text-dim);
 }
 
-/* Monospace Utilities */
+/* Utilities */
 .font-mono {
   font-family: var(--font-mono);
-  font-feature-settings: 'tnum' on, 'zero' on;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Canonical selection treatment — define once, reuse everywhere */
+.is-selected {
+  background: var(--bg-surface-4);
+  border-color: var(--border-active);
+  box-shadow: inset 2px 0 0 var(--accent-live); /* left edge marker, not a glow */
 }
 
 /* Badges & Pills */
@@ -124,9 +140,9 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 8px;
+  padding: 2px 6px;
   border-radius: var(--radius-sm);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -158,8 +174,8 @@ html, body {
 
 /* Callout Modules */
 .callout-info {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: var(--bg-surface-3);
+  border: 1px solid var(--border-medium);
   border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
@@ -168,8 +184,8 @@ html, body {
 }
 
 .callout-warning {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: var(--threat-watch-bg);
+  border: 1px solid var(--threat-watch-border);
   border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
@@ -178,8 +194,8 @@ html, body {
 }
 
 .callout-emergency {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: var(--threat-emergency-bg);
+  border: 1px solid var(--threat-emergency-border);
   border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
@@ -200,35 +216,35 @@ button {
   background: var(--bg-surface-3);
   color: var(--text-main);
   border: 1px solid var(--border-medium);
-  padding: 6px 14px;
-  border-radius: var(--radius-md);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 12px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--elev-1);
 }
 .btn-primary:hover {
-  background: var(--border-active);
-  border-color: var(--accent-live);
-  color: #ffffff;
+  background: var(--bg-surface-4);
+  border-color: var(--border-active);
+  color: var(--text-main);
 }
 
 .btn-secondary {
-  background: var(--bg-surface-1);
+  background: var(--bg-surface-2);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
-  padding: 6px 12px;
-  border-radius: var(--radius-md);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 .btn-secondary:hover {
-  background: var(--bg-surface-2);
+  background: var(--bg-surface-3);
   color: var(--text-main);
   border-color: var(--border-medium);
 }
@@ -240,17 +256,19 @@ button {
     transform: scale(1);
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.5;
     transform: scale(0.96);
   }
 }
 
 @keyframes pulse-emergency {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+    border-color: var(--threat-emergency-border);
+    opacity: 1;
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+    border-color: var(--threat-emergency);
+    opacity: 0.82;
   }
 }
 
@@ -261,7 +279,7 @@ button {
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -278,7 +296,7 @@ button {
   animation: fadeSlideUp var(--transition-smooth) forwards;
 }
 
-/* Leaflet Map Overrides */
+/* Leaflet Map Overrides — Solid Opaque Surfaces */
 .leaflet-container {
   background-color: var(--bg-app) !important;
   font-family: var(--font-body) !important;
@@ -288,13 +306,16 @@ button {
   transition: fill 250ms ease, fill-opacity 250ms ease, stroke-width 200ms ease;
 }
 
+.neutral-basemap-tiles {
+  filter: grayscale(100%) brightness(0.65) contrast(1.15) !important;
+}
+
 .leaflet-popup-content-wrapper {
   background: var(--bg-surface-2) !important;
-  backdrop-filter: blur(14px) !important;
   color: var(--text-main) !important;
   border: 1px solid var(--border-medium) !important;
   border-radius: var(--radius-md) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: var(--elev-3) !important;
   padding: 2px !important;
 }
 
@@ -308,22 +329,22 @@ button {
 }
 
 .leaflet-control-attribution {
-  background: rgba(11, 16, 27, 0.75) !important;
+  background: var(--bg-surface-2) !important;
   color: var(--text-dim) !important;
   font-size: 9px !important;
   padding: 2px 8px !important;
   border-radius: var(--radius-sm) !important;
   border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--elev-1) !important;
   margin-bottom: 8px !important;
   margin-right: 8px !important;
-  backdrop-filter: blur(8px);
 }
 .leaflet-control-attribution a {
   color: var(--text-muted) !important;
   text-decoration: none !important;
 }
 .leaflet-control-attribution a:hover {
-  color: var(--accent-live) !important;
+  color: var(--text-main) !important;
 }
 
 /* Accessibility: Reduced Motion Support */

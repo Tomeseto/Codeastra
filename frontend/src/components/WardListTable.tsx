@@ -195,7 +195,7 @@ export const WardListTable: React.FC<WardListTableProps> = ({
                   </td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span className="font-mono" style={{ minWidth: '48px', color: 'var(--accent-live)' }}>
+                      <span className="font-mono" style={{ minWidth: '48px', fontWeight: 600, color: 'var(--text-main)' }}>
                         {w.rainfall_mm.toFixed(1)} mm
                       </span>
                       <div className="mini-bar-track">

@@ -62,7 +62,7 @@ export const OperationsRail: React.FC<OperationsRailProps> = ({
     <aside className="operations-rail">
       <div className="rail-header">
         <div className="rail-title-group">
-          <ShieldAlert size={16} color="var(--accent-live)" />
+          <ShieldAlert size={16} color="var(--accent-structural)" />
           <h2>City Threat Radar</h2>
         </div>
         <button
@@ -92,7 +92,7 @@ export const OperationsRail: React.FC<OperationsRailProps> = ({
                       ? 'var(--threat-emergency)'
                       : activeSummary.city_average_exposure >= 55
                       ? 'var(--threat-warning)'
-                      : 'var(--accent-live)'
+                      : 'var(--text-main)'
                 }}
               >
                 {activeSummary.city_average_exposure.toFixed(1)}

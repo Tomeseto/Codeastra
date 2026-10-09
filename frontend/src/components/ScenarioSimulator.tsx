@@ -83,7 +83,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
               Simulated Continuous 24h Downpour:
             </span>
-            <strong className="font-mono" style={{ color: 'var(--accent-live)', fontSize: '14px' }}>
+            <strong className="font-mono" style={{ color: 'var(--text-main)', fontSize: '14px' }}>
               {simulationRainfall.toFixed(1)} mm
             </strong>
           </div>
@@ -145,7 +145,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             </div>
             <div>
               <span className="impact-label">City Max Score:</span>
-              <strong style={{ color: 'var(--accent-live)' }}>
+              <strong style={{ color: impactMetrics.maxScore >= 75 ? 'var(--threat-emergency)' : impactMetrics.maxScore >= 55 ? 'var(--threat-warning)' : 'var(--text-main)' }}>
                 {impactMetrics.maxScore.toFixed(1)}
               </strong>
             </div>

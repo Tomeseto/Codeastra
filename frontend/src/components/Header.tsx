@@ -70,8 +70,8 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Point-in-Time Date Stamp */}
-        <div className="telemetry-item font-mono" style={{ color: 'var(--accent-live)' }}>
-          <Activity size={13} />
+        <div className="telemetry-item font-mono" style={{ color: 'var(--text-main)' }}>
+          <Activity size={13} color="var(--accent-structural)" />
           <span>Date: {currentDate}</span>
         </div>
 

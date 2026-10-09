@@ -356,7 +356,7 @@ export const TimeMachine: React.FC<TimeMachineProps> = ({
         ) : (
           <div className="surveillance-guidance-strip">
             <div className="guidance-left">
-              <Info size={13} color="var(--accent-live)" />
+              <Info size={13} color="var(--accent-structural)" />
               <span>
                 Standard Surveillance Baseline · Continuous 24h accumulation monitored across all 24 administrative wards.
               </span>

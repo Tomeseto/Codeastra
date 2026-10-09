@@ -78,7 +78,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
             </div>
             <div className="hero-rainfall-row font-mono">
               <span>24h Rainfall:</span>
-              <strong style={{ color: 'var(--accent-live)' }}>{R.toFixed(1)} mm</strong>
+              <strong style={{ color: 'var(--text-main)' }}>{R.toFixed(1)} mm</strong>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         {/* Module 2: Formula Deconstruction Card */}
         <div className="drawer-card">
           <div className="drawer-card-header">
-            <ShieldAlert size={14} color="var(--accent-live)" />
+            <ShieldAlert size={14} color="var(--accent-structural)" />
             <span>Mathematical Lineage Deconstructor</span>
           </div>
           <div className="formula-display font-mono">
@@ -145,7 +145,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         {/* Module 3: Census Demographic Vulnerability Split Bar */}
         <div className="drawer-card">
           <div className="drawer-card-header">
-            <Users size={14} color="var(--accent-live)" />
+            <Users size={14} color="var(--accent-structural)" />
             <span>Census 2011 Demographic Exposure</span>
           </div>
 
