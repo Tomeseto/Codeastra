@@ -1,5 +1,6 @@
-import React from 'react';
-import { Sliders, RefreshCw } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { Sliders, RefreshCw, AlertTriangle } from 'lucide-react';
+import type { DailyExposureSummary, RiskTier } from '../types';
 
 interface ScenarioSimulatorProps {
   simulationRainfall: number;
@@ -8,6 +9,7 @@ interface ScenarioSimulatorProps {
   applyUniformly: boolean;
   onToggleApplyUniformly: () => void;
   onReset: () => void;
+  simulatedSummary: DailyExposureSummary | null;
 }
 
 export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
@@ -16,102 +18,139 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
   selectedWardId,
   applyUniformly,
   onToggleApplyUniformly,
-  onReset
+  onReset,
+  simulatedSummary
 }) => {
-  const PRESETS = [
-    { label: 'Dry / 0 mm', value: 0.0, tier: 'NORMAL' },
-    { label: 'Moderate / 45 mm', value: 45.0, tier: 'NORMAL' },
-    { label: 'Heavy / 85 mm', value: 85.0, tier: 'WARNING' },
-    { label: 'Very Heavy / 135 mm', value: 135.0, tier: 'EMERGENCY' },
-    { label: 'Extreme / 300 mm', value: 300.0, tier: 'EMERGENCY' }
+  const PRESETS: Array<{ label: string; value: number; tier: RiskTier }> = [
+    { label: 'Dry (0 mm)', value: 0.0, tier: 'NORMAL' },
+    { label: 'Moderate (45 mm)', value: 45.0, tier: 'NORMAL' },
+    { label: 'Heavy (85 mm)', value: 85.0, tier: 'WARNING' },
+    { label: 'Very Heavy (135 mm)', value: 135.0, tier: 'EMERGENCY' },
+    { label: 'Deluge (300 mm)', value: 300.0, tier: 'EMERGENCY' }
   ];
 
+  // Dynamic Impact Derivation strictly from simulatedSummary.wards
+  const impactMetrics = useMemo(() => {
+    if (!simulatedSummary?.wards) {
+      return { emergencyCount: 0, warningCount: 0, maxScore: 0, avgScore: 0 };
+    }
+    const wards = Object.values(simulatedSummary.wards);
+    return {
+      emergencyCount: wards.filter((w) => w.risk_tier === 'EMERGENCY').length,
+      warningCount: wards.filter((w) => w.risk_tier === 'WARNING').length,
+      maxScore: simulatedSummary.city_max_exposure,
+      avgScore: simulatedSummary.city_average_exposure
+    };
+  }, [simulatedSummary]);
+
   return (
-    <div
-      className="glass-panel"
-      style={{
-        position: 'absolute',
-        top: '80px',
-        left: '20px',
-        width: '380px',
-        zIndex: 550,
-        padding: '16px',
-        boxShadow: 'var(--shadow-xl)'
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Sliders size={16} color="#38bdf8" />
-          <h3 style={{ fontSize: '14px', color: '#ffffff' }}>Scenario Simulation Sandbox</h3>
-        </div>
-        <button className="btn-secondary" onClick={onReset} style={{ padding: '4px 8px', fontSize: '11px' }} title="Reset to Historical Deluge">
-          <RefreshCw size={12} />
-          <span>Reset</span>
-        </button>
-      </div>
-
-      <div style={{ marginBottom: '14px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '6px' }}>
-          <span style={{ color: '#94a3b8' }}>Simulated 24h Rainfall:</span>
-          <strong className="font-mono" style={{ color: '#38bdf8', fontSize: '14px' }}>
-            {simulationRainfall.toFixed(1)} mm
-          </strong>
+    <div className="scenario-deck">
+      <div className="deck-header">
+        <div className="deck-title-group">
+          <Sliders size={15} color="var(--threat-warning)" />
+          <span className="deck-title">Real-Time Scenario Simulator</span>
+          <span className="deck-subtitle">Hypothetical Rainfall Sandbox</span>
         </div>
 
-        <input
-          type="range"
-          min={0}
-          max={350}
-          step={5}
-          value={simulationRainfall}
-          onChange={(e) => onSimulationRainfallChange(parseFloat(e.target.value))}
-          style={{ width: '100%', accentColor: '#0284c7', cursor: 'pointer' }}
-        />
+        <div className="deck-transport">
+          {/* Scope Toggle */}
+          <button
+            className="btn-secondary"
+            onClick={onToggleApplyUniformly}
+            title="Toggle between All 24 Wards and Selected Ward"
+            style={{ fontSize: '11px', padding: '4px 10px' }}
+          >
+            Scope: {applyUniformly ? 'All 24 Wards' : `Ward ${selectedWardId || 'L'} Only`}
+          </button>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#64748b', marginTop: '4px' }}>
-          <span>0 mm (Dry)</span>
-          <span>64.5 mm (Heavy)</span>
-          <span>115.6 mm (V. Heavy)</span>
-          <span>204.5+ mm (Deluge)</span>
+          {/* Reset Button */}
+          <button
+            className="btn-secondary"
+            onClick={onReset}
+            title="Reset Simulation to Historical Observation"
+            style={{ fontSize: '11px', padding: '4px 10px' }}
+          >
+            <RefreshCw size={12} />
+            <span>Reset</span>
+          </button>
         </div>
       </div>
 
-      {/* Benchmark Presets */}
-      <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '6px', textTransform: 'uppercase', fontWeight: 600 }}>
-          Verification Benchmark Presets
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-          {PRESETS.map((p) => (
-            <button
-              key={p.value}
-              className="btn-secondary"
-              style={{
-                fontSize: '11px',
-                padding: '4px 8px',
-                borderColor: simulationRainfall === p.value ? '#38bdf8' : 'var(--border-subtle)',
-                color: simulationRainfall === p.value ? '#ffffff' : 'var(--text-main)'
-              }}
-              onClick={() => onSimulationRainfallChange(p.value)}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="scenario-deck-body">
+        {/* Slider & Presets Row */}
+        <div className="scenario-controls-col">
+          <div className="scenario-slider-header">
+            <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+              Simulated Continuous 24h Downpour:
+            </span>
+            <strong className="font-mono" style={{ color: 'var(--accent-live)', fontSize: '14px' }}>
+              {simulationRainfall.toFixed(1)} mm
+            </strong>
+          </div>
 
-      {/* Target Scope Toggle */}
-      <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: '11px', color: '#94a3b8' }}>
-          Scope: {applyUniformly ? 'All 24 Wards' : `Selected Ward (${selectedWardId || 'None'})`}
-        </span>
-        <button
-          className="btn-secondary"
-          style={{ fontSize: '11px', padding: '4px 8px' }}
-          onClick={onToggleApplyUniformly}
-        >
-          {applyUniformly ? 'Apply to Selected Only' : 'Apply to All 24 Wards'}
-        </button>
+          {/* Custom Tier-Gradient Slider Track */}
+          <div className="custom-slider-wrapper">
+            <input
+              type="range"
+              min={0}
+              max={350}
+              step={5}
+              value={simulationRainfall}
+              onChange={(e) => onSimulationRainfallChange(parseFloat(e.target.value))}
+              className="tier-gradient-slider"
+              aria-label="Simulated Rainfall Slider"
+            />
+          </div>
+
+          {/* Preset Buttons with Risk Tier Color Tint */}
+          <div className="preset-chips-row">
+            {PRESETS.map((p) => {
+              const isActive = simulationRainfall === p.value;
+              const tierClass = `badge-${p.tier.toLowerCase()}`;
+              return (
+                <button
+                  key={p.value}
+                  className={`btn-preset-chip ${tierClass} ${isActive ? 'active' : ''}`}
+                  onClick={() => onSimulationRainfallChange(p.value)}
+                  title={`Test ${p.label}`}
+                >
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Live Computed Impact Summary Box (Strict Ground Truth) */}
+        <div className="scenario-impact-box">
+          <div className="impact-box-header">
+            <AlertTriangle
+              size={14}
+              color={impactMetrics.emergencyCount > 0 ? 'var(--threat-emergency)' : 'var(--threat-warning)'}
+            />
+            <span>Calculated Municipal Impact</span>
+          </div>
+          <div className="impact-box-metrics font-mono">
+            <div>
+              <span className="impact-label">Emergency Wards:</span>
+              <strong style={{ color: impactMetrics.emergencyCount > 0 ? 'var(--threat-emergency)' : 'var(--text-main)' }}>
+                {impactMetrics.emergencyCount} / 24
+              </strong>
+            </div>
+            <div>
+              <span className="impact-label">Warning Wards:</span>
+              <strong style={{ color: impactMetrics.warningCount > 0 ? 'var(--threat-warning)' : 'var(--text-main)' }}>
+                {impactMetrics.warningCount} / 24
+              </strong>
+            </div>
+            <div>
+              <span className="impact-label">City Max Score:</span>
+              <strong style={{ color: 'var(--accent-live)' }}>
+                {impactMetrics.maxScore.toFixed(1)}
+              </strong>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

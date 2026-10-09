@@ -1,68 +1,76 @@
 /* ==========================================================================
-   VARSHA Design System — Tokens, Utilities, and High-Aesthetic Theme
-   Theme: Sleek Municipal Dark Mode / Glassmorphism / Spatial Visualization
+   VARSHA Design System — Tokens, Utilities, and Municipal Command Theme
+   Theme: Obsidian Command Center / Tactical Spatial Visualization
    ========================================================================== */
 
 :root {
-  /* Color Palette: Canvas & Surfaces */
-  --bg-deep: #070a12;
-  --bg-surface: #0e1424;
-  --bg-surface-elevated: #162036;
-  --bg-glass: rgba(16, 24, 43, 0.75);
-  --bg-glass-elevated: rgba(26, 38, 64, 0.85);
+  /* Obsidian Surface Scale (replaces legacy bg-deep/bg-surface) */
+  --bg-app: #06090f;
+  --bg-surface-1: #0b101b;
+  --bg-surface-2: #121927;
+  --bg-surface-3: #1a2336;
+  --bg-glass: rgba(11, 16, 27, 0.85);
+  --bg-glass-elevated: rgba(18, 25, 39, 0.94);
   
-  /* Borders & Accents */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(56, 189, 248, 0.4);
-  --border-glass: rgba(255, 255, 255, 0.12);
+  /* Tactical Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-active: rgba(56, 189, 248, 0.4);
   
-  /* Text & Typography */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Accent Discipline Rule: Cyan is strictly for Selected / Live indicators */
+  --accent-live: #38bdf8;
+  --accent-structural: #475569; /* Used for chrome, inactive frames, neutral badges */
+
+  /* Threat Risk Tiers — Semantic Color System */
+  --threat-normal: #10b981;
+  --threat-normal-bg: rgba(16, 185, 129, 0.12);
+  --threat-normal-border: rgba(16, 185, 129, 0.35);
+  --threat-normal-glow: rgba(16, 185, 129, 0.25);
   
+  --threat-watch: #f59e0b;
+  --threat-watch-bg: rgba(245, 158, 11, 0.12);
+  --threat-watch-border: rgba(245, 158, 11, 0.35);
+  --threat-watch-glow: rgba(245, 158, 11, 0.25);
+  
+  --threat-warning: #f97316;
+  --threat-warning-bg: rgba(249, 115, 22, 0.14);
+  --threat-warning-border: rgba(249, 115, 22, 0.4);
+  --threat-warning-glow: rgba(249, 115, 22, 0.3);
+  
+  --threat-emergency: #ef4444;
+  --threat-emergency-bg: rgba(239, 68, 68, 0.16);
+  --threat-emergency-border: rgba(239, 68, 68, 0.45);
+  --threat-emergency-glow: rgba(239, 68, 68, 0.4);
+
+  /* Consolidated Typography Scale (Eliminates ad-hoc hex mixing) */
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --text-bright: #ffffff;
-  
-  /* Risk Tier Tokens */
-  --tier-normal: #10b981;       /* Emerald */
-  --tier-normal-bg: rgba(16, 185, 129, 0.12);
-  --tier-normal-border: rgba(16, 185, 129, 0.35);
-  
-  --tier-watch: #f59e0b;        /* Amber */
-  --tier-watch-bg: rgba(245, 158, 11, 0.12);
-  --tier-watch-border: rgba(245, 158, 11, 0.35);
-  
-  --tier-warning: #f97316;      /* Orange */
-  --tier-warning-bg: rgba(249, 115, 22, 0.14);
-  --tier-warning-border: rgba(249, 115, 22, 0.4);
-  
-  --tier-emergency: #ef4444;    /* Crimson Red */
-  --tier-emergency-bg: rgba(239, 68, 68, 0.16);
-  --tier-emergency-border: rgba(239, 68, 68, 0.45);
-  --tier-emergency-glow: rgba(239, 68, 68, 0.35);
+  --text-dim: #7c8aa0; /* Lightened from #64748b to meet WCAG AA contrast (>4.6:1) */
 
-  /* Brand Accents */
-  --accent-cyan: #06b6d4;
-  --accent-blue: #3b82f6;
-  --accent-indigo: #6366f1;
-  --accent-purple: #8b5cf6;
-  
-  /* Shadows & Glassmorphism */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  
+  /* Font Families */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Grid Layout Dimensioning Tokens */
+  --rail-w: clamp(260px, 22vw, 320px);
+  --drawer-w: clamp(360px, 28vw, 440px);
+  --deck-h: clamp(140px, 18vh, 190px);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
   /* Radii */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
-  
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -77,106 +85,109 @@
 }
 
 html, body {
-  background-color: var(--bg-deep);
+  background-color: var(--bg-app);
   color: var(--text-main);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
-/* Scrollbar */
+/* Custom Tactical Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-deep);
+  background: var(--bg-app);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-surface-elevated);
-  border-radius: var(--radius-full);
+  background: var(--bg-surface-3);
+  border-radius: var(--radius-sm);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-dim);
+  background: var(--accent-structural);
 }
 
-/* Glass Panels */
-.glass-panel {
-  background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-glass);
-}
-
-.glass-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-normal);
-}
-.glass-card:hover {
-  border-color: var(--border-focus);
-  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.12);
-  transform: translateY(-1px);
-}
-
-/* Typography Helpers */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  color: var(--text-bright);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
+/* Monospace Utilities */
 .font-mono {
   font-family: var(--font-mono);
+  font-feature-settings: 'tnum' on, 'zero' on;
 }
 
-/* Tier Badges */
+/* Badges & Pills */
 .badge-tier {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .badge-normal {
-  background: var(--tier-normal-bg);
-  color: var(--tier-normal);
-  border: 1px solid var(--tier-normal-border);
+  background-color: var(--threat-normal-bg);
+  color: var(--threat-normal);
+  border: 1px solid var(--threat-normal-border);
 }
 
 .badge-watch {
-  background: var(--tier-watch-bg);
-  color: var(--tier-watch);
-  border: 1px solid var(--tier-watch-border);
+  background-color: var(--threat-watch-bg);
+  color: var(--threat-watch);
+  border: 1px solid var(--threat-watch-border);
 }
 
 .badge-warning {
-  background: var(--tier-warning-bg);
-  color: var(--tier-warning);
-  border: 1px solid var(--tier-warning-border);
+  background-color: var(--threat-warning-bg);
+  color: var(--threat-warning);
+  border: 1px solid var(--threat-warning-border);
 }
 
 .badge-emergency {
-  background: var(--tier-emergency-bg);
-  color: var(--tier-emergency);
-  border: 1px solid var(--tier-emergency-border);
-  box-shadow: 0 0 12px var(--tier-emergency-glow);
+  background-color: var(--threat-emergency-bg);
+  color: var(--threat-emergency);
+  border: 1px solid var(--threat-emergency-border);
 }
 
-/* Interactive Elements */
+/* Callout Modules */
+.callout-info {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.callout-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.callout-emergency {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* Button Foundations */
 button {
   font-family: var(--font-body);
   cursor: pointer;
@@ -186,69 +197,140 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0284c7, #2563eb);
-  color: #ffffff;
-  padding: 8px 16px;
+  background: var(--bg-surface-3);
+  color: var(--text-main);
+  border: 1px solid var(--border-medium);
+  padding: 6px 14px;
   border-radius: var(--radius-md);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+  gap: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0369a1, #1d4ed8);
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5);
-  transform: translateY(-1px);
+  background: var(--border-active);
+  border-color: var(--accent-live);
+  color: #ffffff;
 }
 
 .btn-secondary {
-  background: var(--bg-surface-elevated);
-  color: var(--text-main);
+  background: var(--bg-surface-1);
+  color: var(--text-muted);
   border: 1px solid var(--border-subtle);
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: var(--radius-md);
   font-weight: 500;
-  font-size: 13px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 .btn-secondary:hover {
-  background: var(--border-focus);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--bg-surface-2);
+  color: var(--text-main);
+  border-color: var(--border-medium);
 }
 
-/* Pulse animation for emergency indicators */
-@keyframes pulseGlow {
+/* Keyframe Animations */
+@keyframes pulse-live {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.85);
+    opacity: 0.55;
+    transform: scale(0.96);
   }
 }
-.pulse-emergency {
-  animation: pulseGlow 2s infinite ease-in-out;
+
+@keyframes pulse-emergency {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
 }
 
-/* Leaflet Map overrides for custom dark aesthetic */
+.pulse-emergency {
+  animation: pulse-emergency 2s infinite ease-in-out;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: fadeSlideUp var(--transition-smooth) forwards;
+}
+
+/* Leaflet Map Overrides */
 .leaflet-container {
-  background-color: #070a12 !important;
+  background-color: var(--bg-app) !important;
   font-family: var(--font-body) !important;
 }
 
+.leaflet-interactive {
+  transition: fill 250ms ease, fill-opacity 250ms ease, stroke-width 200ms ease;
+}
+
 .leaflet-popup-content-wrapper {
-  background: rgba(14, 20, 36, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #f1f5f9 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+  background: var(--bg-surface-2) !important;
+  backdrop-filter: blur(14px) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-medium) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  padding: 2px !important;
 }
 
 .leaflet-popup-tip {
-  background: rgba(14, 20, 36, 0.95) !important;
+  background: var(--bg-surface-2) !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(11, 16, 27, 0.75) !important;
+  color: var(--text-dim) !important;
+  font-size: 9px !important;
+  padding: 2px 8px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border-subtle) !important;
+  margin-bottom: 8px !important;
+  margin-right: 8px !important;
+  backdrop-filter: blur(8px);
+}
+.leaflet-control-attribution a {
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+}
+.leaflet-control-attribution a:hover {
+  color: var(--accent-live) !important;
+}
+
+/* Accessibility: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

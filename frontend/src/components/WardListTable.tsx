@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowUpDown, Search, AlertTriangle } from 'lucide-react';
-import type { WardExposureScore, RiskTier } from '../types';
+import { ArrowUpDown, Search, X } from 'lucide-react';
+import { ExposureGauge } from './ExposureGauge';
+import type { WardExposureScore } from '../types';
 
 interface WardListTableProps {
   exposureScores: Record<string, WardExposureScore>;
@@ -77,185 +78,163 @@ export const WardListTable: React.FC<WardListTableProps> = ({
       });
   }, [exposureScores, wardsProperties, sortField, sortOrder, searchQuery, tierFilter]);
 
-  const getTierClass = (tier: RiskTier) => {
-    switch (tier) {
-      case 'NORMAL': return 'badge-normal';
-      case 'WATCH': return 'badge-watch';
-      case 'WARNING': return 'badge-warning';
-      case 'EMERGENCY': return 'badge-emergency';
-      default: return 'badge-normal';
-    }
-  };
+  const TIERS: Array<{ label: string; value: string; tierClass: string }> = [
+    { label: 'All (24)', value: 'ALL', tierClass: '' },
+    { label: 'Emergency', value: 'EMERGENCY', tierClass: 'badge-emergency' },
+    { label: 'Warning', value: 'WARNING', tierClass: 'badge-warning' },
+    { label: 'Watch', value: 'WATCH', tierClass: 'badge-watch' },
+    { label: 'Normal', value: 'NORMAL', tierClass: 'badge-normal' }
+  ];
 
   return (
-    <div
-      className="glass-panel"
-      style={{
-        position: 'absolute',
-        top: '70px',
-        left: '20px',
-        right: '460px',
-        bottom: '100px',
-        zIndex: 550,
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '16px 20px',
-        boxShadow: 'var(--shadow-xl)',
-        overflow: 'hidden'
-      }}
-    >
-      {/* Top Filter Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '10px' }}>
-        <div>
-          <h2 style={{ fontSize: '16px', color: '#ffffff', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            24-Ward Exposure Ranking & Demographics
-            <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 400 }}>({sortedWards.length} Wards)</span>
-          </h2>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {/* Search Input */}
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-            <Search size={14} color="#64748b" style={{ position: 'absolute', left: '10px' }} />
+    <div className="ward-table-container">
+      {/* Table Header Filter Toolbar */}
+      <div className="table-toolbar">
+        <div className="toolbar-left">
+          <div className="search-input-wrapper">
+            <Search size={14} color="var(--text-dim)" />
             <input
               type="text"
-              placeholder="Search ward or area..."
+              placeholder="Search ward code or locality..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                background: 'var(--bg-surface-elevated)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
-                padding: '6px 12px 6px 30px',
-                color: '#ffffff',
-                fontSize: '12px',
-                outline: 'none',
-                width: '180px'
-              }}
+              className="table-search-input"
             />
           </div>
 
           {/* Tier Filter Buttons */}
-          <div style={{ display: 'flex', gap: '4px' }}>
-            {['ALL', 'EMERGENCY', 'WARNING', 'WATCH', 'NORMAL'].map((t) => (
+          <div className="tier-filter-group">
+            {TIERS.map((t) => (
               <button
-                key={t}
-                className="btn-secondary"
-                style={{
-                  fontSize: '11px',
-                  padding: '4px 8px',
-                  borderColor: tierFilter === t ? '#38bdf8' : 'var(--border-subtle)',
-                  color: tierFilter === t ? '#ffffff' : 'var(--text-muted)'
-                }}
-                onClick={() => setTierFilter(t)}
+                key={t.value}
+                className={`btn-tier-filter ${tierFilter === t.value ? 'active' : ''} ${t.tierClass}`}
+                onClick={() => setTierFilter(t.value)}
               >
-                {t}
+                {t.label}
               </button>
             ))}
           </div>
-
-          <button className="btn-secondary" onClick={onClose} style={{ fontSize: '11px', padding: '6px 12px' }}>
-            Back to Map
-          </button>
         </div>
+
+        <button className="btn-secondary" onClick={onClose} title="Close Table and Return to Map">
+          <X size={14} />
+          <span>Close Matrix</span>
+        </button>
       </div>
 
-      {/* Table Container */}
-      <div style={{ flex: 1, overflowY: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', textAlign: 'left' }}>
+      {/* High-Density Data Table */}
+      <div className="table-scroll-wrapper">
+        <table className="ward-table">
           <thead>
-            <tr style={{ borderBottom: '1px solid var(--border-glass)', color: '#94a3b8', textTransform: 'uppercase', fontSize: '10px', letterSpacing: '0.05em' }}>
-              <th style={{ padding: '8px 10px', cursor: 'pointer' }} onClick={() => handleSort('ward_id')}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  Ward <ArrowUpDown size={11} />
+            <tr>
+              <th onClick={() => handleSort('ward_id')} className="sortable-th">
+                <div className="th-content">
+                  <span>Ward ID</span>
+                  <ArrowUpDown size={11} />
                 </div>
               </th>
-              <th style={{ padding: '8px 10px', cursor: 'pointer' }} onClick={() => handleSort('locality')}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  Locality & Zone <ArrowUpDown size={11} />
+              <th onClick={() => handleSort('locality')} className="sortable-th">
+                <div className="th-content">
+                  <span>Locality / Zone</span>
+                  <ArrowUpDown size={11} />
                 </div>
               </th>
-              <th style={{ padding: '8px 10px', cursor: 'pointer' }} onClick={() => handleSort('rainfall_mm')}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  24h Rain <ArrowUpDown size={11} />
+              <th onClick={() => handleSort('exposure_score')} className="sortable-th">
+                <div className="th-content">
+                  <span>Exposure Score E(w,d)</span>
+                  <ArrowUpDown size={11} />
                 </div>
               </th>
-              <th style={{ padding: '8px 10px', cursor: 'pointer' }} onClick={() => handleSort('exposure_score')}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  Exposure E(w, d) <ArrowUpDown size={11} />
+              <th>Tier</th>
+              <th onClick={() => handleSort('rainfall_mm')} className="sortable-th">
+                <div className="th-content">
+                  <span>24h Rain (mm)</span>
+                  <ArrowUpDown size={11} />
                 </div>
               </th>
-              <th style={{ padding: '8px 10px' }}>Risk Tier</th>
-              <th style={{ padding: '8px 10px', cursor: 'pointer' }} onClick={() => handleSort('vulnerability_norm')}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  Vulnerability <ArrowUpDown size={11} />
+              <th onClick={() => handleSort('vulnerability_norm')} className="sortable-th">
+                <div className="th-content">
+                  <span>Census Slum Vulnerability</span>
+                  <ArrowUpDown size={11} />
                 </div>
               </th>
-              <th style={{ padding: '8px 10px' }}>Slum %</th>
-              <th style={{ padding: '8px 10px' }}>Hotspots</th>
-              <th style={{ padding: '8px 10px' }}>Status</th>
+              <th>Hotspots</th>
             </tr>
           </thead>
           <tbody>
             {sortedWards.map((w) => {
               const isSelected = selectedWardId === w.ward_id;
+              const rainPct = Math.min(100, (w.rainfall_mm / 200) * 100);
+              const vulnPct = Math.min(100, w.vulnerability_norm * 100);
+
               return (
                 <tr
                   key={w.ward_id}
+                  className={`ward-table-row ${isSelected ? 'selected' : ''}`}
                   onClick={() => onSelectWard(w.ward_id)}
-                  style={{
-                    borderBottom: '1px solid var(--border-subtle)',
-                    cursor: 'pointer',
-                    backgroundColor: isSelected ? 'rgba(56, 189, 248, 0.12)' : 'transparent',
-                    transition: 'background-color 150ms'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isSelected) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.04)';
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isSelected) e.currentTarget.style.backgroundColor = 'transparent';
-                  }}
                 >
-                  <td style={{ padding: '10px', fontWeight: 700, color: '#38bdf8' }}>
-                    {w.ward_id}
+                  <td className="font-mono font-bold" style={{ color: 'var(--text-main)' }}>
+                    Ward {w.ward_id}
                   </td>
-                  <td style={{ padding: '10px' }}>
-                    <div style={{ color: '#ffffff', fontWeight: 500 }}>{w.locality}</div>
-                    <div style={{ color: '#64748b', fontSize: '10px' }}>{w.zone}</div>
+                  <td>
+                    <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>{w.locality}</div>
+                    <div style={{ fontSize: '10px', color: 'var(--text-dim)' }}>{w.zone}</div>
                   </td>
-                  <td style={{ padding: '10px', fontFamily: 'var(--font-mono)' }}>
-                    {w.rainfall_mm.toFixed(1)} mm
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <ExposureGauge score={w.exposure_score} tier={w.risk_tier} size={30} strokeWidth={4} showValue={false} />
+                      <span className="font-mono" style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-main)' }}>
+                        {w.exposure_score.toFixed(1)}
+                      </span>
+                    </div>
                   </td>
-                  <td style={{ padding: '10px' }}>
-                    <span style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'var(--font-mono)', color: w.exposure_score >= 75 ? '#ef4444' : (w.exposure_score >= 55 ? '#f97316' : '#ffffff') }}>
-                      {w.exposure_score.toFixed(1)}
-                    </span>
-                    <span style={{ fontSize: '10px', color: '#64748b' }}> / 100</span>
-                  </td>
-                  <td style={{ padding: '10px' }}>
-                    <span className={`badge-tier ${getTierClass(w.risk_tier)}`}>
+                  <td>
+                    <span className={`badge-tier badge-${w.risk_tier.toLowerCase()}`}>
                       {w.risk_tier}
                     </span>
                   </td>
-                  <td style={{ padding: '10px', fontFamily: 'var(--font-mono)' }}>
-                    {(w.vulnerability_norm * 100).toFixed(0)}%
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span className="font-mono" style={{ minWidth: '48px', color: 'var(--accent-live)' }}>
+                        {w.rainfall_mm.toFixed(1)} mm
+                      </span>
+                      <div className="mini-bar-track">
+                        <div
+                          className="mini-bar-fill"
+                          style={{
+                            width: `${rainPct}%`,
+                            background:
+                              w.rainfall_mm >= 115.6
+                                ? 'var(--threat-emergency)'
+                                : w.rainfall_mm >= 64.5
+                                ? 'var(--threat-warning)'
+                                : 'var(--threat-normal)'
+                          }}
+                        />
+                      </div>
+                    </div>
                   </td>
-                  <td style={{ padding: '10px', color: '#f97316' }}>
-                    {(w.slum_ratio * 100).toFixed(1)}%
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span className="font-mono" style={{ minWidth: '40px', color: 'var(--text-muted)' }}>
+                        {(w.vulnerability_norm * 100).toFixed(0)}%
+                      </span>
+                      <div className="mini-bar-track">
+                        <div
+                          className="mini-bar-fill"
+                          style={{
+                            width: `${vulnPct}%`,
+                            background: 'var(--threat-warning)'
+                          }}
+                        />
+                      </div>
+                      <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>
+                        ({(w.slum_ratio * 100).toFixed(0)}% Slum)
+                      </span>
+                    </div>
                   </td>
-                  <td style={{ padding: '10px', fontFamily: 'var(--font-mono)' }}>
+                  <td className="font-mono" style={{ color: w.hotspot_count > 0 ? 'var(--threat-warning)' : 'var(--text-dim)' }}>
                     {w.hotspot_count} spots
-                  </td>
-                  <td style={{ padding: '10px' }}>
-                    {w.is_partial ? (
-                      <span style={{ color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', fontWeight: 600 }}>
-                        <AlertTriangle size={12} /> Partial
-                      </span>
-                    ) : (
-                      <span style={{ color: '#10b981', fontSize: '10px', fontWeight: 600 }}>
-                        Verified
-                      </span>
-                    )}
                   </td>
                 </tr>
               );

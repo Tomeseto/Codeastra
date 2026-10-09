@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import { Header } from './components/Header';
+import { OperationsRail } from './components/OperationsRail';
 import { WardMap } from './components/WardMap';
-import { TimeMachine } from './components/TimeMachine';
 import { EvidenceDrawer } from './components/EvidenceDrawer';
+import { TimeMachine } from './components/TimeMachine';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
 import type { DailyExposureSummary, WardExposureScore, ChronicHotspot } from './types';
@@ -12,24 +13,28 @@ export const App: React.FC = () => {
   const [backendHealthy, setBackendHealthy] = useState<boolean>(false);
   const [geojsonData, setGeojsonData] = useState<any>(null);
   const [timelineDays, setTimelineDays] = useState<DailyExposureSummary[]>([]);
-  const [currentDateIndex, setCurrentDateIndex] = useState<number>(5); // Default to July 5 peak (index 5)
-  const [selectedWardId, setSelectedWardId] = useState<string | null>('L'); // Default to high-risk Ward L (Kurla)
+  const [currentDateIndex, setCurrentDateIndex] = useState<number>(5); // Default to July 5 early-warning trigger
+  const [selectedWardId, setSelectedWardId] = useState<string | null>('L'); // Default to Kurla (Ward L)
   const [useImdWindow, setUseImdWindow] = useState<boolean>(false);
   
-  // Hotspots layer state
-  const [showHotspots, setShowHotspots] = useState<boolean>(false);
+  // Navigation & View Mode
+  const [activeView, setActiveView] = useState<'map' | 'table'>('map');
+  const [activeDeckTab, setActiveDeckTab] = useState<'timemachine' | 'simulator'>('timemachine');
+
+  // Hotspots Layer
+  const [showHotspots, setShowHotspots] = useState<boolean>(true);
   const [allHotspots, setAllHotspots] = useState<ChronicHotspot[]>([]);
 
-  // Rankings table state
-  const [showTable, setShowTable] = useState<boolean>(false);
-  
-  // Scenario simulation state
-  const [showSimulation, setShowSimulation] = useState<boolean>(false);
+  // Collapsible Panel States
+  const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
+  const [isDrawerCollapsed, setIsDrawerCollapsed] = useState<boolean>(false);
+
+  // Scenario Simulator State
   const [simulationRainfall, setSimulationRainfall] = useState<number>(85.0);
   const [applyUniformly, setApplyUniformly] = useState<boolean>(true);
   const [simulatedSummary, setSimulatedSummary] = useState<DailyExposureSummary | null>(null);
 
-  // 1. Initial Load: Check Health, Fetch GeoJSON and Timeline
+  // 1. Initial Load: Health, GeoJSON, Timeline, and Hotspots
   useEffect(() => {
     // Health Check
     fetch('/api/v1/health')
@@ -39,23 +44,41 @@ export const App: React.FC = () => {
       })
       .catch(() => setBackendHealthy(false));
 
-    // Fetch GeoJSON
+    // Fetch 24-Ward GeoJSON
     fetch('/api/v1/wards')
       .then((res) => res.json())
-      .then((data) => {
-        setGeojsonData(data);
-      })
+      .then((data) => setGeojsonData(data))
       .catch((err) => console.error('Failed to load GeoJSON:', err));
 
     // Fetch Timeline
     loadTimeline(false);
+
+    // Fetch Hotspots across all wards
+    fetch('/api/v1/wards/list')
+      .then((res) => res.json())
+      .then(async (wardsList) => {
+        const spots: ChronicHotspot[] = [];
+        for (const w of wardsList) {
+          try {
+            const hResp = await fetch(`/api/v1/wards/${w.ward_id}/hotspots`);
+            const hData = await hResp.json();
+            if (Array.isArray(hData)) {
+              spots.push(...hData);
+            }
+          } catch {
+            // ignore individual fail
+          }
+        }
+        setAllHotspots(spots);
+      })
+      .catch((err) => console.error('Failed to load hotspots:', err));
   }, []);
 
   const loadTimeline = (useImd: boolean) => {
     fetch(`/api/v1/exposure/timeline?use_imd_window=${useImd}`)
       .then((res) => res.json())
       .then((data) => {
-        if (data.days && data.days.length > 0) {
+        if (data.days && Array.isArray(data.days) && data.days.length > 0) {
           setTimelineDays(data.days);
         }
       })
@@ -68,32 +91,9 @@ export const App: React.FC = () => {
     loadTimeline(nextVal);
   };
 
-  // 2. Load all hotspots when hotspots layer is toggled
+  // 2. Dynamic Simulation Calculation when Sandbox tab is active
   useEffect(() => {
-    if (showHotspots && allHotspots.length === 0) {
-      // Extract from GeoJSON properties or ward endpoints
-      fetch('/api/v1/wards/list')
-        .then((res) => res.json())
-        .then(async (wardsList) => {
-          const spots: ChronicHotspot[] = [];
-          for (const w of wardsList) {
-            try {
-              const hResp = await fetch(`/api/v1/wards/${w.ward_id}/hotspots`);
-              const hData = await hResp.json();
-              spots.push(...hData);
-            } catch (e) {
-              // Ignore single failure
-            }
-          }
-          setAllHotspots(spots);
-        })
-        .catch((err) => console.error('Failed to load hotspots:', err));
-    }
-  }, [showHotspots, allHotspots.length]);
-
-  // 3. Dynamic Simulation Calculation when simulation is active
-  useEffect(() => {
-    if (!showSimulation) {
+    if (activeDeckTab !== 'simulator') {
       setSimulatedSummary(null);
       return;
     }
@@ -118,16 +118,16 @@ export const App: React.FC = () => {
     })
       .then((res) => res.json())
       .then((data) => setSimulatedSummary(data))
-      .catch((err) => console.error('Simulation error:', err));
-  }, [showSimulation, simulationRainfall, applyUniformly, selectedWardId, currentDateIndex, useImdWindow, timelineDays]);
+      .catch((err) => console.error('Simulation calculation error:', err));
+  }, [activeDeckTab, simulationRainfall, applyUniformly, selectedWardId, currentDateIndex, useImdWindow, timelineDays]);
 
-  // Determine active summary (either from Simulation or Historical Timeline Day)
+  // Determine Active Summary (either Simulator or Timeline Day)
   const activeSummary: DailyExposureSummary | null = useMemo(() => {
-    if (showSimulation && simulatedSummary) {
+    if (activeDeckTab === 'simulator' && simulatedSummary) {
       return simulatedSummary;
     }
     return timelineDays[currentDateIndex] || null;
-  }, [showSimulation, simulatedSummary, timelineDays, currentDateIndex]);
+  }, [activeDeckTab, simulatedSummary, timelineDays, currentDateIndex]);
 
   const dates = useMemo(() => timelineDays.map((d) => d.date), [timelineDays]);
   const currentDate = dates[currentDateIndex] || '2026-07-05';
@@ -136,7 +136,7 @@ export const App: React.FC = () => {
     return activeSummary?.wards || {};
   }, [activeSummary]);
 
-  // Selected ward details
+  // Selected Ward Score & Properties
   const selectedWardScore: WardExposureScore | null = useMemo(() => {
     if (!selectedWardId || !activeSummary) return null;
     return activeSummary.wards[selectedWardId] || null;
@@ -163,93 +163,88 @@ export const App: React.FC = () => {
     return map;
   }, [geojsonData]);
 
+  const handleSelectWard = (wid: string) => {
+    setSelectedWardId(wid);
+    setIsDrawerCollapsed(false);
+  };
+
   return (
     <div className="app-container">
-      {/* Navbar Header */}
+      {/* 1. Unified Command Header */}
       <Header
         backendHealthy={backendHealthy}
+        activeView={activeView}
+        onSelectView={setActiveView}
         showHotspots={showHotspots}
         onToggleHotspots={() => setShowHotspots(!showHotspots)}
-        showSimulation={showSimulation}
-        onToggleSimulation={() => setShowSimulation(!showSimulation)}
-        showTable={showTable}
-        onToggleTable={() => setShowTable(!showTable)}
+        activeDeckTab={activeDeckTab}
+        onSelectDeckTab={setActiveDeckTab}
         currentDate={currentDate}
+        hotspotsCount={allHotspots.length || 70}
       />
 
+      {/* 2. Main Middle Workspace: Structured Flex Row (Rail + Center Canvas + Drawer) */}
       <div className="main-workspace">
-        {/* Floating Top-Left Citywide Metric Strip */}
-        {activeSummary && (
-          <div className="stats-overlay">
-            <div className="stat-chip">
-              <span className="stat-label">City Average</span>
-              <span className="stat-value" style={{ color: activeSummary.city_average_exposure >= 55 ? '#f97316' : '#38bdf8' }}>
-                {activeSummary.city_average_exposure.toFixed(1)}
-              </span>
-            </div>
-            <div className="stat-chip">
-              <span className="stat-label">Max Ward Exposure</span>
-              <span className="stat-value" style={{ color: activeSummary.city_max_exposure >= 75 ? '#ef4444' : '#f59e0b' }}>
-                {activeSummary.city_max_exposure.toFixed(1)}
-              </span>
-            </div>
-            <div className="stat-chip">
-              <span className="stat-label">Emergency Wards</span>
-              <span className="stat-value" style={{ color: activeSummary.emergency_ward_count > 0 ? '#ef4444' : '#10b981' }}>
-                {activeSummary.emergency_ward_count} / 24
-              </span>
-            </div>
-            <div className="stat-chip">
-              <span className="stat-label">Warning Wards</span>
-              <span className="stat-value" style={{ color: activeSummary.warning_ward_count > 0 ? '#f97316' : '#10b981' }}>
-                {activeSummary.warning_ward_count}
-              </span>
-            </div>
-          </div>
-        )}
-
-        {/* Mode Separation Indicator Banner */}
-        {showSimulation && (
-          <div style={{
-            position: 'absolute',
-            top: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 500,
-            background: 'rgba(245, 158, 11, 0.95)',
-            color: '#0f172a',
-            padding: '6px 18px',
-            borderRadius: '20px',
-            fontSize: '12px',
-            fontWeight: 700,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
-            letterSpacing: '0.02em',
-            pointerEvents: 'none'
-          }}>
-            <span>⚠️ SCENARIO SIMULATION ACTIVE</span>
-            <span style={{ fontWeight: 500, opacity: 0.9 }}>— Hypothetical sandbox test (Historical records untouched)</span>
-          </div>
-        )}
-
-        {/* 24-Ward Rankings Table View (when toggled) */}
-        {showTable && (
-          <WardListTable
+        {/* Left Slot: Operations Rail */}
+        <div className={`workspace-rail ${isRailCollapsed ? 'collapsed' : ''}`}>
+          <OperationsRail
+            activeSummary={activeSummary}
             exposureScores={exposureScores}
-            wardsProperties={wardsPropertiesMap}
             selectedWardId={selectedWardId}
-            onSelectWard={(wid) => {
-              setSelectedWardId(wid);
-              setShowTable(false);
-            }}
-            onClose={() => setShowTable(false)}
+            onSelectWard={handleSelectWard}
+            isCollapsed={isRailCollapsed}
+            onToggleCollapse={() => setIsRailCollapsed(!isRailCollapsed)}
           />
-        )}
+        </div>
 
-        {/* Scenario Simulator Overlay (when toggled) */}
-        {showSimulation && (
+        {/* Center Slot: Tactical Map OR 24-Ward Table Matrix */}
+        <main className="workspace-center">
+          {activeView === 'map' ? (
+            <WardMap
+              geojsonData={geojsonData}
+              exposureScores={exposureScores}
+              selectedWardId={selectedWardId}
+              onSelectWard={handleSelectWard}
+              showHotspots={showHotspots}
+              hotspotsList={allHotspots}
+            />
+          ) : (
+            <WardListTable
+              exposureScores={exposureScores}
+              wardsProperties={wardsPropertiesMap}
+              selectedWardId={selectedWardId}
+              onSelectWard={handleSelectWard}
+              onClose={() => setActiveView('map')}
+            />
+          )}
+        </main>
+
+        {/* Right Slot: Forensic Evidence Drawer */}
+        {selectedWardId && !isDrawerCollapsed && (
+          <aside className="workspace-drawer">
+            <EvidenceDrawer
+              wardScore={selectedWardScore}
+              wardProperties={selectedWardProperties}
+              hotspots={selectedWardHotspots}
+              onClose={() => setIsDrawerCollapsed(true)}
+            />
+          </aside>
+        )}
+      </div>
+
+      {/* 3. Bottom Slot: Mission Control Deck */}
+      <footer className="workspace-deck">
+        {activeDeckTab === 'timemachine' ? (
+          <TimeMachine
+            dates={dates}
+            currentDateIndex={currentDateIndex}
+            onSelectDateIndex={setCurrentDateIndex}
+            useImdWindow={useImdWindow}
+            onToggleImdWindow={handleToggleImdWindow}
+            milestones={activeSummary?.milestones || []}
+            timelineDays={timelineDays}
+          />
+        ) : (
           <ScenarioSimulator
             simulationRainfall={simulationRainfall}
             onSimulationRainfallChange={setSimulationRainfall}
@@ -258,41 +253,12 @@ export const App: React.FC = () => {
             onToggleApplyUniformly={() => setApplyUniformly(!applyUniformly)}
             onReset={() => {
               setSimulationRainfall(85.0);
-              setShowSimulation(false);
+              setActiveDeckTab('timemachine');
             }}
+            simulatedSummary={simulatedSummary}
           />
         )}
-
-        {/* Center Interactive Leaflet Map */}
-        <WardMap
-          geojsonData={geojsonData}
-          exposureScores={exposureScores}
-          selectedWardId={selectedWardId}
-          onSelectWard={(wid) => setSelectedWardId(wid)}
-          showHotspots={showHotspots}
-          hotspotsList={allHotspots}
-        />
-
-        {/* Bottom Historical Time Machine Replay Controller */}
-        {dates.length > 0 && !showSimulation && (
-          <TimeMachine
-            dates={dates}
-            currentDateIndex={currentDateIndex}
-            onSelectDateIndex={setCurrentDateIndex}
-            useImdWindow={useImdWindow}
-            onToggleImdWindow={handleToggleImdWindow}
-            milestones={activeSummary?.milestones || []}
-          />
-        )}
-
-        {/* Right Side Explainability & Evidence Drawer */}
-        <EvidenceDrawer
-          wardScore={selectedWardScore}
-          wardProperties={selectedWardProperties}
-          hotspots={selectedWardHotspots}
-          onClose={() => setSelectedWardId(null)}
-        />
-      </div>
+      </footer>
     </div>
   );
 };
