@@ -34,9 +34,9 @@
   --threat-warning-bg: #faebd7;
   --threat-warning-border: rgba(189, 80, 26, 0.40);
 
-  --threat-emergency: #a31c1c;
-  --threat-emergency-bg: #fdf6f3;
-  --threat-emergency-border: rgba(163, 28, 28, 0.28);
+  --threat-emergency: #bf4343;
+  --threat-emergency-bg: #faece8;
+  --threat-emergency-border: #e8beb8;
 
   /* Typography: Rich Warm Charcoal Espresso Inks */
   --text-main: #231e1a;         /* dark warm espresso */
@@ -194,15 +194,15 @@ html, body {
 }
 
 .callout-emergency {
-  background: #fdfaf6;
-  border: 1px solid rgba(163, 28, 28, 0.22);
+  background: #faece8;
+  border: 1px solid #e8beb8;
   border-left: 3.5px solid var(--threat-emergency);
   border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  box-shadow: 0 1px 3px rgba(80, 40, 30, 0.05);
+  box-shadow: 0 1px 3px rgba(180, 60, 50, 0.06);
 }
 
 /* Button Foundations */

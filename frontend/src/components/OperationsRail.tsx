@@ -208,10 +208,11 @@ export const OperationsRail: React.FC<OperationsRailProps> = ({
           <div className="lead-warning-card" role="alert">
             <div className="lead-warning-header">
               <div className="lead-warning-tag">
-                <AlertTriangle size={13} className="lead-warning-icon" />
-                <span>+{leadTimeMilestone.lead_time_hours_vs_alert.toFixed(1)}h Early Warning Active</span>
+                <AlertTriangle size={14} className="lead-warning-icon" />
+                <span className="lead-warning-tag-text">
+                  +{leadTimeMilestone.lead_time_hours_vs_alert.toFixed(1)}h Early Warning Active
+                </span>
               </div>
-              <span className="lead-warning-badge">Action Window</span>
             </div>
 
             <p className="lead-warning-text">

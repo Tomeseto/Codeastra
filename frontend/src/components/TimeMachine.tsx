@@ -174,7 +174,7 @@ export const TimeMachine: React.FC<TimeMachineProps> = ({
                 {day.isTrigger && <span className="trigger-dot" />}
               </div>
               <span className="scrubber-label font-mono">
-                {day.dayNum} {idx === 0 || day.dayNum === '01' ? day.monthStr : ''}
+                {day.dayNum} {day.monthStr}
               </span>
             </button>
           );
