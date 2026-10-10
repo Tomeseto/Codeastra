@@ -387,22 +387,22 @@ button {
   background: var(--bg-surface-3);
 }
 
-/* Lead-Time Early-Warning Alert Card (Solid #C35150 Pastel Terracotta Red) */
+/* Lead-Time Early-Warning Alert Card (Solid #D07C79 Pastel Terracotta Red) */
 .lead-warning-card {
-  background: #C35150; /* Exact #C35150 requested by user */
-  border: 1px solid #b04342;
+  background: #D07C79; /* Exact #D07C79 requested by user */
+  border: 1px solid #bf6a67;
   border-radius: var(--radius-md);
   padding: 11px 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(195, 81, 80, 0.25);
+  color: #1e0908;
+  box-shadow: 0 2px 8px rgba(208, 124, 121, 0.28);
   transition: all var(--transition-fast);
 }
 
 .lead-warning-card:hover {
-  box-shadow: 0 4px 12px rgba(195, 81, 80, 0.35);
+  box-shadow: 0 4px 12px rgba(208, 124, 121, 0.38);
 }
 
 .lead-warning-header {
@@ -421,14 +421,14 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.95);
   font-size: 11.5px;
   font-weight: 700;
-  color: #C35150;
+  color: #a3413e;
   letter-spacing: -0.01em;
   white-space: nowrap;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .lead-warning-icon {
-  color: #C35150;
+  color: #D07C79;
   flex-shrink: 0;
 }
 
@@ -439,47 +439,77 @@ button {
 
 .lead-warning-text {
   font-size: 11.5px;
-  line-height: 1.45;
-  color: #ffffff;
+  line-height: 1.5;
+  color: #240d0c;
   margin: 0;
 }
 
-.lead-warning-text strong {
-  color: #ffffff;
+.lead-highlight {
+  color: #120403;
   font-weight: 800;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.4);
-  text-underline-offset: 2px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.lead-location-chip {
+  color: #120403;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin: 1px 2px 1px 0;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .lead-warning-action {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  background: rgba(0, 0, 0, 0.12);
-  border: 1px dashed rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-sm);
-  padding: 6px 8px;
+  padding: 7px 9px;
   font-size: 11px;
-  line-height: 1.4;
-  color: #ffffff;
+  line-height: 1.45;
+  color: #240e0d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .lead-warning-action .action-bullet {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #D07C79;
   margin-top: 5px;
   flex-shrink: 0;
 }
 
+.action-highlight {
+  color: #8c2522;
+  font-weight: 800;
+}
+
+.action-pill-highlight {
+  color: #8c2522;
+  font-weight: 800;
+  background: rgba(208, 124, 121, 0.18);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
 .lead-warning-meta {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.88);
+  color: #2c1211;
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.lead-warning-meta strong {
+  color: #120403;
+  font-weight: 700;
 }
 
 /* Critical Ward Queue */
