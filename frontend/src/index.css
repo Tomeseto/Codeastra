@@ -35,7 +35,7 @@
   --threat-warning-border: rgba(189, 80, 26, 0.40);
 
   --threat-emergency: #C35150;
-  --threat-emergency-bg: #faece8;
+  --threat-emergency-bg: rgba(195, 81, 80, 0.12);
   --threat-emergency-border: rgba(195, 81, 80, 0.32);
 
   /* Typography: Rich Warm Charcoal Espresso Inks (High Legibility & Contrast) */
@@ -171,8 +171,9 @@ html, body {
 
 .badge-emergency {
   background-color: var(--threat-emergency-bg);
-  color: var(--threat-emergency);
+  color: #8c2b2a;
   border: 1px solid var(--threat-emergency-border);
+  font-weight: 700;
 }
 
 /* Callout Modules */
@@ -197,15 +198,15 @@ html, body {
 }
 
 .callout-emergency {
-  background: #faece8;
-  border: 1px solid rgba(195, 81, 80, 0.28);
-  border-left: 3.5px solid var(--threat-emergency);
+  background: #C35150;
+  border: 1px solid #b04342;
   border-radius: var(--radius-md);
-  padding: 10px 12px;
+  padding: 11px 12px;
+  color: #ffffff;
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  box-shadow: 0 1px 3px rgba(195, 81, 80, 0.08);
+  box-shadow: 0 2px 8px rgba(195, 81, 80, 0.25);
 }
 
 /* Button Foundations */
