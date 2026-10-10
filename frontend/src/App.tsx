@@ -9,6 +9,7 @@ import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
 import { ExecutiveBriefingModal } from './components/ExecutiveBriefingModal';
 import { JudgeTourGuide } from './components/JudgeTourGuide';
+import { AshaTelemetryFeed } from './components/AshaTelemetryFeed';
 import type { DailyExposureSummary, WardExposureScore, ChronicHotspot } from './types';
 
 export const App: React.FC = () => {
@@ -30,9 +31,10 @@ export const App: React.FC = () => {
   const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
   const [isDrawerCollapsed, setIsDrawerCollapsed] = useState<boolean>(false);
 
-  // Guided Judge Storyboard Tour & Executive Briefing Sheet
+  // Guided Judge Storyboard Tour & Executive Briefing Sheet & ASHA Telemetry Modal
   const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
   const [showBriefingModal, setShowBriefingModal] = useState<boolean>(false);
+  const [showAshaModal, setShowAshaModal] = useState<boolean>(false);
 
   // Scenario Simulator State
   const [simulationRainfall, setSimulationRainfall] = useState<number>(85.0);
@@ -216,6 +218,7 @@ export const App: React.FC = () => {
           handleNavigateTourStep(1);
         }}
         onOpenBriefing={() => setShowBriefingModal(true)}
+        onOpenAshaTelemetry={() => setShowAshaModal(true)}
       />
 
       {/* 2. Main Middle Workspace: Structured Flex Row */}
@@ -281,6 +284,8 @@ export const App: React.FC = () => {
                   wardScore={selectedWardScore}
                   wardProperties={selectedWardProperties}
                   hotspots={selectedWardHotspots}
+                  currentDate={currentDate}
+                  onOpenAshaTelemetry={() => setShowAshaModal(true)}
                   onClose={() => setIsDrawerCollapsed(true)}
                 />
               </aside>
@@ -318,6 +323,13 @@ export const App: React.FC = () => {
         isOpen={isTourOpen}
         onClose={() => setIsTourOpen(false)}
         onNavigateStep={handleNavigateTourStep}
+      />
+
+      {/* Grassroots Vernacular Telemetry Modal */}
+      <AshaTelemetryFeed
+        isOpen={showAshaModal}
+        onClose={() => setShowAshaModal(false)}
+        defaultWardId={selectedWardId || 'L'}
       />
     </div>
   );

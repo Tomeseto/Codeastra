@@ -1,53 +1,44 @@
 import React from 'react';
-import { CloudRain, MapPin, Compass, FileText } from 'lucide-react';
+import { MapPin, Compass, FileText, Radio } from 'lucide-react';
 
 interface HeaderProps {
-  backendHealthy: boolean;
+  backendHealthy?: boolean;
   activeView: 'map' | 'table' | 'simulator';
   onSelectView: (view: 'map' | 'table' | 'simulator') => void;
   showHotspots: boolean;
   onToggleHotspots: () => void;
-  currentDate: string;
+  currentDate?: string;
   hotspotsCount: number;
   onStartTour?: () => void;
   onOpenBriefing?: () => void;
+  onOpenAshaTelemetry?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  backendHealthy,
   activeView,
   onSelectView,
   showHotspots,
   onToggleHotspots,
-  currentDate,
   hotspotsCount,
   onStartTour,
-  onOpenBriefing
+  onOpenBriefing,
+  onOpenAshaTelemetry
 }) => {
   return (
     <header className="app-header">
       {/* Brand Identity */}
       <div className="brand-section">
         <div className="brand-logo-icon">
-          <CloudRain size={17} color="var(--text-main)" />
+          <img src="/logo.png" alt="VARSHA Emblem" className="brand-logo-img" />
         </div>
         <div className="brand-text">
           <div className="brand-title-row">
             <h1>VARSHA</h1>
-            <span className="brand-badge font-mono">MUMBAI EOC</span>
           </div>
           <span className="brand-subtitle">
             Monsoon Flood Exposure & Outbreak Early Warning
           </span>
         </div>
-      </div>
-
-      {/* Center Operational State Pill */}
-      <div className="header-status-pill">
-        <span className={`status-indicator-dot ${backendHealthy ? 'live' : 'sync'}`} />
-        <span className="status-text font-mono">
-          Surveillance Active · {currentDate}
-        </span>
       </div>
 
       {/* Right Command Controls */}
@@ -90,6 +81,18 @@ export const Header: React.FC<HeaderProps> = ({
           <MapPin size={13} />
           <span>Hotspots ({hotspotsCount})</span>
         </button>
+
+        {/* Grassroots Telemetry Modal */}
+        {onOpenAshaTelemetry && (
+          <button
+            className="btn-header-asha"
+            onClick={onOpenAshaTelemetry}
+            title="Launch Ground-Truth Grassroots Telemetry & Vernacular ASHA Feed"
+          >
+            <Radio size={13} />
+            <span>ASHA Telemetry</span>
+          </button>
+        )}
 
         {/* 1-Click Executive Cabinet Briefing Sheet Modal */}
         {onOpenBriefing && (

@@ -133,7 +133,7 @@ export const ExecutiveBriefingModal: React.FC<ExecutiveBriefingModalProps> = ({
         {/* BMC Official Header Banner */}
         <div className="sheet-header">
           <div className="sheet-emblem-box">
-            <div className="sheet-emblem-seal">BMC</div>
+            <img src="/logo.png" alt="VARSHA Official Emblem" className="sheet-emblem-seal-img" />
             <div>
               <div className="sheet-gov-name">BRIHANMUMBAI MUNICIPAL CORPORATION</div>
               <div className="sheet-dept-name">Public Health Department · Disaster Management Cell</div>

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.config import settings
-from backend.app.routers import wards, exposure, action, incubation
+from backend.app.routers import wards, exposure, action, incubation, syndromic
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -29,6 +29,8 @@ app.include_router(action.router, prefix=settings.API_V1_STR)
 app.include_router(action.router, prefix="/v1")
 app.include_router(incubation.router, prefix=settings.API_V1_STR)
 app.include_router(incubation.router, prefix="/v1")
+app.include_router(syndromic.router, prefix=settings.API_V1_STR)
+app.include_router(syndromic.router, prefix="/v1")
 
 @app.get("/health", tags=["System"])
 @app.get("/api/health", tags=["System"])
@@ -58,6 +60,9 @@ def root():
             "action_directive": f"{settings.API_V1_STR}/action/directive/{{ward_id}}",
             "action_clinics": f"{settings.API_V1_STR}/action/clinics/{{ward_id}}",
             "surge_curve": f"{settings.API_V1_STR}/epidemiology/surge-curve/{{ward_id}}",
-            "benchmarks": f"{settings.API_V1_STR}/benchmarks"
+            "benchmarks": f"{settings.API_V1_STR}/benchmarks",
+            "syndromic_ward": f"{settings.API_V1_STR}/syndromic/ward/{{ward_id}}",
+            "syndromic_summary": f"{settings.API_V1_STR}/syndromic/summary",
+            "syndromic_vernacular_feed": f"{settings.API_V1_STR}/syndromic/vernacular-feed"
         }
     }

@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { 
   X, AlertTriangle, ChevronDown, ChevronUp, Activity, 
-  MapPin, Droplets, Users, Database, ShieldAlert, Bug, CheckCircle
+  MapPin, Droplets, Users, Database, ShieldAlert, Bug, CheckCircle, Radio
 } from 'lucide-react';
 import { ExposureGauge } from './ExposureGauge';
 import type { WardExposureScore, ChronicHotspot } from '../types';
 import { ActionDirectivePanel } from './ActionDirectivePanel';
 import { IncubationTimelineChart } from './IncubationTimelineChart';
+import { SyndromicTriangulationPanel } from './SyndromicTriangulationPanel';
 
 interface EvidenceDrawerProps {
   wardScore: WardExposureScore | null;
   wardProperties: any;
   hotspots: ChronicHotspot[];
+  currentDate?: string;
+  onOpenAshaTelemetry?: () => void;
   onClose: () => void;
 }
 
@@ -19,9 +22,11 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
   wardScore,
   wardProperties,
   hotspots,
+  currentDate,
+  onOpenAshaTelemetry,
   onClose
 }) => {
-  const [activeTab, setActiveTab] = useState<'dossier' | 'action' | 'incubation'>('dossier');
+  const [activeTab, setActiveTab] = useState<'dossier' | 'action' | 'incubation' | 'syndromic'>('dossier');
   const [showMathDropdown, setShowMathDropdown] = useState<boolean>(false);
   const [showHotspotsDropdown, setShowHotspotsDropdown] = useState<boolean>(false);
 
@@ -71,7 +76,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         </button>
       </div>
 
-      {/* 3 Navigation Tabs: Dossier vs Civic Directives vs Epidemiology */}
+      {/* 4 Navigation Tabs: Dossier vs Civic Directives vs Epidemiology vs EARS Ground-Truth */}
       <div className="drawer-tabs-nav">
         <button
           className={`drawer-tab-btn ${activeTab === 'dossier' ? 'active' : ''}`}
@@ -93,6 +98,13 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         >
           <Bug size={13} />
           <span>Incubation Curve</span>
+        </button>
+        <button
+          className={`drawer-tab-btn ${activeTab === 'syndromic' ? 'active' : ''}`}
+          onClick={() => setActiveTab('syndromic')}
+        >
+          <Radio size={13} />
+          <span>EARS Ground-Truth</span>
         </button>
       </div>
 
@@ -288,6 +300,19 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
             wardName={wardProperties.ward_name || wardProperties.locality}
             exposureScore={wardScore.exposure_score}
             rainfallMm={wardScore.hazard.rainfall_mm}
+          />
+        </div>
+      )}
+
+      {activeTab === 'syndromic' && (
+        <div className="evidence-content" style={{ padding: '10px' }}>
+          <SyndromicTriangulationPanel
+            wardId={wardScore.ward_id}
+            wardName={wardProperties.ward_name || wardProperties.locality}
+            currentDate={currentDate}
+            exposureScore={wardScore.exposure_score}
+            rainfallMm={wardScore.hazard.rainfall_mm}
+            onOpenAshaTelemetry={onOpenAshaTelemetry}
           />
         </div>
       )}

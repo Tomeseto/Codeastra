@@ -208,3 +208,70 @@ export interface BenchmarkSuiteResponse {
   events: Record<string, BenchmarkEvent>;
   benchmark_list: BenchmarkSummaryItem[];
 }
+
+/* --- TRACK 4 & KILLER FEATURE: EARS-Sanjeevani Syndromic Surveillance --- */
+export interface DailySyndromicPoint {
+  date: string;
+  is_active_timeline: boolean;
+  rainfall_mm: number;
+  otc_antipyretic_sales: number;
+  otc_baseline_mean: number;
+  otc_c2_zscore: number;
+  asha_fever_cases: number;
+  asha_baseline_mean: number;
+  asha_c2_zscore: number;
+  composite_ears_zscore: number;
+  syndromic_alert_tier: 'NORMAL_BASELINE' | 'SYNDROMIC_WATCH' | 'CRITICAL_ABERRATION';
+  triangulation_quadrant: 
+    | 'CONVERGENT_ACTIVE_EPIDEMIC' 
+    | 'SILENT_INCUBATION_WINDOW' 
+    | 'LOCALIZED_COMMUNITY_CLUSTER' 
+    | 'BASELINE_STABLE';
+}
+
+export interface ClinicalEntityExtraction {
+  symptom_flags: string[];
+  exposure_vector: string;
+  suspected_pathogen: string;
+  recommended_immediate_triage: string;
+}
+
+export interface VernacularFieldReport {
+  id: string;
+  ward_id: string;
+  ward_name: string;
+  settlement_name: string;
+  reporter_designation: string;
+  timestamp: string;
+  audio_duration_seconds: number;
+  language: 'Marathi' | 'Hindi' | 'English';
+  transcript_original: string;
+  translation_english: string;
+  extracted_clinical_entities: ClinicalEntityExtraction;
+  ears_trigger_zscore: number;
+  verification_status: 'VALIDATED_URGENT' | 'UNDER_REVIEW' | 'RESOLVED';
+}
+
+export interface WardSyndromicProfile {
+  ward_id: string;
+  ward_name: string;
+  locality: string;
+  zone: string;
+  total_population: number;
+  slum_population: number;
+  slum_ratio: number;
+  pharmacy_count: number;
+  chv_asha_count: number;
+  selected_day: DailySyndromicPoint;
+  time_series: DailySyndromicPoint[];
+}
+
+export interface CitywideSyndromicSummary {
+  date: string;
+  total_monitored_pharmacies: number;
+  total_deployed_chvs: number;
+  critical_aberration_wards: string[];
+  convergent_epidemic_wards: string[];
+  citywide_avg_ears_zscore: number;
+  earliest_detection_lead_time_hours: number;
+}
