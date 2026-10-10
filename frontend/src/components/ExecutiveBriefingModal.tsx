@@ -17,10 +17,17 @@ export const ExecutiveBriefingModal: React.FC<ExecutiveBriefingModalProps> = ({
   currentDate,
   wardsProperties
 }) => {
-  if (!isOpen || !activeSummary) return null;
-
   // Calculate citywide aggregates and ranked wards
   const { topWards, totalDoxycyclinePacks, totalVans, emergencyCount, warningCount } = useMemo(() => {
+    if (!activeSummary) {
+      return {
+        topWards: [],
+        totalDoxycyclinePacks: 0,
+        totalVans: 0,
+        emergencyCount: 0,
+        warningCount: 0
+      };
+    }
     const list: Array<{
       ward_id: string;
       ward_name: string;
@@ -96,6 +103,8 @@ export const ExecutiveBriefingModal: React.FC<ExecutiveBriefingModalProps> = ({
     const mIdx = parseInt(parts[1], 10) - 1;
     return `${parts[2]} ${months[mIdx] || 'Jul'} ${parts[0]}`;
   }, [currentDate]);
+
+  if (!isOpen || !activeSummary) return null;
 
   return (
     <div className="briefing-modal-overlay">
