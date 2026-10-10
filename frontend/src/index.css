@@ -34,23 +34,23 @@
   --threat-warning-bg: #faebd7;
   --threat-warning-border: rgba(189, 80, 26, 0.40);
 
-  --threat-emergency: #bf4343;
+  --threat-emergency: #C35150;
   --threat-emergency-bg: #faece8;
-  --threat-emergency-border: #e8beb8;
+  --threat-emergency-border: rgba(195, 81, 80, 0.32);
 
-  /* Typography: Rich Warm Charcoal Espresso Inks */
-  --text-main: #231e1a;         /* dark warm espresso */
-  --text-muted: #665b50;        /* warm taupe-gray */
-  --text-dim: #948777;          /* muted sand stone */
+  /* Typography: Rich Warm Charcoal Espresso Inks (High Legibility & Contrast) */
+  --text-main: #1f1b17;         /* dark crisp espresso */
+  --text-muted: #5e5347;        /* warm taupe-gray */
+  --text-dim: #8c7e6f;          /* muted sand stone */
 
   /* Soft Natural Ambient Depth */
   --elev-1: 0 1px 3px rgba(60, 50, 40, 0.05), 0 1px 2px rgba(60, 50, 40, 0.03);
   --elev-2: 0 4px 12px rgba(60, 50, 40, 0.06), 0 2px 4px rgba(60, 50, 40, 0.04);
   --elev-3: 0 12px 28px rgba(60, 50, 40, 0.09), 0 4px 8px rgba(60, 50, 40, 0.05);
 
-  /* Font Families */
-  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Font Families — Modern Executive & Municipal Intelligence Typographic Stack */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Grid Layout Dimensioning Tokens */
@@ -91,8 +91,11 @@ html, body {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.5;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -195,14 +198,14 @@ html, body {
 
 .callout-emergency {
   background: #faece8;
-  border: 1px solid #e8beb8;
+  border: 1px solid rgba(195, 81, 80, 0.28);
   border-left: 3.5px solid var(--threat-emergency);
   border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  box-shadow: 0 1px 3px rgba(180, 60, 50, 0.06);
+  box-shadow: 0 1px 3px rgba(195, 81, 80, 0.08);
 }
 
 /* Button Foundations */
