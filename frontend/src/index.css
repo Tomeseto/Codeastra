@@ -34,9 +34,9 @@
   --threat-warning-bg: #faebd7;
   --threat-warning-border: rgba(189, 80, 26, 0.40);
 
-  --threat-emergency: #D07C79;
-  --threat-emergency-bg: rgba(208, 124, 121, 0.16);
-  --threat-emergency-border: rgba(208, 124, 121, 0.4);
+  --threat-emergency: #C35150;
+  --threat-emergency-bg: #faece8;
+  --threat-emergency-border: rgba(195, 81, 80, 0.32);
 
   /* Typography: Rich Warm Charcoal Espresso Inks (High Legibility & Contrast) */
   --text-main: #1f1b17;         /* dark crisp espresso */
@@ -171,9 +171,8 @@ html, body {
 
 .badge-emergency {
   background-color: var(--threat-emergency-bg);
-  color: #8c2b2a;
+  color: var(--threat-emergency);
   border: 1px solid var(--threat-emergency-border);
-  font-weight: 700;
 }
 
 /* Callout Modules */
@@ -198,15 +197,15 @@ html, body {
 }
 
 .callout-emergency {
-  background: #D07C79;
-  border: 1px solid #bd6966;
+  background: #faece8;
+  border: 1px solid rgba(195, 81, 80, 0.28);
+  border-left: 3.5px solid var(--threat-emergency);
   border-radius: var(--radius-md);
-  padding: 11px 12px;
-  color: #1f0b0a;
+  padding: 10px 12px;
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  box-shadow: 0 2px 8px rgba(208, 124, 121, 0.25);
+  box-shadow: 0 1px 3px rgba(195, 81, 80, 0.08);
 }
 
 /* Button Foundations */

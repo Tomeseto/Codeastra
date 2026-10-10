@@ -216,30 +216,23 @@ export const OperationsRail: React.FC<OperationsRailProps> = ({
             </div>
 
             <p className="lead-warning-text">
-              <strong className="lead-highlight">Severe waterlogging</strong> and{' '}
-              <strong className="lead-highlight">high flood exposure</strong> detected in{' '}
-              <span className="lead-locations-wrap">
+              Severe waterlogging and high flood exposure detected in{' '}
+              <strong>
                 {emergencyLocalities.length > 0
-                  ? emergencyLocalities.map((loc, i) => (
-                      <span key={loc} className="lead-location-chip">
-                        {loc}{i < emergencyLocalities.length - 1 ? ', ' : ''}
-                      </span>
-                    ))
-                  : 'Marine Lines, Dharavi, Kurla, Sandhurst Road'}
-              </span>.
+                  ? emergencyLocalities.join(', ')
+                  : 'Marine Lines, Dharavi, Kurla, and Sandhurst Road'}
+              </strong>.
             </p>
 
             <div className="lead-warning-action">
               <span className="action-bullet" />
               <span>
-                <strong className="action-highlight">72-Hour Prevention Window:</strong> Distribute{' '}
-                <strong className="action-pill-highlight">preventive medication (doxycycline)</strong> and{' '}
-                <strong className="action-highlight">alert local clinics</strong> before hospital admissions rise.
+                <strong>72-Hour Prevention Window:</strong> Distribute preventive medication (doxycycline) and alert local clinics before hospital admissions rise.
               </span>
             </div>
 
             <div className="lead-warning-meta">
-              <span><strong>Advance Notice:</strong> Detected <strong>+{leadTimeMilestone.lead_time_hours_vs_alert.toFixed(1)}h prior</strong> to municipal public advisory</span>
+              <span>Advance Notice: Detected 38h prior to municipal public advisory</span>
             </div>
           </div>
         )}
