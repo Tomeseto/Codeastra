@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Sliders, RefreshCw, AlertTriangle } from 'lucide-react';
+import { BenchmarkSelector } from './BenchmarkSelector';
 import type { DailyExposureSummary, RiskTier } from '../types';
 
 interface ScenarioSimulatorProps {
@@ -49,7 +50,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
         <div className="deck-title-group">
           <Sliders size={15} color="var(--threat-warning)" />
           <span className="deck-title">Real-Time Scenario Simulator</span>
-          <span className="deck-subtitle">Hypothetical Rainfall Sandbox</span>
+          <span className="deck-subtitle">Hypothetical Rainfall Sandbox & Historical Benchmarks</span>
         </div>
 
         <div className="deck-transport">
@@ -74,6 +75,14 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             <span>Reset</span>
           </button>
         </div>
+      </div>
+
+      {/* Historical Stress-Test Crisis Benchmarks Selector */}
+      <div style={{ padding: '12px 14px 0 14px' }}>
+        <BenchmarkSelector
+          activeRainfall={simulationRainfall}
+          onSelectRainfall={onSimulationRainfallChange}
+        />
       </div>
 
       <div className="scenario-deck-body">

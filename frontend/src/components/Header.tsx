@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudRain, MapPin } from 'lucide-react';
+import { CloudRain, MapPin, Compass, FileText } from 'lucide-react';
 
 interface HeaderProps {
   backendHealthy: boolean;
@@ -9,6 +9,8 @@ interface HeaderProps {
   onToggleHotspots: () => void;
   currentDate: string;
   hotspotsCount: number;
+  onStartTour?: () => void;
+  onOpenBriefing?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,7 +20,9 @@ export const Header: React.FC<HeaderProps> = ({
   showHotspots,
   onToggleHotspots,
   currentDate,
-  hotspotsCount
+  hotspotsCount,
+  onStartTour,
+  onOpenBriefing
 }) => {
   return (
     <header className="app-header">
@@ -86,6 +90,30 @@ export const Header: React.FC<HeaderProps> = ({
           <MapPin size={13} />
           <span>Hotspots ({hotspotsCount})</span>
         </button>
+
+        {/* 1-Click Executive Cabinet Briefing Sheet Modal */}
+        {onOpenBriefing && (
+          <button
+            className="btn-header-briefing"
+            onClick={onOpenBriefing}
+            title="Export official 1-page BMC Disaster Cabinet Briefing Sheet"
+          >
+            <FileText size={13} />
+            <span>Briefing Sheet</span>
+          </button>
+        )}
+
+        {/* 4-Step Judge Storyboard Demonstration Walkthrough */}
+        {onStartTour && (
+          <button
+            className="btn-header-tour"
+            onClick={onStartTour}
+            title="Start 4-Step Judge Demonstration Storyboard Walkthrough"
+          >
+            <Compass size={13} />
+            <span>Judge Tour</span>
+          </button>
+        )}
       </div>
     </header>
   );

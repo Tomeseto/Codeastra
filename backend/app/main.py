@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.config import settings
-from backend.app.routers import wards, exposure
+from backend.app.routers import wards, exposure, action, incubation
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -25,6 +25,10 @@ app.include_router(wards.router, prefix=settings.API_V1_STR)
 app.include_router(wards.router, prefix="/v1")
 app.include_router(exposure.router, prefix=settings.API_V1_STR)
 app.include_router(exposure.router, prefix="/v1")
+app.include_router(action.router, prefix=settings.API_V1_STR)
+app.include_router(action.router, prefix="/v1")
+app.include_router(incubation.router, prefix=settings.API_V1_STR)
+app.include_router(incubation.router, prefix="/v1")
 
 @app.get("/health", tags=["System"])
 @app.get("/api/health", tags=["System"])
@@ -50,6 +54,10 @@ def root():
             "wards_geojson": f"{settings.API_V1_STR}/wards",
             "wards_list": f"{settings.API_V1_STR}/wards/list",
             "calculate_exposure": f"{settings.API_V1_STR}/exposure/calculate",
-            "timeline": f"{settings.API_V1_STR}/exposure/timeline"
+            "timeline": f"{settings.API_V1_STR}/exposure/timeline",
+            "action_directive": f"{settings.API_V1_STR}/action/directive/{{ward_id}}",
+            "action_clinics": f"{settings.API_V1_STR}/action/clinics/{{ward_id}}",
+            "surge_curve": f"{settings.API_V1_STR}/epidemiology/surge-curve/{{ward_id}}",
+            "benchmarks": f"{settings.API_V1_STR}/benchmarks"
         }
     }

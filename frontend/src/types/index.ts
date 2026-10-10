@@ -83,3 +83,128 @@ export interface ChronicHotspot {
   source: string;
   severity: 'HIGH' | 'MEDIUM' | 'LOW';
 }
+
+/* --- TRACK 1: Civic Action Directives & Clinic Directory --- */
+export interface ClinicInfo {
+  clinic_id: string;
+  name: string;
+  ward_id: string;
+  locality?: string;
+  address: string;
+  operating_hours: string;
+  contact?: string;
+  services: string;
+  lat?: number;
+  lon?: number;
+  stock_status?: string;
+  prophylaxis_available?: boolean;
+}
+
+export interface ProphylaxisDemand {
+  slum_population: number;
+  exposure_score: number;
+  risk_tier: RiskTier;
+  exposure_factor: number;
+  doxycycline_packs_recommended: number;
+  mobile_fever_vans_required: number;
+  priority_level: string;
+  target_protocol: string;
+}
+
+export interface MultiLingualAdvisory {
+  marathi: string;
+  hindi: string;
+  english: string;
+}
+
+export interface WardMunicipalDirective {
+  ward_id: string;
+  ward_name: string;
+  locality: string;
+  zone: string;
+  exposure_score: number;
+  risk_tier: RiskTier;
+  prophylaxis: ProphylaxisDemand;
+  advisory: MultiLingualAdvisory;
+  clinics: ClinicInfo[];
+  generated_at: string;
+}
+
+/* --- TRACK 2 & 3: Incubation Surge Curve, Vector Stagnation & Benchmarks --- */
+export interface IncubationTimelinePoint {
+  day: number;
+  phase: string;
+  phase_label: string;
+  civilian_headline: string;
+  civilian_explanation: string;
+  surge_intensity_index: number;
+  medical_action: string;
+  zone_color: string;
+  is_peak: boolean;
+}
+
+export interface SurgeCurve {
+  ward_id: string;
+  ward_name: string;
+  exposure_score: number;
+  rainfall_mm: number;
+  peak_day: number;
+  peak_intensity: number;
+  golden_window_days: number;
+  timeline: IncubationTimelinePoint[];
+  evidence_citation: string;
+}
+
+export interface VectorStagnationRisk {
+  ward_id: string;
+  stagnation_risk_score: number;
+  risk_tier: 'LOW' | 'MODERATE' | 'HIGH' | 'CRITICAL';
+  target_vectors: string[];
+  larval_breeding_window: string;
+  chemical_spray_recommendation: string;
+  target_hotspot_count: number;
+  priority_action: string;
+}
+
+export interface WardEpidemiologyForecast {
+  ward_id: string;
+  ward_name: string;
+  exposure_score: number;
+  rainfall_mm: number;
+  surge_curve: SurgeCurve;
+  vector_risk: VectorStagnationRisk;
+  generated_at: string;
+}
+
+export interface BenchmarkEvent {
+  id: string;
+  name: string;
+  date_range: string;
+  rainfall_mm: number;
+  peak_rainfall_mm: number;
+  tide_condition: string;
+  drainage_state: string;
+  lead_time_hours: number;
+  case_count: number;
+  prior_month_cases: number;
+  case_surge_percentage: number;
+  historical_outcome: string;
+  validation_note: string;
+  saturation_scope: string;
+  target_wards: string[];
+  recommended_action: string;
+}
+
+export interface BenchmarkSummaryItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  rainfall_mm: number;
+  tag: string;
+  color: string;
+}
+
+export interface BenchmarkSuiteResponse {
+  events: Record<string, BenchmarkEvent>;
+  benchmark_list: BenchmarkSummaryItem[];
+}

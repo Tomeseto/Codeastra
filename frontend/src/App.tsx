@@ -7,6 +7,8 @@ import { WardMap } from './components/WardMap';
 import { TimeMachine } from './components/TimeMachine';
 import { ScenarioSimulator } from './components/ScenarioSimulator';
 import { WardListTable } from './components/WardListTable';
+import { ExecutiveBriefingModal } from './components/ExecutiveBriefingModal';
+import { JudgeTourGuide } from './components/JudgeTourGuide';
 import type { DailyExposureSummary, WardExposureScore, ChronicHotspot } from './types';
 
 export const App: React.FC = () => {
@@ -27,6 +29,10 @@ export const App: React.FC = () => {
   // Collapsible Left Rail & Right Drawer States
   const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
   const [isDrawerCollapsed, setIsDrawerCollapsed] = useState<boolean>(false);
+
+  // Guided Judge Storyboard Tour & Executive Briefing Sheet
+  const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
+  const [showBriefingModal, setShowBriefingModal] = useState<boolean>(false);
 
   // Scenario Simulator State
   const [simulationRainfall, setSimulationRainfall] = useState<number>(85.0);
@@ -167,6 +173,33 @@ export const App: React.FC = () => {
     setIsDrawerCollapsed(false);
   };
 
+  const handleNavigateTourStep = (stepNumber: number) => {
+    setActiveView('map');
+    setIsDrawerCollapsed(false);
+
+    if (stepNumber === 1) {
+      // Step 1: Baseline (Dry City Pre-Monsoon - 30 June 2026)
+      const idx = dates.indexOf('2026-06-30');
+      setCurrentDateIndex(idx >= 0 ? idx : 0);
+      setSelectedWardId(null);
+    } else if (stepNumber === 2) {
+      // Step 2: Flood Inundation & Hotspot Saturation (04 July 2026)
+      const idx = dates.indexOf('2026-07-04');
+      setCurrentDateIndex(idx >= 0 ? idx : 4);
+      setSelectedWardId('L');
+    } else if (stepNumber === 3) {
+      // Step 3: Peak Deluge & Advance Emergency Warning (+38.15h) (05 July 2026)
+      const idx = dates.indexOf('2026-07-05');
+      setCurrentDateIndex(idx >= 0 ? idx : 5);
+      setSelectedWardId('L');
+    } else if (stepNumber === 4) {
+      // Step 4: 14-Day Clinical Incubation Window & Vector Directives
+      const idx = dates.indexOf('2026-07-05');
+      setCurrentDateIndex(idx >= 0 ? idx : 5);
+      setSelectedWardId('L');
+    }
+  };
+
   return (
     <div className="app-container">
       {/* 1. Calm Editorial Header */}
@@ -178,6 +211,11 @@ export const App: React.FC = () => {
         onToggleHotspots={() => setShowHotspots(!showHotspots)}
         currentDate={currentDate}
         hotspotsCount={allHotspots.length || 70}
+        onStartTour={() => {
+          setIsTourOpen(true);
+          handleNavigateTourStep(1);
+        }}
+        onOpenBriefing={() => setShowBriefingModal(true)}
       />
 
       {/* 2. Main Middle Workspace: Structured Flex Row */}
@@ -265,6 +303,22 @@ export const App: React.FC = () => {
           />
         </footer>
       )}
+
+      {/* 1-Click Printable BMC Morning Cabinet Briefing Sheet Modal */}
+      <ExecutiveBriefingModal
+        isOpen={showBriefingModal}
+        onClose={() => setShowBriefingModal(false)}
+        activeSummary={activeSummary}
+        currentDate={currentDate}
+        wardsProperties={wardsPropertiesMap}
+      />
+
+      {/* 4-Step Judge Demonstration Storyboard Walkthrough Guide */}
+      <JudgeTourGuide
+        isOpen={isTourOpen}
+        onClose={() => setIsTourOpen(false)}
+        onNavigateStep={handleNavigateTourStep}
+      />
     </div>
   );
 };

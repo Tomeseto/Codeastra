@@ -1,0 +1,84 @@
+{
+  "events": {
+    "JULY_2026": {
+      "id": "JULY_2026",
+      "name": "1-10 July 2026 Monsoon Deluge",
+      "date_range": "2026-07-01 to 2026-07-10",
+      "rainfall_mm": 175.0,
+      "peak_rainfall_mm": 204.0,
+      "tide_condition": "High Tide (4.6m) restricting sluice gates",
+      "drainage_state": "Severe Mithi Basin Backflow",
+      "lead_time_hours": 38.15,
+      "case_count": 78,
+      "prior_month_cases": 33,
+      "case_surge_percentage": 136.4,
+      "historical_outcome": "78 Leptospirosis cases confirmed in July 2026 (136% jump from 33 in June). Real-world flood wading peaked 4-5 July.",
+      "validation_note": "VARSHA issued Critical/Emergency alert on 5 July 2026 (08:30 IST), providing municipal teams with a +38.15-hour verified early warning lead time ahead of BMC's retrospective advisory on 6 July at 22:39 IST.",
+      "saturation_scope": "14 of 24 Wards in Critical Exposure (E >= 75.0)",
+      "target_wards": ["L", "K-E", "G-N", "F-N", "M-E"],
+      "recommended_action": "Mass community chemoprophylaxis deployment (Doxycycline 200mg single dose) within 72 hours via Aapla Dawakhana clinics."
+    },
+    "JULY_2005": {
+      "id": "JULY_2005",
+      "name": "26 July 2005 Great Mumbai Deluge",
+      "date_range": "2005-07-26",
+      "rainfall_mm": 350.0,
+      "peak_rainfall_mm": 944.2,
+      "tide_condition": "Extreme High Tide coinciding with cloudburst",
+      "drainage_state": "Complete Catchment Submergence",
+      "lead_time_hours": 72.0,
+      "case_count": 432,
+      "prior_month_cases": 54,
+      "case_surge_percentage": 700.0,
+      "historical_outcome": "432 confirmed leptospirosis cases and 66 deaths. Nair Hospital and K.E.M. Hospital reported an 8-fold outpatient case surge peaking on Days 7-12 post-flood (Supe et al., 2018).",
+      "validation_note": "Maximum catastrophic stress test: Extreme rainfall saturation clamps Environmental Exposure at E=100.0 across all 24 wards, verifying system robustness under catastrophic cloudbursts.",
+      "saturation_scope": "All 24 Wards Clamped at Maximum Critical Exposure (E = 100.0)",
+      "target_wards": ["ALL_24_WARDS"],
+      "recommended_action": "Citywide emergency mobilization, stadium fever triaging camps, IV Penicillin/Ceftriaxone prepositioning, ICU dialysis bed readiness."
+    },
+    "AUGUST_2025": {
+      "id": "AUGUST_2025",
+      "name": "16 August 2025 Flash Downpour",
+      "date_range": "2025-08-16",
+      "rainfall_mm": 110.0,
+      "peak_rainfall_mm": 110.0,
+      "tide_condition": "Neap / Low Astronomical Tide (< 2.8m)",
+      "drainage_state": "Rapid Gravity Drainage into Arabian Sea",
+      "lead_time_hours": 0.0,
+      "case_count": 14,
+      "prior_month_cases": 12,
+      "case_surge_percentage": 16.7,
+      "historical_outcome": "Heavy localized flash downpour that drained rapidly within 6-12 hours through natural sea outfalls without prolonged standing floodwater bowls.",
+      "validation_note": "False Alarm Prevention Benchmark: Exposure briefly rose to WATCH tier (E ~ 40-48) during rain, then decayed back to NORMAL within 24 hours. Proves VARSHA does not trigger false panic when water drains safely.",
+      "saturation_scope": "0 Wards in Critical; Selective transient Watch tier in 4 low-lying wards",
+      "target_wards": ["L", "F-N"],
+      "recommended_action": "Routine municipal surveillance; no mass chemoprophylaxis required due to rapid outfall clearance and absence of prolonged wading exposure."
+    }
+  },
+  "benchmark_list": [
+    {
+      "id": "JULY_2026",
+      "title": "July 2026 Monsoon Deluge",
+      "subtitle": "+38.15h Early Warning Validated",
+      "rainfall_mm": 175.0,
+      "tag": "Primary Real Event",
+      "color": "#ef4444"
+    },
+    {
+      "id": "JULY_2005",
+      "title": "26 July 2005 Great Deluge",
+      "subtitle": "944mm Cloudburst (E=100 Saturation)",
+      "rainfall_mm": 350.0,
+      "tag": "Catastrophic Stress Test",
+      "color": "#dc2626"
+    },
+    {
+      "id": "AUGUST_2025",
+      "title": "16 August 2025 Flash Rain",
+      "subtitle": "Fast Drain (False Alarm Control)",
+      "rainfall_mm": 110.0,
+      "tag": "Calibration / Selectivity",
+      "color": "#38bdf8"
+    }
+  ]
+}

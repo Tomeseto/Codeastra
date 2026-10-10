@@ -191,6 +191,42 @@ button {
   box-shadow: var(--elev-1);
 }
 
+.btn-header-briefing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+.btn-header-briefing:hover {
+  background: var(--bg-surface-3);
+  border-color: var(--border-active);
+}
+
+.btn-header-tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  background: var(--accent-live);
+  color: #ffffff;
+  border: 1px solid var(--accent-live);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 600;
+  box-shadow: var(--elev-1);
+  transition: all var(--transition-fast);
+}
+.btn-header-tour:hover {
+  opacity: 0.92;
+}
+
 /* --------------------------------------------------------------------------
    3. Main Workspace: Flex Row Layout
    -------------------------------------------------------------------------- */
@@ -571,6 +607,42 @@ button {
 .btn-icon:hover {
   background: var(--bg-surface-3);
   color: var(--text-main);
+}
+
+.drawer-tabs-nav {
+  display: flex;
+  background: var(--bg-surface-2);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 4px;
+}
+
+.drawer-tab-btn {
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawer-tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.drawer-tab-btn.active {
+  color: var(--accent-structural);
+  border-bottom-color: var(--accent-structural);
+  font-weight: 700;
+  background: var(--bg-surface-1);
 }
 
 .evidence-content {
@@ -1247,4 +1319,324 @@ button {
 .btn-hud:hover {
   background: var(--bg-surface-2);
   box-shadow: var(--elev-2);
+}
+
+/* ==========================================================================
+   Executive Municipal Briefing Sheet & Modal Styling
+   ========================================================================== */
+
+.briefing-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 16, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 20px;
+  overflow-y: auto;
+}
+
+.briefing-modal-toolbar {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.briefing-sheet-paper {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  padding: 30px 34px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.45;
+  margin-bottom: 40px;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.sheet-emblem-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sheet-emblem-seal {
+  width: 44px;
+  height: 44px;
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  border: 2px solid #0284c7;
+}
+
+.sheet-gov-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.03em;
+}
+
+.sheet-dept-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.sheet-doc-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0284c7;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+.sheet-meta-block {
+  font-size: 10px;
+  color: #334155;
+  text-align: right;
+  line-height: 1.5;
+  font-family: monospace;
+}
+
+.sheet-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sheet-kpi-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.kpi-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+.kpi-val {
+  font-size: 18px;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  margin-top: 2px;
+}
+
+.kpi-sub {
+  font-size: 9px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.sheet-section {
+  margin-bottom: 14px;
+}
+
+.sheet-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: left;
+}
+
+.sheet-table th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.sheet-table td {
+  padding: 6px 8px;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+.sheet-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sheet-badge-emergency {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.sheet-badge-warning {
+  background: #ffedd5;
+  color: #9a3412;
+  border: 1px solid #fdba74;
+}
+
+.sheet-directives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 10px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.sheet-directive-item {
+  background: #f8fafc;
+  border-left: 3px solid #0284c7;
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.sheet-advisory-box {
+  background: #f1f5f9;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 10px;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.sheet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 14px;
+  margin-top: 16px;
+  font-size: 9px;
+  color: #64748b;
+}
+
+.sheet-provenance {
+  max-width: 480px;
+  line-height: 1.4;
+}
+
+.sheet-signature-box {
+  text-align: right;
+}
+
+.sheet-sig-line {
+  color: #94a3b8;
+  letter-spacing: -0.05em;
+  margin-bottom: 4px;
+}
+
+.sheet-sig-title {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sheet-sig-dept {
+  color: #64748b;
+  font-size: 8.5px;
+}
+
+/* Print Specific Rules */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .briefing-modal-overlay,
+  .briefing-sheet-paper,
+  .briefing-sheet-paper * {
+    visibility: visible;
+  }
+  .briefing-modal-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  .briefing-modal-toolbar {
+    display: none !important;
+  }
+  .briefing-sheet-paper {
+    max-width: 100% !important;
+    box-shadow: none !important;
+    padding: 10mm 12mm !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.5);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
